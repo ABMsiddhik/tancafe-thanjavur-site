@@ -28,32 +28,33 @@ const Cart = () => {
 
       {/* Only show these navigation links when cart has items */}
       {cartItems.length > 0 && (
-        <div className="flex flex-wrap justify-center items-center gap-4 mb-6">
-          <Link 
-            to="/foods" 
-            className="flex items-center justify-center gap-2 bg-[#712d24] text-white px-5 py-3 rounded-full hover:bg-[#5a241d] transition font-medium w-auto"
-            aria-label="Browse Foods"
-          >
-            <FaHamburger className="text-lg" />
-            Foods
-          </Link>
-          <Link 
-            to="/drinks" 
-            className="flex items-center justify-center gap-2 bg-[#712d24] text-white px-5 py-3 rounded-full hover:bg-[#5a241d] transition font-medium w-auto"
-            aria-label="Browse Drinks"
-          >
-            <FaCoffee className="text-lg" />
-            Drinks
-          </Link>
-          <Link 
-            to="/cakes" 
-            className="flex items-center justify-center gap-2 bg-[#712d24] text-white px-5 py-3 rounded-full hover:bg-[#5a241d] transition font-medium w-auto"
-            aria-label="Browse Cakes"
-          >
-            <FaBirthdayCake className="text-lg" />
-            Cakes
-          </Link>
-        </div>
+      <div className="flex justify-center items-center gap-2 mb-6 w-full overflow-hidden px-2">
+  <Link 
+    to="/foods" 
+    className="flex items-center justify-center gap-1 bg-[#712d24] text-white px-3 py-2 rounded-full hover:bg-[#5a241d] transition font-medium text-xs sm:text-sm md:text-base w-auto whitespace-nowrap"
+    aria-label="Browse Foods"
+  >
+    <FaHamburger className="text-sm sm:text-base md:text-lg" />
+    Foods
+  </Link>
+  <Link 
+    to="/drinks" 
+    className="flex items-center justify-center gap-1 bg-[#712d24] text-white px-3 py-2 rounded-full hover:bg-[#5a241d] transition font-medium text-xs sm:text-sm md:text-base w-auto whitespace-nowrap"
+    aria-label="Browse Drinks"
+  >
+    <FaCoffee className="text-sm sm:text-base md:text-lg" />
+    Drinks
+  </Link>
+  <Link 
+    to="/cakes" 
+    className="flex items-center justify-center gap-1 bg-[#712d24] text-white px-3 py-2 rounded-full hover:bg-[#5a241d] transition font-medium text-xs sm:text-sm md:text-base w-auto whitespace-nowrap"
+    aria-label="Browse Cakes"
+  >
+    <FaBirthdayCake className="text-sm sm:text-base md:text-lg" />
+    Cakes
+  </Link>
+</div>
+
       )}
 
       <div className="flex justify-between items-center mb-6">
