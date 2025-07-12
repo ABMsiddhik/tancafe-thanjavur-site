@@ -76,32 +76,36 @@ const Cart = () => {
           <div className="max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-[#712d24] mb-4">Explore Our Menu</h3>
             <p className="text-gray-600 mb-6">Add some delicious items to your cart from our wide range of vegetarian delights!</p>
-            <div className="flex  sm:flex-row justify-center gap-4">
-              <Link 
-                to="/foods" 
-                className="flex items-center justify-center gap-2 bg-[#712d24] text-white px-5 py-3 rounded-full hover:bg-[#5a241d] transition font-medium"
-                aria-label="Browse Foods"
-              >
-                <FaHamburger className="text-lg" />
-                Foods
-              </Link>
-              <Link 
-                to="/drinks" 
-                className="flex items-center justify-center gap-2 bg-[#712d24] text-white px-5 py-3 rounded-full hover:bg-[#5a241d] transition font-medium"
-                aria-label="Browse Drinks"
-              >
-                <FaCoffee className="text-lg" />
-                Drinks
-              </Link>
-              <Link 
-                to="/cakes" 
-                className="flex items-center justify-center gap-2 bg-[#712d24] text-white px-5 py-3 rounded-full hover:bg-[#5a241d] transition font-medium"
-                aria-label="Browse Cakes"
-              >
-                <FaBirthdayCake className="text-lg" />
-                Cakes
-              </Link>
-            </div>
+<div className="flex justify-center gap-2 w-full  px-2">
+  <Link 
+    to="/foods" 
+    className="flex items-center justify-center gap-1 bg-[#712d24] text-white px-3 py-1.5 rounded-full hover:bg-[#5a241d] transition font-medium text-xs sm:text-sm md:text-base whitespace-nowrap"
+    aria-label="Browse Foods"
+  >
+    <FaHamburger className="text-sm sm:text-base md:text-lg" />
+    Foods
+  </Link>
+
+  <Link 
+    to="/drinks" 
+    className="flex items-center justify-center gap-1 bg-[#712d24] text-white px-3 py-1.5 rounded-full hover:bg-[#5a241d] transition font-medium text-xs sm:text-sm md:text-base whitespace-nowrap"
+    aria-label="Browse Drinks"
+  >
+    <FaCoffee className="text-sm sm:text-base md:text-lg" />
+    Drinks
+  </Link>
+
+  <Link 
+    to="/cakes" 
+    className="flex items-center justify-center gap-1 bg-[#712d24] text-white px-3 py-1.5 rounded-full hover:bg-[#5a241d] transition font-medium text-xs sm:text-sm md:text-base whitespace-nowrap"
+    aria-label="Browse Cakes"
+  >
+    <FaBirthdayCake className="text-sm sm:text-base md:text-lg" />
+    Cakes
+  </Link>
+</div>
+
+
           </div>
         </div>
       ) : (
