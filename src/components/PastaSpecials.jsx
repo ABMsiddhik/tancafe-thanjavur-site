@@ -14,8 +14,8 @@ import spicyVegFusion from '../assets/pasta-images/Spicy-Veg-Fusion-pasta.png';
 import penneAlla from '../assets/pasta-images/Penne-Alla-pasta.png';
 
 const pastaItems = [
-  { name: 'Indian', image: indian },
-  { name: 'Italian', image: italian },
+  { name: 'Indian Pasta', image: indian },
+  { name: 'Italian Pasta', image: italian },
   { name: 'Signature Special', image: signatureSpecial },
   { name: 'Green Garden', image: greenGarden },
   { name: 'Spicy Veg Fusion', image: spicyVegFusion },
