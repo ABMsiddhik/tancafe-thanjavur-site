@@ -21,29 +21,35 @@ const SpecialOffers = () => {
   return (
     <div className="bg-gradient-to-b from-[#f8f4ee] to-[#e8d9c5] min-h-screen">
       {/* Hero Section */}
-      {/* Hero Section - Fixed Version */}
-<div className="relative min-h-screen md:h-[400px] overflow-hidden">
-  <div 
-    className="absolute inset-0 bg-cover bg-center"
-    style={{ 
-      backgroundImage: `url(${heroBg})`,
-      transform: 'scale(1.1)',
-      transition: 'transform 0.5s ease-out',
-      willChange: 'transform'
-    }}
-  >
+<div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  {/* Background Image */}
+  <div className="absolute inset-0 w-full h-full">
+    <img
+      src={heroBg}
+      alt="Special Offers Banner"
+      className="w-full h-full object-cover object-center"
+      style={{ 
+        transform: 'scale(1.1)',
+        transition: 'transform 0.5s ease-out',
+        willChange: 'transform'
+      }}
+    />
     <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
   </div>
-  <div className="relative z-10 text-center text-white px-4 h-full flex flex-col items-center justify-center">
-    <h1 className="text-4xl md:text-5xl font-bold mb-2">SPECIAL OFFERS</h1>
-    <div className="flex justify-center items-center text-sm space-x-2">
-      <Link to="/" className="opacity-80 flex items-center">
+  
+  {/* Content */}
+  <div className="relative z-10 text-white text-center px-4">
+    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3">SPECIAL OFFERS</h1>
+    <div className="flex items-center justify-center gap-2 text-sm">
+      <Link to="/" className="opacity-80 hover:opacity-100 transition-opacity flex items-center">
         HOME
       </Link>
-      <FiChevronRight />
+      <span>›</span>
       <span className="font-semibold text-yellow-300">SPECIAL OFFERS</span>
     </div>
   </div>
+  
+  {/* Down Arrow */}
   <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
     <svg className="w-8 h-8 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
