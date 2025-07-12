@@ -1,10 +1,33 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Footer from './Footer';
 import heroImage from '../assets/images/bgImage2.jpg';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaPaperPlane } from 'react-icons/fa';
 import { HiOutlineMail, HiOutlinePhone } from 'react-icons/hi';
 
 const Contact = () => {
+  const [form, setForm] = useState({
+  name: '',
+  email: '',
+  phone: '',
+  message: ''
+});
+
+const handleChange = (e) => {
+  setForm({ ...form, [e.target.id]: e.target.value });
+};
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  const { name, email, phone, message } = form;
+
+  const whatsappNumber = "918248794519"; 
+const text = `*Hello TanCafe!* \n\nNew contact request:\n\n*Name:* ${name}\n\n*Email:* ${email}\n\n*Phone:* ${phone}\n\n*Message:* ${message}`;
+
+  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+  window.open(url, "_blank");
+};
+
   return (
     <>
       {/* Hero Section */}
@@ -48,53 +71,63 @@ const Contact = () => {
             {/* Contact Form */}
             <div className="bg-white p-10 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
               <h2 className="text-2xl font-bold mb-6 text-[#712d24]">Send Us a Message</h2>
-              <form className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-[#712d24] focus:border-[#712d24] transition-all"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email*</label>
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-[#712d24] focus:border-[#712d24] transition-all"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-[#712d24] focus:border-[#712d24] transition-all"
-                    placeholder="+91 1234567890"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Your Message*</label>
-                  <textarea
-                    id="message"
-                    rows="5"
-                    required
-                    className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-[#712d24] focus:border-[#712d24] transition-all"
-                    placeholder="Tell us about your inquiry..."
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-[#712d24] hover:bg-[#5a241d] text-white px-6 py-3 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl flex items-center justify-center"
-                >
-                  <span>SEND MESSAGE</span>
-                  <FaPaperPlane className="ml-2" />
-                </button>
-              </form>
+           <form className="space-y-6" onSubmit={handleSubmit}>
+  <div>
+    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+    <input
+      type="text"
+      id="name"
+      value={form.name}
+      onChange={handleChange}
+      className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-[#712d24] focus:border-[#712d24] transition-all"
+      placeholder="Your name"
+      required
+    />
+  </div>
+  <div>
+    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email*</label>
+    <input
+      type="email"
+      id="email"
+      value={form.email}
+      onChange={handleChange}
+      className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-[#712d24] focus:border-[#712d24] transition-all"
+      placeholder="your.email@example.com"
+      required
+    />
+  </div>
+  <div>
+    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+    <input
+      type="tel"
+      id="phone"
+      value={form.phone}
+      onChange={handleChange}
+      className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-[#712d24] focus:border-[#712d24] transition-all"
+      placeholder="+91 1234567890"
+    />
+  </div>
+  <div>
+    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Your Message*</label>
+    <textarea
+      id="message"
+      rows="5"
+      value={form.message}
+      onChange={handleChange}
+      className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-[#712d24] focus:border-[#712d24] transition-all"
+      placeholder="Tell us about your inquiry..."
+      required
+    ></textarea>
+  </div>
+  <button
+    type="submit"
+    className="w-full bg-[#712d24] hover:bg-[#5a241d] text-white px-6 py-3 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl flex items-center justify-center"
+  >
+    <span>SEND MESSAGE</span>
+    <FaPaperPlane className="ml-2" />
+  </button>
+</form>
+
             </div>
 
             {/* Contact Info */}

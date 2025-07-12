@@ -435,7 +435,7 @@ function HeroSection() {
           </div>
         </div>
       </div>
-      <div className="bg-gray-100 py-16 px-4 md:px-16 max-w-7xl mx-auto text-center">
+      <div className="bg-gray-100 py-16 px-4 md:px-16 max-w-7xl mx-auto text-center  overflow-hidden">
         <div className="row">
           <div className="max-w-xl mx-auto">
             <div className="site-heading text-center">

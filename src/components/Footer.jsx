@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { FaXTwitter } from "react-icons/fa6";
 import { MdLocationOn, MdPhone, MdAccessTime } from 'react-icons/md';
 import { FaEnvelope } from 'react-icons/fa';
 import footerBg from '../assets/images/tancafe-footer.png';
@@ -86,7 +87,7 @@ function Footer() {
                   <FaFacebookF />
                 </a>
                 <a href="https://x.com/mytancafe/" target='_blank' rel="noopener noreferrer" className="text-white text-lg p-2 rounded-full bg-gray-800 hover:bg-[#e67e22] transition-all duration-300">
-                  <FaTwitter />
+                  <FaXTwitter />
                 </a>
                 <a href="https://www.instagram.com/accounts/login/?next=%2Fmytancafe%2F&source=omni_redirect" target='_blank' rel="noopener noreferrer" className="text-white text-lg p-2 rounded-full bg-gray-800 hover:bg-[#e67e22] transition-all duration-300">
                   <FaInstagram />
