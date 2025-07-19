@@ -74,10 +74,8 @@ const FruitSmoothies = () => {
                       alt={item.name}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
-                    <div className="absolute bottom-3 left-4">
-                      <h3 className="text-xl font-semibold text-amber-950">{item.name}</h3>
-
-                    </div>
+                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">{item.name}</h3>
                   </div>
 
                   <div className="p-4">
