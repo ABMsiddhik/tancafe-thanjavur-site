@@ -11,15 +11,15 @@ import oceanBlue from '../assets/coolers-images/cooler-6.jpg';
 import lemonyLemon from '../assets/coolers-images/cooler-7.jpg';
 
 const coolerItems = [
-  { name: 'Green Apple', image: greenApple },
-  { name: 'Blue Mint Fizz', image: blueMintFizz },
-  { name: 'Ocean Blue', image: oceanBlue },
-  { name: 'Lemony Lemon', image: lemonyLemon },
+  { name: 'Green Apple', image: greenApple, price: 105 },
+  { name: 'Blue Mint Fizz', image: blueMintFizz, price: 110 },
+  { name: 'Ocean Blue', image: oceanBlue, price: 120 },
+  { name: 'Lemony Lemon', image: lemonyLemon, price: 100 },
 ];
 
 const Coolers = () => {
   const { cart, addToCart, removeFromCart, decreaseQty } = useContext(CartContext);
-  
+
   const quantity = (itemName) => cart[itemName]?.quantity || 0;
 
   return (
@@ -70,12 +70,20 @@ const Coolers = () => {
                       alt={item.name}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">{item.name}</h3>
                   </div>
 
-                  <div className="p-4 text-center flex flex-col items-center">
-                    <div className="flex items-center gap-3 mt-2">
+                  <div className="p-4">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-[#712d24] font-semibold">Rs. {item.price.toFixed(2)}</span>
+                      {showControls && (
+                        <span className="text-sm text-gray-500">
+                          Total: Rs. {(item.price * itemQuantity).toFixed(2)}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex justify-center items-center gap-3 mt-2">
                       {showControls ? (
                         <>
                           <button
@@ -90,15 +98,15 @@ const Coolers = () => {
                       ) : (
                         <span className="text-lg font-semibold w-8">0</span>
                       )}
-                      
+
                       <button
-                        onClick={() => addToCart(item.name, item.image)}
+                        onClick={() => addToCart(item.name, item.image, item.price)}
                         className="bg-[#712d24] text-white p-2 rounded"
                         aria-label="Increase quantity"
                       >
                         <FaPlus className="text-sm" />
                       </button>
-                      
+
                       {showControls && (
                         <button
                           onClick={() => removeFromCart(item.name)}

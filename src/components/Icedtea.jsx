@@ -8,7 +8,7 @@ import bannerImg from '../assets/icedtea-images/iced-1.jpg';
 import lemonTea from '../assets/icedtea-images/iced-1.jpg';
 
 const icedTeaItems = [
-  { name: 'Lemon', image: lemonTea },
+  { name: 'Lemon', image: lemonTea, price: 95 },
 ];
 
 const IcedTea = () => {
@@ -48,7 +48,7 @@ const IcedTea = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-center">
-            {icedTeaItems.map(({ name, image }) => {
+            {icedTeaItems.map(({ name, image, price }) => {
               const itemQuantity = quantity(name);
               const showControls = itemQuantity > 0;
 
@@ -63,12 +63,22 @@ const IcedTea = () => {
                       alt={name}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">{name}</h3>
+                    <div className="absolute bottom-3 left-4">
+                      <h3 className="text-xl font-semibold ">{name}</h3>
+
+                    </div>
                   </div>
 
-                  <div className="p-4 text-center flex flex-col items-center">
-                    <div className="flex items-center gap-3 mt-2">
+                  <div className="p-4">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-[#712d24] font-semibold">Rs. {price.toFixed(2)}</span>
+                      {showControls && (
+                        <span className="text-sm text-gray-500">
+                          Total: Rs. {(price * itemQuantity).toFixed(2)}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex justify-center items-center gap-3 mt-2">
                       {showControls ? (
                         <>
                           <button
@@ -85,7 +95,7 @@ const IcedTea = () => {
                       )}
 
                       <button
-                        onClick={() => addToCart(name, image)}
+                        onClick={() => addToCart(name, image, price)}
                         className="bg-[#712d24] text-white p-2 rounded"
                         aria-label="Increase quantity"
                       >

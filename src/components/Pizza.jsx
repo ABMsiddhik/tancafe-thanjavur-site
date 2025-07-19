@@ -17,15 +17,15 @@ import exoticVeg from '../assets/pizza-images/pizza-8.jpg';
 import peppyMushroom from '../assets/pizza-images/pizza-9.jpg';
 
 const pizzaItems = [
-  { name: 'Tandoori Paneer', image: tandooriPaneer },
-  { name: 'Veg', image: vegPizza },
-  { name: 'Golden Corn Cheese', image: goldenCornCheese },
-  { name: 'Mexican', image: mexican },
-  { name: 'Cheese', image: cheese },
-  { name: 'Paneer Mushroom', image: paneerMushroom },
-  { name: 'Classic Mushroom', image: classicMushroom },
-  { name: 'Exotic Veg', image: exoticVeg },
-  { name: 'Peppy Mushroom', image: peppyMushroom },
+  { name: 'Tandoori Paneer', image: tandooriPaneer, price: 155 },
+  { name: 'Veg', image: vegPizza, price: 120 },
+  { name: 'Golden Corn Cheese', image: goldenCornCheese, price: 135 },
+  { name: 'Mexican', image: mexican, price: 135 },
+  { name: 'Cheese', image: cheese, price: 120 },
+  { name: 'Paneer Mushroom', image: paneerMushroom, price: 175 },
+  { name: 'Classic Mushroom', image: classicMushroom, price: 140 },
+  { name: 'Exotic Veg', image: exoticVeg, price: 130 },
+  { name: 'Peppy Mushroom', image: peppyMushroom, price: 155 },
 ];
 
 const Pizza = () => {
@@ -35,7 +35,7 @@ const Pizza = () => {
 
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero Section - unchanged */}
       <section className="relative min-h-screen bg-fixed bg-cover bg-center flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center scale-110"
@@ -62,7 +62,7 @@ const Pizza = () => {
         </div>
       </section>
 
-      {/* Grid Section */}
+      {/* Grid Section with Price */}
       <section className="bg-gradient-to-b from-[#f8f4ee] to-[#e8d9c5] py-16 px-4 md:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
@@ -90,13 +90,23 @@ const Pizza = () => {
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">
-                      {item.name}
-                    </h3>
+                    <div className="absolute bottom-3 left-4">
+                      <h3 className="text-xl font-semibold text-white">{item.name}</h3>
+                   
+                    </div>
                   </div>
 
-                  <div className="p-4 text-center flex flex-col items-center">
-                    <div className="flex items-center gap-3 mt-2">
+                  <div className="p-4">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-[#712d24] font-semibold">Rs. {item.price.toFixed(2)}</span>
+                      {showControls && (
+                        <span className="text-sm text-gray-500">
+                          Total: Rs. {(item.price * itemQuantity).toFixed(2)}
+                        </span>
+                      )}
+                    </div>
+                    
+                    <div className="flex items-center gap-3 justify-center">
                       {showControls ? (
                         <>
                           <button
@@ -113,7 +123,7 @@ const Pizza = () => {
                       )}
                       
                       <button
-                        onClick={() => addToCart(item.name, item.image)}
+                        onClick={() => addToCart(item.name, item.image, item.price)}
                         className="bg-[#712d24] text-white p-2 rounded"
                         aria-label="Increase quantity"
                       >
@@ -136,7 +146,7 @@ const Pizza = () => {
             })}
           </div>
 
-          {/* Call to Action */}
+          {/* Call to Action - unchanged */}
           <div className="mt-16 bg-[#712d24] rounded-xl p-8 md:p-12 text-center text-white">
             <h3 className="text-3xl font-bold mb-4">Hungry for More?</h3>
             <p className="text-gray-200 max-w-2xl mx-auto mb-6">

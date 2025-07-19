@@ -14,13 +14,13 @@ import miloDelight from '../assets/specialityshakes-images/Milo-Delight-1.jpg';
 import kulfiShake from '../assets/specialityshakes-images/Kulfi-Shake-1.jpg';
 
 const shakes = [
-  { name: 'Oreo Cookies', image: oreo },
-  { name: 'Kitkat Shake', image: kitkat },
-  { name: 'Choco Almond', image: chocoAlmond },
-  { name: 'Ferrero', image: ferrero },
-  { name: 'Tancafe Choco Crunch', image: chocoCrunch },
-  { name: 'Milo Delight', image: miloDelight },
-  { name: 'Kulfi Shake', image: kulfiShake },
+  { name: 'Oreo Cookies', image: oreo, price: 155 },
+  { name: 'Kitkat Shake', image: kitkat, price: 165 },
+  { name: 'Choco Almond', image: chocoAlmond, price: 155 },
+  { name: 'Ferrero', image: ferrero, price: 175 },
+  { name: 'Tancafe Choco Crunch', image: chocoCrunch, price: 165 },
+  { name: 'Milo Delight', image: miloDelight, price: 110 },
+  { name: 'Kulfi Shake', image: kulfiShake, price: 195 },
 ];
 
 const SpecialityShakes = () => {
@@ -75,12 +75,22 @@ const SpecialityShakes = () => {
                       alt={item.name}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">{item.name}</h3>
+                    <div className="absolute bottom-3 left-4">
+                      <h3 className="text-xl font-semibold text-white">{item.name}</h3>
+
+                    </div>
                   </div>
 
-                  <div className="p-4 text-center flex flex-col items-center">
-                    <div className="flex items-center gap-3 mt-2">
+                  <div className="p-4">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-[#712d24] font-semibold">Rs. {item.price.toFixed(2)}</span>
+                      {showControls && (
+                        <span className="text-sm text-gray-500">
+                          Total: Rs. {(item.price * itemQuantity).toFixed(2)}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex justify-center items-center gap-3 mt-2">
                       {showControls ? (
                         <>
                           <button
@@ -97,7 +107,7 @@ const SpecialityShakes = () => {
                       )}
 
                       <button
-                        onClick={() => addToCart(item.name, item.image)}
+                        onClick={() => addToCart(item.name, item.image, item.price)}
                         className="bg-[#712d24] text-white p-2 rounded"
                         aria-label="Increase quantity"
                       >

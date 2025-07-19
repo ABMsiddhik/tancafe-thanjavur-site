@@ -16,14 +16,14 @@ import chocoCheese from '../assets/sandwich-images/choco-chesse-6.jpg';
 import vegHooget from '../assets/sandwich-images/Veg-Huggets-girlled-Sandwich.png';
 
 const sandwiches = [
-  { name: 'Grilled Paneer', image: grilledPaneer },
-  { name: 'Grilled Veg', image: grilledVeg },
-  { name: 'Mushroom Sandwich', image: mushroomSandwich },
-  { name: 'Chili Cheese', image: chiliCheese },
-  { name: 'Chili Gobi', image: chiliGobi },
-  { name: 'Corn & Spinach', image: cornSpinach },
-  { name: 'Choco Cheese', image: chocoCheese },
-  { name: 'Veg Hooget', image: vegHooget },
+  { name: 'Grilled Paneer', image: grilledPaneer, price: 80 },
+  { name: 'Grilled Veg', image: grilledVeg, price: 80 },
+  { name: 'Mushroom Sandwich', image: mushroomSandwich, price: 90 },
+  { name: 'Chili Cheese', image: chiliCheese, price: 80 },
+  { name: 'Chili Gobi', image: chiliGobi, price: 85 },
+  { name: 'Corn & Spinach', image: cornSpinach, price: 75 },
+  { name: 'Choco Cheese', image: chocoCheese, price: 85 },
+  { name: 'Veg Hooget', image: vegHooget, price: 130 },
 ];
 
 const GrilledSandwiches = () => {
@@ -64,7 +64,7 @@ const GrilledSandwiches = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {sandwiches.map(({ name, image }) => {
+            {sandwiches.map(({ name, image, price }) => {
               const itemQuantity = quantity(name);
               const showControls = itemQuantity > 0;
 
@@ -79,11 +79,22 @@ const GrilledSandwiches = () => {
                       alt={name}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">{name}</h3>
+                    <div className="absolute bottom-3 left-4">
+                      <h3 className="text-xl font-semibold text-white">{name}</h3>
+
+                    </div>
                   </div>
-                  <div className="p-4 text-center flex flex-col items-center">
-                    <div className="flex items-center gap-3 mt-2">
+                  <div className="p-4">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-[#712d24] font-semibold">Rs. {price.toFixed(2)}</span>
+                      {showControls && (
+                        <span className="text-sm text-gray-500">
+                          Total: Rs. {(price * itemQuantity).toFixed(2)}
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="flex items-center gap-3 justify-center">
                       {showControls ? (
                         <>
                           <button
@@ -99,7 +110,7 @@ const GrilledSandwiches = () => {
                         <span className="text-lg font-semibold w-8">0</span>
                       )}
                       <button
-                        onClick={() => addToCart(name, image)}
+                        onClick={() => addToCart(name, image, price)}
                         className="bg-[#712d24] text-white p-2 rounded"
                         aria-label="Increase quantity"
                       >

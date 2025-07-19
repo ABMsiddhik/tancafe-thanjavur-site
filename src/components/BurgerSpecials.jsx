@@ -12,10 +12,10 @@ import cheeseCorn from '../assets/burger-images/burger-3.jpg';
 import mockMeat from '../assets/burger-images/mock-meat-burger.png';
 
 const burgerItems = [
-  { name: 'Paneer', image: paneer },
-  { name: 'Veg', image: veg },
-  { name: 'Cheese Corn', image: cheeseCorn },
-  { name: 'Mock Meat', image: mockMeat },
+  { name: 'Paneer', image: paneer, price: 115 },
+  { name: 'Veg', image: veg, price: 85 },
+  { name: 'Cheese Corn', image: cheeseCorn, price: 125 },
+  { name: 'Mock Meat', image: mockMeat, price: 135 },
 ];
 
 const BurgerSpecials = () => {
@@ -56,7 +56,7 @@ const BurgerSpecials = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {burgerItems.map(({ name, image }) => {
+            {burgerItems.map(({ name, image, price }) => {
               const itemQuantity = quantity(name);
               const showControls = itemQuantity > 0;
 
@@ -71,11 +71,19 @@ const BurgerSpecials = () => {
                       alt={name}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">{name}</h3>
                   </div>
-                  <div className="p-4 text-center flex flex-col items-center">
-                    <div className="flex items-center gap-3 mt-2">
+                  <div className="p-4">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-[#712d24] font-semibold">Rs. {price.toFixed(2)}</span>
+                      {showControls && (
+                        <span className="text-sm text-gray-500">
+                          Total: Rs. {(price * itemQuantity).toFixed(2)}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex justify-center items-center gap-3 mt-2">
                       {showControls ? (
                         <>
                           <button
@@ -91,7 +99,7 @@ const BurgerSpecials = () => {
                         <span className="text-lg font-semibold w-8">0</span>
                       )}
                       <button
-                        onClick={() => addToCart(name, image)}
+                        onClick={() => addToCart(name, image, price)}
                         className="bg-[#712d24] text-white p-2 rounded"
                         aria-label="Increase quantity"
                       >

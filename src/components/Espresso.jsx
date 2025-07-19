@@ -7,18 +7,18 @@ import { FaPlus, FaMinus, FaTrash } from 'react-icons/fa';
 import bannerImg from '../assets/espresso-images/espresso-4.jpg';
 import bicerin from '../assets/espresso-images/espresso-5.jpg';
 import doppio from '../assets/espresso-images/espresso-6.jpg';
-import conpanno from '../assets/espresso-images/espresso-1.jpg';
+import conpanna from '../assets/espresso-images/espresso-1.jpg';
 import affogato from '../assets/espresso-images/espresso-2.jpg';
 import americano from '../assets/espresso-images/espresso-4.jpg';
 import romano from '../assets/espresso-images/espresso-7.jpg';
 
 const espressoItems = [
-  { name: 'Bicerin', image: bicerin },
-  { name: 'Doppio', image: doppio },
-  { name: 'Conpanno', image: conpanno },
-  { name: 'Affogato', image: affogato },
-  { name: 'Americano', image: americano },
-  { name: 'Romano', image: romano },
+  { name: 'Bicerin', image: bicerin, price: 75 },
+  { name: 'Doppio', image: doppio, price: 45 },
+  { name: 'Conpanna', image: conpanna, price: 60 },
+  { name: 'Affogato', image: affogato, price: 65 },
+  { name: 'Americano', image: americano, price: 60 },
+  { name: 'Romano', image: romano, price: 45 },
 ];
 
 const Espresso = () => {
@@ -58,7 +58,7 @@ const Espresso = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-center">
-            {espressoItems.map(({ name, image }) => {
+            {espressoItems.map(({ name, image, price }) => {
               const itemQty = quantity(name);
               const inCart = itemQty > 0;
 
@@ -77,8 +77,16 @@ const Espresso = () => {
                     <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">{name}</h3>
                   </div>
 
-                  <div className="p-4 text-center flex flex-col items-center">
-                    <div className="flex items-center gap-3 mt-2">
+                  <div className="p-4">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-[#712d24] font-semibold">Rs. {price.toFixed(2)}</span>
+                      {inCart && (
+                        <span className="text-sm text-gray-500">
+                          Total: Rs. {(price * itemQty).toFixed(2)}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex justify-center items-center gap-3 mt-2">
                       {inCart ? (
                         <>
                           <button
@@ -95,7 +103,7 @@ const Espresso = () => {
                       )}
 
                       <button
-                        onClick={() => addToCart(name, image)}
+                        onClick={() => addToCart(name, image, price)}
                         className="bg-[#712d24] text-white p-2 rounded"
                         aria-label="Add to cart"
                       >

@@ -16,20 +16,20 @@ import mochaDelight from '../assets/gateauxslices-images/Mocha-Delight-Cake-slic
 import chocoDelight from '../assets/gateauxslices-images/choco-delight-cake-slice.png';
 
 const gateauxItems = [
-  { name: 'Black Forest', image: blackForest },
-  { name: 'Choco Truffle', image: chocoTruffle },
-  { name: 'Red Velvet', image: redVelvet },
-  { name: 'Brownie', image: brownie },
-  { name: 'Choco Lava Cake', image: chocoLava },
-  { name: 'Brownie Sizzlers', image: brownieSizzlers },
-  { name: 'Rich Almond Fusion', image: richAlmond },
-  { name: 'Mocha Delight', image: mochaDelight },
-  { name: 'Choco Delight', image: chocoDelight },
+  { name: 'Black Forest', image: blackForest, price: 70 },
+  { name: 'Choco Truffle', image: chocoTruffle, price: 80 },
+  { name: 'Red Velvet', image: redVelvet, price: 85 },
+  { name: 'Brownie', image: brownie, price: 70 },
+  { name: 'Choco Lava Cake', image: chocoLava, price: 70 },
+  { name: 'Brownie Sizzlers', image: brownieSizzlers, price: 190 },
+  { name: 'Rich Almond Fusion', image: richAlmond, price: 90 },
+  { name: 'Mocha Delight', image: mochaDelight, price: 85 },
+  { name: 'Choco Delight', image: chocoDelight, price: 135 },
 ];
 
 const GateauxSlices = () => {
   const { cart, addToCart, removeFromCart, decreaseQty } = useContext(CartContext);
-  
+
   const quantity = (itemName) => cart[itemName]?.quantity || 0;
 
   return (
@@ -80,12 +80,22 @@ const GateauxSlices = () => {
                       alt={item.name}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">{item.name}</h3>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
+                      <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">{item.name}</h3>
+
+                    </div>
                   </div>
 
-                  <div className="p-4 text-center flex flex-col items-center">
-                    <div className="flex items-center gap-3 mt-2">
+                  <div className="p-4">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-[#712d24] font-semibold">Rs. {item.price.toFixed(2)}</span>
+                      {showControls && (
+                        <span className="text-sm text-gray-500">
+                          Total: Rs. {(item.price * itemQuantity).toFixed(2)}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex justify-center items-center gap-3 mt-2">
                       {showControls ? (
                         <>
                           <button
@@ -100,15 +110,15 @@ const GateauxSlices = () => {
                       ) : (
                         <span className="text-lg font-semibold w-8">0</span>
                       )}
-                      
+
                       <button
-                        onClick={() => addToCart(item.name, item.image)}
+                        onClick={() => addToCart(item.name, item.image, item.price)}
                         className="bg-[#712d24] text-white p-2 rounded"
                         aria-label="Increase quantity"
                       >
                         <FaPlus className="text-sm" />
                       </button>
-                      
+
                       {showControls && (
                         <button
                           onClick={() => removeFromCart(item.name)}

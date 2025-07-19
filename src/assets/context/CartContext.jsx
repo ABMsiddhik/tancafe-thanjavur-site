@@ -83,7 +83,7 @@ export const CartProvider = ({ children }) => {
     }
   }, []);
 
-  const addToCart = useCallback((name, image) => {
+ const addToCart = useCallback((name, image, price) => {
     setCart(prev => {
       const newQuantity = prev[name] ? prev[name].quantity + 1 : 1;
       return {
@@ -91,6 +91,7 @@ export const CartProvider = ({ children }) => {
         [name]: {
           name,
           image,
+          price,
           quantity: newQuantity,
         },
       };
@@ -101,6 +102,11 @@ export const CartProvider = ({ children }) => {
       'success'
     );
   }, [cart, showToast]);
+   const totalPrice = Object.values(cart).reduce(
+    (acc, item) => acc + (item.price * item.quantity), 
+    0
+  );
+
 
   const decreaseQty = useCallback((name) => {
     setCart(prev => {
@@ -165,6 +171,7 @@ export const CartProvider = ({ children }) => {
         removeFromCart,
         clearCart,
         totalItems,
+        totalPrice, // Add this to the context
       }}
     >
       {children}

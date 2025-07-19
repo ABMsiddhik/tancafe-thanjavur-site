@@ -11,9 +11,9 @@ import corn from '../assets/momos-images/momos-2.jpg';
 import paneerTikka from '../assets/momos-images/momos-3.jpg';
 
 const momosItems = [
-  { name: 'Mixed Veg', image: mixedVeg },
-  { name: 'Corn', image: corn },
-  { name: 'Paneer Tikka', image: paneerTikka },
+  { name: 'Mixed Veg', image: mixedVeg, price: 90 },
+  { name: 'Corn', image: corn, price: 95 },
+  { name: 'Paneer Tikka', image: paneerTikka, price: 110 },
 ];
 
 const MomosFried = () => {
@@ -23,7 +23,7 @@ const MomosFried = () => {
 
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero Section - unchanged */}
       <section className="relative min-h-screen bg-fixed bg-cover bg-center flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center scale-110"
@@ -42,7 +42,7 @@ const MomosFried = () => {
         </div>
       </section>
 
-      {/* Grid Section */}
+      {/* Grid Section with Price */}
       <section className="bg-gradient-to-b from-[#fff7f1] to-[#ffe4d2] py-16 px-4 md:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
@@ -70,13 +70,23 @@ const MomosFried = () => {
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">
-                      {item.name}
-                    </h3>
+                    <div className="absolute bottom-3 left-4">
+                      <h3 className="text-xl font-semibold text-white">{item.name}</h3>
+                     
+                    </div>
                   </div>
 
-                  <div className="p-4 text-center flex flex-col items-center">
-                    <div className="flex items-center gap-3 mt-2">
+                  <div className="p-4">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-[#712d24] font-semibold">Rs. {item.price.toFixed(2)}</span>
+                      {showControls && (
+                        <span className="text-sm text-gray-500">
+                          Total: Rs. {(item.price * itemQuantity).toFixed(2)}
+                        </span>
+                      )}
+                    </div>
+                    
+                    <div className="flex items-center gap-3 justify-center">
                       {showControls ? (
                         <>
                           <button
@@ -91,15 +101,15 @@ const MomosFried = () => {
                       ) : (
                         <span className="text-lg font-semibold w-8">0</span>
                       )}
-
+                      
                       <button
-                        onClick={() => addToCart(item.name, item.image)}
+                        onClick={() => addToCart(item.name, item.image, item.price)}
                         className="bg-[#712d24] text-white p-2 rounded"
                         aria-label="Increase quantity"
                       >
                         <FaPlus className="text-sm" />
                       </button>
-
+                      
                       {showControls && (
                         <button
                           onClick={() => removeFromCart(item.name)}
@@ -116,7 +126,7 @@ const MomosFried = () => {
             })}
           </div>
 
-          {/* CTA */}
+          {/* CTA - unchanged */}
           <div className="mt-16 bg-[#712d24] rounded-xl p-8 md:p-12 text-center text-white">
             <h3 className="text-3xl font-bold mb-4">Want More Crunch?</h3>
             <p className="text-gray-200 max-w-2xl mx-auto mb-6">

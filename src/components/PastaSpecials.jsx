@@ -14,12 +14,12 @@ import spicyVegFusion from '../assets/pasta-images/Spicy-Veg-Fusion-pasta.png';
 import penneAlla from '../assets/pasta-images/Penne-Alla-pasta.png';
 
 const pastaItems = [
-  { name: 'Indian Pasta', image: indian },
-  { name: 'Italian Pasta', image: italian },
-  { name: 'Signature Special', image: signatureSpecial },
-  { name: 'Green Garden', image: greenGarden },
-  { name: 'Spicy Veg Fusion', image: spicyVegFusion },
-  { name: 'Penne Alla', image: penneAlla },
+  { name: 'Indian Pasta', image: indian, price: 125 },
+  { name: 'Italian Pasta', image: italian, price: 145 },
+  { name: 'Signature Special', image: signatureSpecial, price: 180 },
+  { name: 'Green Garden', image: greenGarden, price: 180 },
+  { name: 'Spicy Veg Fusion', image: spicyVegFusion, price: 115 },
+  { name: 'Penne Alla', image: penneAlla, price: 180 },
 ];
 
 const PastaSpecials = () => {
@@ -60,7 +60,7 @@ const PastaSpecials = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {pastaItems.map(({ name, image }) => {
+            {pastaItems.map(({ name, image, price }) => {
               const itemQuantity = quantity(name);
               const showControls = itemQuantity > 0;
 
@@ -75,11 +75,21 @@ const PastaSpecials = () => {
                       alt={name}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">{name}</h3>
+                    <div className="absolute bottom-3 left-4">
+                      <h3 className="text-xl font-semibold text-white">{name}</h3>
+
+                    </div>
                   </div>
-                  <div className="p-4 text-center flex flex-col items-center">
-                    <div className="flex items-center gap-3 mt-2">
+                  <div className="p-4">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-[#712d24] font-semibold">Rs. {price.toFixed(2)}</span>
+                      {showControls && (
+                        <span className="text-sm text-gray-500">
+                          Total: Rs. {(price * itemQuantity).toFixed(2)}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-3 justify-center">
                       {showControls ? (
                         <>
                           <button
@@ -95,7 +105,7 @@ const PastaSpecials = () => {
                         <span className="text-lg font-semibold w-8">0</span>
                       )}
                       <button
-                        onClick={() => addToCart(name, image)}
+                        onClick={() => addToCart(name, image, price)}
                         className="bg-[#712d24] text-white p-2 rounded"
                         aria-label="Increase quantity"
                       >

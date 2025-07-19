@@ -12,16 +12,16 @@ import hazelnut from '../assets/latte-images/latte-5.jpg';
 import whiteChoco from '../assets/latte-images/latte-6.jpg';
 
 const latteItems = [
-  { name: 'Cafe Latte', image: cafeLatte },
-  { name: 'Caramel', image: caramel },
-  { name: 'Vanilla', image: vanilla },
-  { name: 'Hazelnut', image: hazelnut },
-  { name: 'White Choco', image: whiteChoco },
+  { name: 'Cafe Latte', image: cafeLatte, price: 90 },
+  { name: 'Caramel', image: caramel, price: 95 },
+  { name: 'Vanilla', image: vanilla, price: 90 },
+  { name: 'Hazelnut', image: hazelnut, price: 95 },
+  { name: 'White Choco', image: whiteChoco, price: 115 },
 ];
 
 const Latte = () => {
   const { cart, addToCart, removeFromCart, decreaseQty } = useContext(CartContext);
-  
+
   const quantity = (itemName) => cart[itemName]?.quantity || 0;
 
   return (
@@ -72,12 +72,22 @@ const Latte = () => {
                       alt={item.name}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">{item.name}</h3>
+                    <div className="absolute bottom-3 left-4">
+                      <h3 className="text-xl font-semibold">{item.name}</h3>
+
+                    </div>
                   </div>
 
-                  <div className="p-4 text-center flex flex-col items-center">
-                    <div className="flex items-center gap-3 mt-2">
+                  <div className="p-4">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-[#712d24] font-semibold">Rs. {item.price.toFixed(2)}</span>
+                      {showControls && (
+                        <span className="text-sm text-gray-500">
+                          Total: Rs. {(item.price * itemQuantity).toFixed(2)}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex justify-center items-center gap-3 mt-2">
                       {showControls ? (
                         <>
                           <button
@@ -92,15 +102,15 @@ const Latte = () => {
                       ) : (
                         <span className="text-lg font-semibold w-8">0</span>
                       )}
-                      
+
                       <button
-                        onClick={() => addToCart(item.name, item.image)}
+                        onClick={() => addToCart(item.name, item.image, item.price)}
                         className="bg-[#712d24] text-white p-2 rounded"
                         aria-label="Increase quantity"
                       >
                         <FaPlus className="text-sm" />
                       </button>
-                      
+
                       {showControls && (
                         <button
                           onClick={() => removeFromCart(item.name)}

@@ -16,14 +16,14 @@ import cheeseCornNuggets from '../assets/short-eats-images/short-eats-8.jpg';
 import potatoCheeseShots from '../assets/short-eats-images/potato-cheese-shots.png';
 
 const shortEatsItems = [
-  { name: 'French Fries', image: frenchFries },
-  { name: 'Masala Fries', image: masalaFries },
-  { name: 'Corn Cutlet (2 Pcs)', image: cornCutlet },
-  { name: 'Veg Cutlet (2 Pcs)', image: vegCutlet },
-  { name: 'Veg Finger', image: vegFinger },
-  { name: 'Potato Smiles', image: potatoSmiles },
-  { name: 'Cheese Corn Nuggets', image: cheeseCornNuggets },
-  { name: 'Potato Cheese Shots', image: potatoCheeseShots },
+  { name: 'French Fries', image: frenchFries, price: 65 },
+  { name: 'Masala Fries', image: masalaFries, price: 80 },
+  { name: 'Corn Cutlet (2 Pcs)', image: cornCutlet, price: 65 },
+  { name: 'Veg Cutlet (2 Pcs)', image: vegCutlet, price: 55 },
+  { name: 'Veg Finger', image: vegFinger, price: 75 },
+  { name: 'Potato Smiles', image: potatoSmiles, price: 70 },
+  { name: 'Cheese Corn Nuggets', image: cheeseCornNuggets, price: 90 },
+  { name: 'Potato Cheese Shots', image: potatoCheeseShots, price: 125 },
 ];
 
 const ShortEats = () => {
@@ -33,7 +33,7 @@ const ShortEats = () => {
 
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero Section - unchanged */}
       <section className="relative min-h-screen bg-fixed bg-cover bg-center flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center scale-110"
@@ -63,7 +63,7 @@ const ShortEats = () => {
         </div>
       </section>
 
-      {/* Grid Section */}
+      {/* Grid Section with Price */}
       <section className="bg-gradient-to-b from-[#f8f4ee] to-[#e8d9c5] py-16 px-4 md:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
@@ -91,13 +91,23 @@ const ShortEats = () => {
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">
-                      {item.name}
-                    </h3>
+                    <div className="absolute bottom-3 left-4">
+                      <h3 className="text-xl font-semibold text-white">{item.name}</h3>
+                      
+                    </div>
                   </div>
 
-                  <div className="p-4 text-center flex flex-col items-center">
-                    <div className="flex items-center gap-3 mt-2">
+                  <div className="p-4">
+                   <div className="flex justify-between items-center mb-3">
+                      <span className="text-[#712d24] font-semibold">Rs. {item.price.toFixed(2)}</span>
+                      {showControls && (
+                        <span className="text-sm text-gray-500">
+                          Total: Rs. {(item.price * itemQuantity).toFixed(2)}
+                        </span>
+                      )} 
+                    </div>
+                    
+                    <div className="flex items-center gap-3 justify-center">
                       {showControls ? (
                         <>
                           <button
@@ -114,7 +124,7 @@ const ShortEats = () => {
                       )}
                       
                       <button
-                        onClick={() => addToCart(item.name, item.image)}
+                        onClick={() => addToCart(item.name, item.image, item.price)}
                         className="bg-[#712d24] text-white p-2 rounded"
                         aria-label="Increase quantity"
                       >
@@ -137,7 +147,7 @@ const ShortEats = () => {
             })}
           </div>
 
-          {/* Call to Action */}
+          {/* Call to Action - unchanged */}
           <div className="mt-16 bg-[#712d24] rounded-xl p-8 md:p-12 text-center text-white">
             <h3 className="text-3xl font-bold mb-4">Craving More?</h3>
             <p className="text-gray-200 max-w-2xl mx-auto mb-6">

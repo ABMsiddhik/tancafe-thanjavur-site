@@ -13,17 +13,17 @@ import coldChocolate from '../assets/fruitsmoothie-images/fruit-11.jpg';
 import butterScotch from '../assets/fruitsmoothie-images/fruit-13.jpg';
 
 const smoothieItems = [
-  { name: 'Raspberry', image: raspberry },
-  { name: 'Strawberry', image: strawberry },
-  { name: 'Vanilla', image: vanilla },
-  { name: 'Black Current Burst', image: blackCurrent },
-  { name: 'Cold Chocolate', image: coldChocolate },
-  { name: 'Butter Scotch', image: butterScotch },
+  { name: 'Raspberry', image: raspberry, price: 120 },
+  { name: 'Strawberry', image: strawberry, price: 120 },
+  { name: 'Vanilla', image: vanilla, price: 95 },
+  { name: 'Black Current Burst', image: blackCurrent, price: 110 },
+  { name: 'Cold Chocolate', image: coldChocolate, price: 125 },
+  { name: 'Butter Scotch', image: butterScotch, price: 120 },
 ];
 
 const FruitSmoothies = () => {
   const { cart, addToCart, removeFromCart, decreaseQty } = useContext(CartContext);
-  
+
   const quantity = (itemName) => cart[itemName]?.quantity || 0;
 
   return (
@@ -74,12 +74,22 @@ const FruitSmoothies = () => {
                       alt={item.name}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">{item.name}</h3>
+                    <div className="absolute bottom-3 left-4">
+                      <h3 className="text-xl font-semibold text-amber-950">{item.name}</h3>
+
+                    </div>
                   </div>
 
-                  <div className="p-4 text-center flex flex-col items-center">
-                    <div className="flex items-center gap-3 mt-2">
+                  <div className="p-4">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-[#712d24] font-semibold">Rs. {item.price.toFixed(2)}</span>
+                      {showControls && (
+                        <span className="text-sm text-gray-500">
+                          Total: Rs. {(item.price * itemQuantity).toFixed(2)}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-3 justify-center">
                       {showControls ? (
                         <>
                           <button
@@ -94,15 +104,15 @@ const FruitSmoothies = () => {
                       ) : (
                         <span className="text-lg font-semibold w-8">0</span>
                       )}
-                      
+
                       <button
-                        onClick={() => addToCart(item.name, item.image)}
+                        onClick={() => addToCart(item.name, item.image, item.price)}
                         className="bg-[#712d24] text-white p-2 rounded"
                         aria-label="Increase quantity"
                       >
                         <FaPlus className="text-sm" />
                       </button>
-                      
+
                       {showControls && (
                         <button
                           onClick={() => removeFromCart(item.name)}
