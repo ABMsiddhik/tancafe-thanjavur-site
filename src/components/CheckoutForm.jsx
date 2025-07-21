@@ -22,35 +22,32 @@ const CheckoutForm = ({ onClose, cartItems, totalPrice }) => {
     ).join('\n');
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    const cartDetails = cartItems.map(item =>
-      `${item.name} (Qty: ${item.quantity}) - Rs. ${(item.price * item.quantity).toFixed(2)}`
-    ).join('\n');
+  if (!formData.name || !formData.phone || !formData.address) {
+    alert('Please fill in all required fields');
+    return;
+  }
 
-    const message = `*New Order*\n\n*Customer Details*\nName: ${formData.name}\nPhone: ${formData.phone}\nAddress: ${formData.address}\n\n*Order Items*\n${cartDetails}\n\n*Subtotal*: Rs. ${totalPrice.toFixed(2)}\n\n*Special Instructions*\n${formData.instructions || 'None'}`;
-    // Validate form
-    if (!formData.name || !formData.phone || !formData.address) {
-      alert('Please fill in all required fields');
-      return;
-    }
+  const cartDetails = cartItems.map(item =>
+    `*${item.name}*\nQty: ${item.quantity}\nPrice: Rs. ${item.price}\nSubtotal: Rs. ${(item.price * item.quantity).toFixed(2)}`
+  ).join('\n\n');
 
-    const orderItems = formatOrderItems();
-    const fullMessage = `*New Order*\n\n*Customer Details*\nName: ${formData.name}\nPhone: ${formData.phone}\nAddress: ${formData.address}\n\n*Order Items*\n${orderItems}\n\n*Special Instructions*\n${formData.instructions || 'None'}`;
-    const encodedMessage = encodeURIComponent(fullMessage);
+  const fullMessage = `*New Order*\n\n*Customer Details*\nName: ${formData.name}\nPhone: ${formData.phone}\nAddress: ${formData.address}\n\n*Order Items*\n\n${cartDetails}\n\n----------------------\n*Total Amount = Rs. ${totalPrice.toFixed(2)}*\n\n*Special Instructions*\n${formData.instructions || 'None'}`;
 
-    // Show simplified confirmation with just order items
-    const shouldProceed = window.confirm(
-      `ORDER CONFIRMATION\n\nYou're about to send this order via WhatsApp:\nYour cart will be cleared after successful submission..\n\nClick OK to proceed.`
-    );
+  const encodedMessage = encodeURIComponent(fullMessage);
 
-    if (shouldProceed) {
-      window.open(`https://wa.me/918248794519?text=${encodedMessage}`, '_blank');
-      clearCart();
-      onClose();
-    }
-  };
+  const shouldProceed = window.confirm(
+    `ORDER CONFIRMATION\n\nYou're about to send this order via WhatsApp:\nYour cart will be cleared after successful submission..\n\nClick OK to proceed.`
+  );
+
+  if (shouldProceed) {
+    window.open(`https://wa.me/918248794519?text=${encodedMessage}`, '_blank');
+    clearCart();
+    onClose();
+  }
+};
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
