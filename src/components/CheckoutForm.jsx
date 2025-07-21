@@ -34,7 +34,7 @@ const handleSubmit = (e) => {
     `*${item.name}*\nQty: ${item.quantity}\nPrice: Rs. ${item.price}\nSubtotal: Rs. ${(item.price * item.quantity).toFixed(2)}`
   ).join('\n\n');
 
-  const fullMessage = `*New Order*\n\n*Customer Details*\nName: ${formData.name}\nPhone: ${formData.phone}\nAddress: ${formData.address}\n\n*Order Items*\n\n${cartDetails}\n\n----------------------\n*Total Amount = Rs. ${totalPrice.toFixed(2)}*\n\n*Special Instructions*\n${formData.instructions || 'None'}`;
+  const fullMessage = `*New Order*\n\n*Customer Details*\nName: ${formData.name}\nPhone: ${formData.phone}\nAddress: ${formData.address}\n\n*Order Items*\n\n${cartDetails}\n\n__________________________\n*Total Amount = Rs. ${totalPrice.toFixed(2)}*\n\n*Special Instructions*\n${formData.instructions || 'None'}`;
 
   const encodedMessage = encodeURIComponent(fullMessage);
 
