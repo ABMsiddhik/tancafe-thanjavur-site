@@ -7,6 +7,8 @@ import gateauxImg from '../assets/images/gateaux.png';
 import doughnutImg from '../assets/images/doughnuts.jpg';
 import cakeHeroImg from '../assets/images/cakes.png';
 import customCakeImg from '../assets/images/custom-cake.jpg';
+import freshCreamImg from '../assets/images/fresh-cream-cakes.jpg';
+import butterCreamImg from '../assets/images/butter-cream-cakes.jpg';
 
 const cakeItems = [
   {
@@ -35,6 +37,72 @@ const cakeItems = [
       { name: 'Choco Coconut' },
       { name: 'Caramel Classic Delight' }
     ],
+  },
+  {
+    category: 'FRESH CREAM CAKES',
+    image: freshCreamImg,
+    subcategories: [
+      {
+        name: 'Egg Base',
+        items: [
+          { name: 'Black Currant', price: { '500g': 350, '1kg': 700 } },
+          { name: 'Black Forest', price: { '500g': 350, '1kg': 700 } },
+          { name: 'Blueberry', price: { '500g': 350, '1kg': 700 } },
+          { name: 'Butterscotch', price: { '500g': 350, '1kg': 700 } },
+          { name: 'Choco Truffle', price: { '500g': 400, '1kg': 800 } },
+          { name: 'Kiwi', price: { '500g': 350, '1kg': 700 } },
+          { name: 'Pineapple', price: { '500g': 350, '1kg': 700 } },
+          { name: 'Red Velvet', price: { '1kg': 900 } },
+          { name: 'Strawberry', price: { '500g': 350, '1kg': 700 } },
+          { name: 'Vanilla', price: { '500g': 350, '1kg': 700 } },
+          { name: 'White Forest', price: { '500g': 375, '1kg': 750 } }
+        ]
+      },
+      {
+        name: 'Egg Free',
+        items: [
+          { name: 'Black Currant', price: { '500g': 400, '1kg': 800 } },
+          { name: 'Black Forest', price: { '500g': 450, '1kg': 850 } },
+          { name: 'Blueberry', price: { '500g': 400, '1kg': 800 } },
+          { name: 'Brownie', price: { '500g': 500, '1kg': 1000 } },
+          { name: 'Butterscotch', price: { '500g': 400, '1kg': 800 } },
+          { name: 'Choco Truffle', price: { '500g': 475, '1kg': 950 } },
+          { name: 'Kiwi', price: { '500g': 400, '1kg': 800 } },
+          { name: 'Pineapple', price: { '500g': 400, '1kg': 800 } },
+          { name: 'Strawberry', price: { '500g': 400, '1kg': 800 } },
+          { name: 'Vanilla', price: { '500g': 400, '1kg': 800 } },
+          { name: 'White Forest', price: { '500g': 425, '1kg': 850 } }
+        ]
+      }
+    ]
+  },
+  {
+    category: 'BUTTER CREAM CAKES',
+    image: butterCreamImg,
+    subcategories: [
+      {
+        name: 'Egg Base',
+        items: [
+          { name: 'Butterscotch', price: { '500g': 175, '1kg': 350 } },
+          { name: 'Chocolate', price: { '500g': 200, '1kg': 400 } },
+          { name: 'Pineapple', price: { '500g': 175, '1kg': 350 } },
+          { name: 'Strawberry', price: { '500g': 175, '1kg': 350 } },
+          { name: 'Vanilla', price: { '500g': 175, '1kg': 350 } },
+          { name: 'Honey', price: { '500g': 200, '1kg': 400 } }
+        ]
+      },
+      {
+        name: 'Egg Free',
+        items: [
+          { name: 'Butterscotch', price: { '500g': 225, '1kg': 450 } },
+          { name: 'Chocolate', price: { '500g': 250, '1kg': 500 } },
+          { name: 'Pineapple', price: { '500g': 225, '1kg': 450 } },
+          { name: 'Strawberry', price: { '500g': 225, '1kg': 450 } },
+          { name: 'Vanilla', price: { '500g': 225, '1kg': 450 } },
+          { name: 'Honey', price: { '500g': 250, '1kg': 500 } }
+        ]
+      }
+    ]
   }
 ];
 
@@ -43,7 +111,8 @@ const Cakes = () => {
   const [customOrder, setCustomOrder] = useState({
     name: '',
     phone: '',
-    size: '1kg',
+    cakeType: 'egg-base',
+    size: '2kg',
     flavor: 'Black Forest',
     customSize: '',
     customFlavor: '',
@@ -51,6 +120,15 @@ const Cakes = () => {
     message: '',
     deliveryDate: ''
   });
+
+  const [expandedCategories, setExpandedCategories] = useState({});
+
+  const toggleCategory = (category) => {
+    setExpandedCategories(prev => ({
+      ...prev,
+      [category]: !prev[category]
+    }));
+  };
 
   const filteredItems = activeCategory === 'ALL'
     ? cakeItems
@@ -61,7 +139,6 @@ const Cakes = () => {
     setCustomOrder(prev => ({
       ...prev,
       [name]: value,
-      // Reset custom fields when switching away from 'other'
       ...(name === 'size' && value !== 'other' ? { customSize: '' } : {}),
       ...(name === 'flavor' && value !== 'other' ? { customFlavor: '' } : {})
     }));
@@ -70,20 +147,19 @@ const Cakes = () => {
   const submitCustomOrder = (e) => {
     e.preventDefault();
 
-    // Determine the final size and flavor values
     const finalSize = customOrder.size === 'other' ? customOrder.customSize : customOrder.size;
     const finalFlavor = customOrder.flavor === 'other' ? customOrder.customFlavor : customOrder.flavor;
 
-    const message = `*Custom Cake Order*\n\n*Customer Details*\nName: ${customOrder.name}\nPhone: ${customOrder.phone}\n\n*Cake Details*\nSize: ${finalSize}\nFlavor: ${finalFlavor}\nDesign: ${customOrder.design}\nMessage: ${customOrder.message}\n\n*Delivery Date*\n${customOrder.deliveryDate}`;
+    const message = `*Custom Cake Order*\n\n*Customer Details*\nName: ${customOrder.name}\nPhone: ${customOrder.phone}\n\n*Cake Details*\nType: ${customOrder.cakeType === 'egg-base' ? 'Egg Base' : 'Egg Free'}\nSize: ${finalSize}\nFlavor: ${finalFlavor}\nDesign: ${customOrder.design}\nMessage: ${customOrder.message}\n\n*Delivery Date*\n${customOrder.deliveryDate}`;
 
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/918248794519?text=${encodedMessage}`, '_blank');
 
-    // Reset form
     setCustomOrder({
       name: '',
       phone: '',
-      size: '1kg',
+      cakeType: 'egg-base',
+      size: '2kg',
       flavor: 'Black Forest',
       customSize: '',
       customFlavor: '',
@@ -154,10 +230,11 @@ const Cakes = () => {
             <div className="flex space-x-2 mx-auto">
               <button
                 onClick={() => setActiveCategory('ALL')}
-                className={`px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${activeCategory === 'ALL'
-                  ? 'bg-[#712d24] text-white'
-                  : 'bg-white text-[#712d24] hover:bg-[#712d24] hover:text-white'
-                  }`}
+                className={`px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${
+                  activeCategory === 'ALL'
+                    ? 'bg-[#712d24] text-white'
+                    : 'bg-white text-[#712d24] hover:bg-[#712d24] hover:text-white'
+                }`}
               >
                 ALL
               </button>
@@ -165,20 +242,22 @@ const Cakes = () => {
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${activeCategory === category
-                    ? 'bg-[#712d24] text-white'
-                    : 'bg-white text-[#712d24] hover:bg-[#712d24] hover:text-white'
-                    }`}
+                  className={`px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${
+                    activeCategory === category
+                      ? 'bg-[#712d24] text-white'
+                      : 'bg-white text-[#712d24] hover:bg-[#712d24] hover:text-white'
+                  }`}
                 >
                   {category}
                 </button>
               ))}
               <button
                 onClick={() => setActiveCategory('CUSTOM')}
-                className={`hover:bg-red-600 hover:text-white px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${activeCategory === 'CUSTOM'
-                  ? 'bg-red-600 text-white'
-                  : 'bg-white text-[#712d24]'
-                  }`}
+                className={`px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${
+                  activeCategory === 'CUSTOM'
+                    ? 'bg-red-600 text-white'
+                    : 'bg-red-500 text-white hover:bg-red-600'
+                }`}
               >
                 CUSTOM CAKES
               </button>
@@ -188,7 +267,7 @@ const Cakes = () => {
           {/* Menu Cards */}
           {activeCategory !== 'CUSTOM' ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {filteredItems.map(({ category, image, items }) => (
+              {filteredItems.map(({ category, image, items, subcategories }) => (
                 <div
                   key={category}
                   className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
@@ -205,40 +284,124 @@ const Cakes = () => {
                     </h3>
                   </div>
                   <div className="p-6">
-                    <ul className="space-y-3">
-                      {items.map((item) => (
-                        <li
-                          key={item.name}
-                          className="border-b border-gray-100 last:border-0 pb-2 last:pb-0"
-                        >
-                          <Link
-                            to={`/cakes/${category.toLowerCase().replace(/\s+/g, '-')}`}
-                            className="flex items-center text-gray-700 hover:text-[#712d24] group transition-colors"
-                          >
-                            <span className="flex-1 group-hover:font-medium">{item.name}</span>
-                            <svg
-                              className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
+                    {subcategories ? (
+                      <div className="space-y-4">
+                        {subcategories.map((subcategory) => (
+                          <div key={subcategory.name}>
+                            <button
+                              onClick={() => toggleCategory(`${category}-${subcategory.name}`)}
+                              className="flex items-center justify-between w-full py-2 text-left font-medium"
                             >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3"
-                              ></path>
-                            </svg>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                    <Link
-                      to={`/cakes/${category.toLowerCase().replace(/\s+/g, '-')}`}
-                      className="mt-4 inline-block text-sm font-medium text-yellow-600 hover:text-yellow-700 transition-colors"
-                    >
-                      View all {category.toLowerCase()} →
-                    </Link>
+                              <span>{subcategory.name}</span>
+                              <svg
+                                className={`w-4 h-4 transition-transform ${
+                                  expandedCategories[`${category}-${subcategory.name}`] ? 'rotate-180' : ''
+                                }`}
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M19 9l-7 7-7-7"
+                                />
+                              </svg>
+                            </button>
+                            {expandedCategories[`${category}-${subcategory.name}`] && (
+                              <ul className="ml-4 space-y-3">
+                                {subcategory.items.map((item) => (
+                                  <li
+                                    key={item.name}
+                                    className="border-b border-gray-100 last:border-0 pb-2 last:pb-0"
+                                  >
+                                    <div className="flex flex-col">
+                                      <Link
+                                        to={`/cakes/${category.toLowerCase().replace(/\s+/g, '-')}`}
+                                        className="flex items-center text-gray-700 hover:text-[#712d24] group transition-colors"
+                                      >
+                                        <span className="flex-1 group-hover:font-medium">{item.name}</span>
+                                        <svg
+                                          className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
+                                          fill="none"
+                                          stroke="currentColor"
+                                          viewBox="0 0 24 24"
+                                        >
+                                          <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                                          ></path>
+                                        </svg>
+                                      </Link>
+                                      {item.price && (
+                                        <div className="flex space-x-2 mt-1">
+                                          {Object.entries(item.price).map(([size, price]) => (
+                                            <span key={size} className="text-xs text-gray-500">
+                                              {size}: ₹{price}
+                                            </span>
+                                          ))}
+                                        </div>
+                                      )}
+                                    </div>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <>
+                        <ul className="space-y-3">
+                          {items.map((item) => (
+                            <li
+                              key={item.name}
+                              className="border-b border-gray-100 last:border-0 pb-2 last:pb-0"
+                            >
+                              <div className="flex flex-col">
+                                <Link
+                                  to={`/cakes/${category.toLowerCase().replace(/\s+/g, '-')}`}
+                                  className="flex items-center text-gray-700 hover:text-[#712d24] group transition-colors"
+                                >
+                                  <span className="flex-1 group-hover:font-medium">{item.name}</span>
+                                  <svg
+                                    className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth="2"
+                                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                                    ></path>
+                                  </svg>
+                                </Link>
+                                {item.price && (
+                                  <div className="flex space-x-2 mt-1">
+                                    {Object.entries(item.price).map(([size, price]) => (
+                                      <span key={size} className="text-xs text-gray-500">
+                                        {size}: ₹{price}
+                                      </span>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                        <Link
+                          to={`/cakes/${category.toLowerCase().replace(/\s+/g, '-')}`}
+                          className="mt-4 inline-block text-sm font-medium text-yellow-600 hover:text-yellow-700 transition-colors"
+                        >
+                          View all {category.toLowerCase()} →
+                        </Link>
+                      </>
+                    )}
                   </div>
                 </div>
               ))}
@@ -279,6 +442,18 @@ const Cakes = () => {
                           className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-[#712d24]"
                         />
                       </div>
+                      <div>
+                        <label className="block text-gray-700 mb-1">Cake Type *</label>
+                        <select
+                          name="cakeType"
+                          value={customOrder.cakeType}
+                          onChange={handleCustomOrderChange}
+                          className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-[#712d24]"
+                        >
+                          <option value="egg-base">Egg Base</option>
+                          <option value="egg-free">Egg Free</option>
+                        </select>
+                      </div>
                       <div className="grid grid-cols-2 gap-4">
                         <div>
                           <label className="block text-gray-700 mb-1">Cake Size *</label>
@@ -288,9 +463,6 @@ const Cakes = () => {
                             onChange={handleCustomOrderChange}
                             className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-[#712d24]"
                           >
-                            <option value="500g">500g</option>
-                            <option value="1kg">1kg</option>
-                            <option value="1.5kg">1.5kg</option>
                             <option value="2kg">2kg</option>
                             <option value="3kg">3kg</option>
                             <option value="other">Other (specify)</option>
@@ -319,11 +491,11 @@ const Cakes = () => {
                             <option value="Choco Truffle">Choco Truffle</option>
                             <option value="Red Velvet">Red Velvet</option>
                             <option value="Brownie">Brownie</option>
-                            <option value="Choco Delight">Choco Delight</option>
-                            <option value="Choco Lava Cake">Choco Lava Cake</option>
-                            <option value="Brownie Sizzlers">Brownie Sizzlers</option>
-                            <option value="Rich Almond Fusion">Rich Almond Fusion</option>
-                            <option value="Mocha Delight">Mocha Delight</option>
+                            <option value="Butterscotch">Butterscotch</option>
+                            <option value="White Forest">White Forest</option>
+                            <option value="Chocolate">Chocolate</option>
+                            <option value="Vanilla">Vanilla</option>
+                            <option value="Honey">Honey</option>
                             <option value="other">Other (specify)</option>
                           </select>
                           {customOrder.flavor === 'other' && (

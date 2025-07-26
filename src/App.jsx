@@ -36,6 +36,8 @@ import BackToTop from './components/BackToTop';
 import Cart from './components/Cart';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import FreshCreamCakes from './components/FreshCreamCakes';
+import ButterCreamCakes from './components/ButterCreamCakes';
 function App() {
   return (
     
@@ -94,6 +96,8 @@ function App() {
         <Route path="/cakes/gateaux-slices" element={<GateauxSlices />} />
         <Route path="/doughnuts" element={<Doughnuts />} />
         <Route path="/cakes/doughnuts" element={<Doughnuts />} />
+        <Route path="/cakes/fresh-cream-cakes" element={<FreshCreamCakes />} />
+        <Route path="/cakes/butter-cream-cakes" element={<ButterCreamCakes />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/menu-pdf" element={<MenuPdf />} />
         <Route path="/special-offers" element={<SpecialOffers />} />
