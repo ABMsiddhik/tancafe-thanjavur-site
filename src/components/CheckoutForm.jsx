@@ -1,13 +1,22 @@
 import React, { useState, useContext } from 'react';
 import { CartContext } from '../assets/context/CartContext';
+
 const CheckoutForm = ({ onClose, cartItems, totalPrice }) => {
   const { cart, clearCart } = useContext(CartContext);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     address: '',
-    instructions: ''
+    instructions: '',
+    cakeMessage: ''
   });
+
+  // Check if cart contains items from FreshCreamCakes or ButterCreamCakes
+  const hasCakeItems = Object.values(cart).some(item => 
+    item.name.includes('Fresh Cream') || 
+    item.name.includes('Butter Cream') ||
+    (item.type && ['Egg Base', 'Egg Free'].includes(item.type))
+  );
 
   const handleChange = (e) => {
     setFormData({
@@ -22,32 +31,42 @@ const CheckoutForm = ({ onClose, cartItems, totalPrice }) => {
     ).join('\n');
   };
 
-const handleSubmit = (e) => {
-  e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  if (!formData.name || !formData.phone || !formData.address) {
-    alert('Please fill in all required fields');
-    return;
-  }
+    if (!formData.name || !formData.phone || !formData.address) {
+      alert('Please fill in all required fields');
+      return;
+    }
 
-  const cartDetails = cartItems.map(item =>
-    `*${item.name}*\nQty: ${item.quantity}\nPrice: Rs. ${item.price}\nSubtotal: Rs. ${(item.price * item.quantity).toFixed(2)}`
-  ).join('\n\n');
+    const cartDetails = cartItems.map(item =>
+      `*${item.name}*\nQty: ${item.quantity}\nPrice: Rs. ${item.price}\nSubtotal: Rs. ${(item.price * item.quantity).toFixed(2)}`
+    ).join('\n\n');
 
-  const fullMessage = `*New Order*\n\n*Customer Details*\nName: ${formData.name}\nPhone: ${formData.phone}\nAddress: ${formData.address}\n\n*Order Items*\n\n${cartDetails}\n\n__________________________\n*Total Amount = Rs. ${totalPrice.toFixed(2)}*\n\n*Special Instructions*\n${formData.instructions || 'None'}`;
+    let fullMessage = `*New Order*\n\n*Customer Details*\nName: ${formData.name}\nPhone: ${formData.phone}\nAddress: ${formData.address}\n\n*Order Items*\n\n${cartDetails}\n\n__________________________\n*Total Amount = Rs. ${totalPrice.toFixed(2)}*`;
 
-  const encodedMessage = encodeURIComponent(fullMessage);
+    // Add cake message if applicable
+    if (hasCakeItems && formData.cakeMessage) {
+      fullMessage += `\n\n*Cake Message*\n${formData.cakeMessage}`;
+    }
 
-  const shouldProceed = window.confirm(
-    `ORDER CONFIRMATION\n\nYou're about to send this order via WhatsApp:\nYour cart will be cleared after successful submission..\n\nClick OK to proceed.`
-  );
+    // Add special instructions
+    if (formData.instructions) {
+      fullMessage += `\n\n*Special Instructions*\n${formData.instructions}`;
+    }
 
-  if (shouldProceed) {
-    window.open(`https://wa.me/918248794519?text=${encodedMessage}`, '_blank');
-    clearCart();
-    onClose();
-  }
-};
+    const encodedMessage = encodeURIComponent(fullMessage);
+
+    const shouldProceed = window.confirm(
+      `ORDER CONFIRMATION\n\nYou're about to send this order via WhatsApp:\nYour cart will be cleared after successful submission..\n\nClick OK to proceed.`
+    );
+
+    if (shouldProceed) {
+      window.open(`https://wa.me/918248794519?text=${encodedMessage}`, '_blank');
+      clearCart();
+      onClose();
+    }
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
@@ -100,6 +119,21 @@ const handleSubmit = (e) => {
               />
             </div>
 
+            {/* Conditionally show cake message field */}
+            {hasCakeItems && (
+              <div>
+                <label className="block text-gray-700 mb-1">Write Message on Cake</label>
+                <input
+                  type="text"
+                  name="cakeMessage"
+                  value={formData.cakeMessage}
+                  onChange={handleChange}
+                  placeholder="Happy Birthday, Congratulations, etc."
+                  className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-[#712d24]"
+                />
+              </div>
+            )}
+
             <div>
               <label className="block text-gray-700 mb-1">Special Instructions</label>
               <textarea
@@ -108,6 +142,7 @@ const handleSubmit = (e) => {
                 onChange={handleChange}
                 rows={2}
                 className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-[#712d24]"
+                placeholder="Any special delivery instructions"
               />
             </div>
           </div>

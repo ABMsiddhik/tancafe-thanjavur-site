@@ -62,16 +62,18 @@ const FreshCreamCakes = () => {
     }));
   };
 
-  const handleAddToCart = (item) => {
-    const size = selectedSize[item.name] || Object.keys(item.price)[0];
-    const price = item.price[size];
-    const cartItemName = `${item.name}-${size}`;
-    
-    addToCart(cartItemName, item.image, price, {
-      type: selectedType,
-      size: size
-    });
-  };
+
+const handleAddToCart = (item) => {
+  const size = selectedSize[item.name] || Object.keys(item.price)[0];
+  const price = item.price[size];
+  const cartItemName = `${item.name}-${size}`;
+  
+  addToCart(cartItemName, item.image, price, {
+    type: selectedType,
+    size: size,
+    cakeType: 'Fresh Cream Cake' 
+  });
+};
 
   const handleDecreaseQty = (item) => {
     const size = selectedSize[item.name] || Object.keys(item.price)[0];

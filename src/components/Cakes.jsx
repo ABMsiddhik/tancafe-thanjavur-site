@@ -91,17 +91,7 @@ const cakeItems = [
           { name: 'Honey', price: { '500g': 200, '1kg': 400 } }
         ]
       },
-      {
-        name: 'Egg Free',
-        items: [
-          { name: 'Butterscotch', price: { '500g': 225, '1kg': 450 } },
-          { name: 'Chocolate', price: { '500g': 250, '1kg': 500 } },
-          { name: 'Pineapple', price: { '500g': 225, '1kg': 450 } },
-          { name: 'Strawberry', price: { '500g': 225, '1kg': 450 } },
-          { name: 'Vanilla', price: { '500g': 225, '1kg': 450 } },
-          { name: 'Honey', price: { '500g': 250, '1kg': 500 } }
-        ]
-      }
+      
     ]
   }
 ];
