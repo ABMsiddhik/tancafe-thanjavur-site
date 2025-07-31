@@ -28,18 +28,8 @@ const ButterCreamCakes = () => {
     { name: 'Vanilla', image: vanilla, price: { '500g': 175, '1kg': 350 } },
     { name: 'Honey', image: honey, price: { '500g': 200, '1kg': 400 } }
   ]
-},
-{
-  type: 'Egg Free',
-  items: [
-    { name: 'Butterscotch', image: butterscotch, price: { '500g': 225, '1kg': 450 } },
-    { name: 'Chocolate', image: chocolate, price: { '500g': 250, '1kg': 500 } },
-    { name: 'Pineapple', image: pineapple, price: { '500g': 225, '1kg': 450 } },
-    { name: 'Strawberry', image: strawberry, price: { '500g': 225, '1kg': 450 } },
-    { name: 'Vanilla', image: vanilla, price: { '500g': 225, '1kg': 450 } },
-    { name: 'Honey', image: honey, price: { '500g': 250, '1kg': 500 } }
-  ]
 }
+
   ];
 
   const quantity = (itemName, size) => cart[`${itemName}-${size}`]?.quantity || 0;
