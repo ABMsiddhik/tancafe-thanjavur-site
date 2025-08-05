@@ -84,21 +84,27 @@ function HeroSection() {
           {/* Menu Icons */}
           <div className="flex justify-center gap-8 mb-8">
             <div className="flex flex-col items-center text-sm">
-              <Link to='/foods'className='flex flex-col justify-center items-center'><FaUtensils className="text-3xl mb-2 text-white drop-shadow-md" />
-                <span className="font-medium tracking-wider">FOODS</span></Link>
+              <Link
+                to="/foods"
+                state={{ scrollToMenu: true }}
+                className='flex flex-col justify-center items-center'
+              >
+                <FaUtensils className="text-3xl mb-2 text-white drop-shadow-md" />
+                <span className="font-medium tracking-wider">FOODS</span>
+              </Link>
             </div>
             <div className="flex flex-col items-center text-sm">
-              <Link to='/drinks'className='flex flex-col justify-center items-center' > <FaGlassCheers className="text-3xl mb-2 text-white drop-shadow-md" />
+              <Link to='/drinks' state={{ scrollToMenu: true }} className='flex flex-col justify-center items-center' > <FaGlassCheers className="text-3xl mb-2 text-white drop-shadow-md" />
                 <span className="font-medium tracking-wider">DRINKS</span></Link>
             </div>
             <div className="flex flex-col items-center text-sm">
-              <Link to='/cakes'className='flex flex-col justify-center items-center' >  <FaBirthdayCake className="text-3xl mb-2 text-white drop-shadow-md" />
+              <Link to='/cakes'   state={{ scrollToMenu: true }} className='flex flex-col justify-center items-center' >  <FaBirthdayCake className="text-3xl mb-2 text-white drop-shadow-md" />
                 <span className="font-medium tracking-wider">CAKES</span></Link>
             </div>
           </div>
 
           {/* Order Button with Shadow */}
-          <Link to="/foods">   <button className="bg-[#832e2e] hover:bg-[#a53e3e] px-8 py-3 rounded-md font-bold text-lg shadow-xl transform hover:scale-105 transition-all">
+          <Link to="/foods"   state={{ scrollToMenu: true }}>   <button className="bg-[#832e2e] hover:bg-[#a53e3e] px-8 py-3 rounded-md font-bold text-lg shadow-xl transform hover:scale-105 transition-all">
             ORDER NOW
           </button> </Link>
         </div>

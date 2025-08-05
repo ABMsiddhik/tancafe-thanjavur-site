@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 
@@ -98,6 +99,22 @@ const cakeItems = [
 
 const Cakes = () => {
   const [activeCategory, setActiveCategory] = useState('ALL');
+   const location = useLocation();
+
+  useEffect(() => {
+    // Check if we should scroll to menu
+    if (location.state?.scrollToMenu) {
+      // Small timeout to ensure page is rendered
+      setTimeout(() => {
+        const menuSection = document.getElementById('menu-section');
+        if (menuSection) {
+          menuSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        // Clear the state to prevent scrolling on refresh
+        window.history.replaceState({}, document.title);
+      }, 100);
+    }
+  }, [location.state]);
   const [customOrder, setCustomOrder] = useState({
     name: '',
     phone: '',
@@ -204,7 +221,7 @@ const Cakes = () => {
       </section>
 
       {/* Menu Section */}
-      <section className="py-16 px-4 md:px-8 lg:px-16 bg-gradient-to-b from-[#f8f4ee] to-[#e8d9c5]">
+      <section id="menu-section" className="py-16 px-4 md:px-8 lg:px-16 bg-gradient-to-b from-[#f8f4ee] to-[#e8d9c5]">
         <div className="max-w-7xl mx-auto">
           {/* Section Heading */}
           <div className="text-center mb-16">
