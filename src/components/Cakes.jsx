@@ -10,7 +10,7 @@ import cakeHeroImg from '../assets/images/cakes.png';
 import customCakeImg from '../assets/images/custom-cake.jpg';
 import freshCreamImg from '../assets/images/fresh-cream-cakes.jpg';
 import butterCreamImg from '../assets/images/butter-cream-cakes.jpg';
-
+import { useScrollToMenu } from '../components/useScrollToMenu';
 const cakeItems = [
   {
     category: 'GATEAUX SLICES',
@@ -99,6 +99,7 @@ const cakeItems = [
 
 const Cakes = () => {
   const [activeCategory, setActiveCategory] = useState('ALL');
+    useScrollToMenu();
    const location = useLocation();
 
   useEffect(() => {

@@ -15,7 +15,7 @@ import coolersImg from '../assets/images/cooler.jpg';
 import icedTeaImg from '../assets/images/ice-tea.jpg';
 import espressoImg from '../assets/images/espresso.jpg';
 import heroBg from '../assets/images/drinks.jpg';
-
+import { useScrollToMenu } from '../components/useScrollToMenu';
 const drinkItems = [
   {
     category: 'CAPPUCCINO',
@@ -71,6 +71,7 @@ const drinkItems = [
 
 const Drinks = () => {
   const [activeCategory, setActiveCategory] = useState('ALL');
+    useScrollToMenu();
  const location = useLocation();
 
   useEffect(() => {

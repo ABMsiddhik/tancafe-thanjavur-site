@@ -13,7 +13,7 @@ import pastaImg from '../assets/images/pasta-1.jpg';
 import burgerImg from '../assets/images/hot-dog-3.jpg';
 import hotdogImg from '../assets/images/hot-dog-3.jpg';
 import heroBg from '../assets/images/foods-bg.jpg';
-
+import { useScrollToMenu } from '../components/useScrollToMenu';
 const menuItems = [
   {
     category: 'SHORT EATS',
@@ -102,7 +102,7 @@ const menuItems = [
 const Foods = () => {
   const [activeCategory, setActiveCategory] = useState('ALL');
  const location = useLocation();
-
+  useScrollToMenu();
   useEffect(() => {
     // Check if we should scroll to menu
     if (location.state?.scrollToMenu) {

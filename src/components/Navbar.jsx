@@ -126,7 +126,7 @@ const Navbar = () => {
               <ul className="absolute hidden group-hover:block left-0  w-48 bg-white shadow-lg rounded-md border border-gray-100 z-10">
                 <li>
                   <Link 
-                    to="/foods" 
+                    to="/foods"  state={{ scrollToMenu: true }}
                     className="flex items-center px-4 py-4 hover:bg-amber-50 text-gray-700"
                   >
                     <FaHamburger className="mr-3 text-[#712d24]" />
@@ -135,7 +135,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link 
-                    to="/drinks" 
+                    to="/drinks"  state={{ scrollToMenu: true }}
                     className="flex items-center px-4 py-3 hover:bg-amber-50 text-gray-700"
                   >
                     <FaCoffee className="mr-3 text-[#712d24]" />
@@ -144,7 +144,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link 
-                    to="/cakes" 
+                    to="/cakes"  state={{ scrollToMenu: true }}
                     className="flex items-center px-4 py-3 hover:bg-amber-50 text-gray-700"
                   >
                     <FaBirthdayCake className="mr-3 text-[#712d24]" />
@@ -294,7 +294,7 @@ const Navbar = () => {
                 <li>
                   <Link 
                     to="/foods" 
-                    onClick={closeDrawer}
+                    onClick={closeDrawer}  state={{ scrollToMenu: true }}
                     className="flex items-center py-2 px-4 text-gray-600 hover:text-[#712d24] hover:bg-amber-50 rounded transition-colors"
                   >
                     <FaHamburger className="mr-3 text-[#712d24]" />
@@ -304,7 +304,7 @@ const Navbar = () => {
                 <li>
                   <Link 
                     to="/drinks" 
-                    onClick={closeDrawer}
+                    onClick={closeDrawer}  state={{ scrollToMenu: true }}
                     className="flex items-center py-2 px-4 text-gray-600 hover:text-[#712d24] hover:bg-amber-50 rounded transition-colors"
                   >
                     <FaCoffee className="mr-3 text-[#712d24]" />
@@ -314,7 +314,7 @@ const Navbar = () => {
                 <li>
                   <Link 
                     to="/cakes" 
-                    onClick={closeDrawer}
+                    onClick={closeDrawer}  state={{ scrollToMenu: true }}
                     className="flex items-center py-2 px-4 text-gray-600 hover:text-[#712d24] hover:bg-amber-50 rounded transition-colors"
                   >
                     <FaBirthdayCake className="mr-3 text-[#712d24]" />
