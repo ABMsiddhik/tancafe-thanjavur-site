@@ -1,4 +1,5 @@
-import {useState} from 'react';
+import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import img1 from '../assets/gallery/tancafe-thanjavur-20.jpg';
 import img2 from '../assets/gallery/tancafe-thanjavur-19.jpg';
 import img3 from '../assets/gallery/tancafe-thanjavur-18.jpg';
@@ -48,8 +49,44 @@ const galleryImages = [
 ];
 
 const Gallery = () => {
+  const location = useLocation();
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Enhanced scroll effect with multiple checks
+  useEffect(() => {
+    const scrollToGallery = () => {
+      const gallerySection = document.getElementById('gallery-section');
+      if (gallerySection) {
+        // Calculate position accounting for navbar height
+        const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
+        const elementPosition = gallerySection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        
+        // Clear any scroll flags
+        window.history.replaceState({}, document.title);
+        localStorage.removeItem('scrollToGallery');
+      }
+    };
+
+    // Check both state and localStorage
+    const shouldScroll = location.state?.scrollToMenu || 
+                       JSON.parse(localStorage.getItem('scrollToGallery'));
+
+    if (shouldScroll) {
+      // Try scrolling immediately
+      scrollToGallery();
+      
+      // Fallback with timeout if needed
+      const timer = setTimeout(scrollToGallery, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [location.state]);
 
   const openImage = (index) => {
     setSelectedImage(galleryImages[index]);
@@ -86,23 +123,31 @@ const Gallery = () => {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3">GALLERY</h2>
           <div className="flex items-center justify-center gap-2 text-sm md:text-base">
             <FaHome />
-            <Link to="/" className="">HOME</Link>
+            <Link 
+              to="/" 
+              className="hover:text-amber-400 transition-colors"
+            >
+              HOME
+            </Link>
             <span className="mx-1">›</span>
             <span className="text-amber-400">GALLERY</span>
           </div>
         </div>
-          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
-    <svg className="w-8 h-8 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-    </svg> </div>
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+          <svg className="w-8 h-8 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </div>
       </section>
-
       {/* Gallery Grid with Uniform Image Sizes */}
-      <section className="px-4 sm:px-8 py-12 bg-white">
+       <section 
+        id="gallery-section" 
+        className="px-4 sm:px-8 py-12 bg-white scroll-mt-[100px]"
+      >
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {galleryImages.map((image, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="group relative h-64 overflow-hidden rounded-xl shadow hover:shadow-xl transition duration-300 cursor-pointer"
               onClick={() => openImage(index)}
             >
@@ -119,23 +164,24 @@ const Gallery = () => {
         </div>
       </section>
 
+
       {/* Lightbox Modal */}
       {selectedImage && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
-          <button 
+          <button
             onClick={closeImage}
             className="absolute top-6 right-6 text-white text-2xl hover:text-amber-400 transition-colors"
           >
             <FaTimes />
           </button>
-          
-          <button 
+
+          <button
             onClick={() => navigate('prev')}
             className="absolute left-4 text-white text-2xl hover:text-amber-400 transition-colors md:left-8"
           >
             <FaChevronLeft size={28} />
           </button>
-          
+
           <div className="max-w-4xl w-full">
             <div className="relative pb-[75%]">
               <img
@@ -151,8 +197,8 @@ const Gallery = () => {
               </p>
             </div>
           </div>
-          
-          <button 
+
+          <button
             onClick={() => navigate('next')}
             className="absolute right-4 text-white text-2xl hover:text-amber-400 transition-colors md:right-8"
           >

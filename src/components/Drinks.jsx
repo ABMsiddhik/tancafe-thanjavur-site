@@ -203,6 +203,7 @@ const Drinks = () => {
                       >
                         <Link
                           to={`/drinks/${category.toLowerCase().replace(/\s+/g, '-')}`}
+                          state={{ scrollToMenu: true }} 
                           className="flex items-center text-gray-700 hover:text-[#712d24] group transition-colors"
                         >
                           <span className="flex-1 group-hover:font-medium">{item}</span>
@@ -225,6 +226,7 @@ const Drinks = () => {
                   </ul>
                   <Link
                     to={`/drinks/${category.toLowerCase().replace(/\s+/g, '-')}`}
+                    state={{ scrollToMenu: true }}
                     className="mt-4 inline-block text-sm font-medium text-yellow-600 hover:text-yellow-700 transition-colors"
                   >
                     View all {category.toLowerCase()} →

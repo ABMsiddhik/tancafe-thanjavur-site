@@ -1,21 +1,31 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FiGift, FiChevronRight, FiPhone, FiGlobe,FiMapPin, FiExternalLink} from 'react-icons/fi';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { FiGift, FiChevronRight, FiPhone, FiGlobe, FiMapPin, FiExternalLink } from 'react-icons/fi';
 import heroBg from '../assets/images/cakes.png';
 import womensDayImage from '../assets/images/womens-day-offer-tancafe.png';
 import Footer from './Footer';
 
-
 const SpecialOffers = () => {
   const [activeOffer, setActiveOffer] = useState('womens-day');
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollToMenu) {
+      setTimeout(() => {
+        const offersSection = document.getElementById('offers-section');
+        if (offersSection) {
+          offersSection.scrollIntoView({ behavior: 'smooth' });
+          window.history.replaceState({}, document.title);
+        }
+      }, 100);
+    }
+  }, [location.state]);
 
   const offers = {
     'womens-day': {
       title: "Women's Day Special",
       image: womensDayImage,
-     
     },
-   
   };
 
   return (
@@ -58,7 +68,7 @@ const SpecialOffers = () => {
 </div>
 
       {/* Offer Navigation */}
-      <div className="max-w-6xl mx-auto pt-8 px-4 sm:px-16">
+      <div id='offers-section' className="max-w-6xl mx-auto pt-8 px-4 sm:px-16">
         <div className="flex justify-center space-x-4 mt-5 overflow-x-auto">
           {Object.keys(offers).map((offerKey) => (
             <button

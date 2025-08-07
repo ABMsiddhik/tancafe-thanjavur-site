@@ -1,4 +1,6 @@
-import React,{useState} from 'react';
+
+import  { useState, useEffect } from 'react';  
+import { useLocation } from 'react-router-dom';     
 import Footer from './Footer';
 import heroImage from '../assets/images/bgImage2.jpg';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaPaperPlane } from 'react-icons/fa';
@@ -6,12 +8,26 @@ import { HiOutlineMail, HiOutlinePhone } from 'react-icons/hi';
 
 const Contact = () => {
   const [form, setForm] = useState({
-  name: '',
-  email: '',
-  phone: '',
-  message: ''
-});
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  
+  const location = useLocation(); 
 
+
+  useEffect(() => {
+    if (location.state?.scrollToMenu) {
+      setTimeout(() => {
+        const contactSection = document.getElementById('contact-section');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+          window.history.replaceState({}, document.title);
+        }
+      }, 100);
+    }
+  }, [location.state]);
 const handleChange = (e) => {
   setForm({ ...form, [e.target.id]: e.target.value });
 };
@@ -57,8 +73,8 @@ const text = `*Hello TanCafe!* \n\nNew contact request:\n\n*Name:* ${name}\n\n*E
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-gradient-to-b from-[#f8f4ee] to-[#e8d9c5] px-4 sm:px-6 lg:px-20">
-        <div className="max-w-7xl mx-auto">
+{/* Contact Section - Add id here */}
+<section id="contact-section" className="py-20 bg-gradient-to-b from-[#f8f4ee] to-[#e8d9c5] px-4 sm:px-6 lg:px-20">        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-[#712d24] mb-4">Contact Information</h2>
             <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>

@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import { CartContext } from '../assets/context/CartContext';
@@ -29,9 +30,19 @@ const gateauxItems = [
 
 const GateauxSlices = () => {
   const { cart, addToCart, removeFromCart, decreaseQty } = useContext(CartContext);
-
+  const location = useLocation();
   const quantity = (itemName) => cart[itemName]?.quantity || 0;
-
+  useEffect(() => {
+    if (location.state?.scrollToMenu) {
+      setTimeout(() => {
+        const menuSection = document.getElementById('menu-section');
+        if (menuSection) {
+          menuSection.scrollIntoView({ behavior: 'smooth' });
+          window.history.replaceState({}, document.title);
+        }
+      }, 100);
+    }
+  }, [location.state]);
   return (
     <>
       {/* Hero Banner */}
@@ -54,7 +65,7 @@ const GateauxSlices = () => {
       </section>
 
       {/* Grid Section */}
-      <section className="bg-gradient-to-b from-[#fff9f5] to-[#ffe3e3] py-16 px-4 md:px-8 lg:px-16">
+      <section id="menu-section" className="bg-gradient-to-b from-[#fff9f5] to-[#ffe3e3] py-16 px-4 md:px-8 lg:px-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#712d24] mb-4">Heavenly Indulgence</h2>
@@ -80,7 +91,7 @@ const GateauxSlices = () => {
                       alt={item.name}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
-                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">{item.name}</h3>
                   </div>
 

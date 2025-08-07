@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { FaHome, FaPlay } from 'react-icons/fa';
 import Footer from './Footer';
 import heroBg from '../assets/images/foods-bg.jpg';
@@ -62,6 +62,35 @@ const VideoCard = ({ video }) => {
 };
 
 const VideoGallery = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const shouldScroll = location.state?.scrollToMenu || 
+                       JSON.parse(localStorage.getItem('scrollToGallery'));
+    
+    if (shouldScroll) {
+      const timer = setTimeout(() => {
+        const videoSection = document.getElementById('video-section');
+        if (videoSection) {
+          // Calculate position accounting for navbar height
+          const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
+          const elementPosition = videoSection.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+          
+          // Clear any scroll flags
+          window.history.replaceState({}, document.title);
+          localStorage.removeItem('scrollToGallery');
+        }
+      }, 300); // Increased timeout for better reliability
+      
+      return () => clearTimeout(timer);
+    }
+  }, [location.state]);
   return (
     <>
       {/* Hero Section */}
@@ -101,7 +130,10 @@ const VideoGallery = () => {
       </section>
 
       {/* Video Grid */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#f8f4ee] to-[#e8d9c5]">
+      <section 
+        id="video-section" 
+        className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#f8f4ee] to-[#e8d9c5] scroll-mt-[100px]"
+      >
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-[#712d24] mb-12">
             Our Video Collection

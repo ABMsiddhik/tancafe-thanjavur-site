@@ -1,4 +1,5 @@
-import React from 'react';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaHome, FaPaperPlane, FaEnvelope, FaClock, FaUser, FaStar } from 'react-icons/fa';
 import Slider from 'react-slick';
@@ -9,6 +10,19 @@ import friesImg from '../assets/images/fries.png';
 import Footer from './Footer';
 
 const Aboutus = () => {
+     const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollToMenu) {
+      setTimeout(() => {
+        const menuSection = document.getElementById('our-story-section');
+        if (menuSection) {
+          menuSection.scrollIntoView({ behavior: 'smooth' });
+          window.history.replaceState({}, document.title);
+        }
+      }, 100);
+    }
+  }, [location.state]);
     return (
         <>
             {/* Hero Section */}
@@ -78,7 +92,7 @@ const Aboutus = () => {
 
             {/* Our Story*/}
 
-            <div className="bg-white py-16 px-6 md:px-16">
+            <div id='our-story-section' className="bg-white py-16 px-6 md:px-16">
                 <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
                     {/* Left Column - Our Story */}
                     <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">

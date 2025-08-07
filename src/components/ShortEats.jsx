@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';  
+import { useLocation } from 'react-router-dom';  
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import { CartContext } from '../assets/context/CartContext';
@@ -28,6 +29,26 @@ const shortEatsItems = [
 
 const ShortEats = () => {
   const { cart, addToCart, removeFromCart, decreaseQty } = useContext(CartContext);
+  const location = useLocation();  // Add this
+
+  // Add this useEffect hook
+  useEffect(() => {
+    if (location.state?.scrollToMenu) {
+      setTimeout(() => {
+        const menuSection = document.getElementById('menu-section');
+        if (menuSection) {
+          menuSection.scrollIntoView({ behavior: 'smooth' });
+          window.history.replaceState({}, document.title);
+        }
+      }, 100);
+    }
+  }, [location.state]);
+
+  // Enhanced add to cart function
+  const handleAddToCart = (name, image, price) => {
+    addToCart(name, image, price);
+    localStorage.setItem('scrollToMenu', 'true');
+  };
   
   const quantity = (itemName) => cart[itemName]?.quantity || 0;
 
@@ -64,7 +85,8 @@ const ShortEats = () => {
       </section>
 
       {/* Grid Section with Price */}
-      <section className="bg-gradient-to-b from-[#f8f4ee] to-[#e8d9c5] py-16 px-4 md:px-8 lg:px-16">
+    {/* Grid Section with Price - Add id here */}
+<section id="menu-section" className="bg-gradient-to-b from-[#f8f4ee] to-[#e8d9c5] py-16 px-4 md:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#712d24] mb-4">Delicious Bites</h2>
@@ -123,13 +145,13 @@ const ShortEats = () => {
                         <span className="text-lg font-semibold w-8">0</span>
                       )}
                       
-                      <button
-                        onClick={() => addToCart(item.name, item.image, item.price)}
-                        className="bg-[#712d24] text-white p-2 rounded"
-                        aria-label="Increase quantity"
-                      >
-                        <FaPlus className="text-sm" />
-                      </button>
+                       <button
+    onClick={() => handleAddToCart(item.name, item.image, item.price)}
+    className="bg-[#712d24] text-white p-2 rounded"
+    aria-label="Increase quantity"
+  >
+    <FaPlus className="text-sm" />
+  </button>
                       
                       {showControls && (
                         <button

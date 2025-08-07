@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';  // Add useEffect
+import { useLocation } from 'react-router-dom';  // Add this import
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
 import { FiDownload, FiEye } from 'react-icons/fi';
@@ -7,6 +8,19 @@ import menuPdf from '../assets/pdf/tancafe-new-menu.pdf';
 import heroBg from '../assets/images/foods-bg.jpg';
 
 const MenuPdf = () => {
+  const location = useLocation();  
+
+  useEffect(() => {
+    if (location.state?.scrollToMenu) {
+      setTimeout(() => {
+        const menuSection = document.getElementById('menu-pdf-section');
+        if (menuSection) {
+          menuSection.scrollIntoView({ behavior: 'smooth' });
+          window.history.replaceState({}, document.title);
+        }
+      }, 100);
+    }
+  }, [location.state]);
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#f8f4ee] to-[#e8d9c5]">
       {/* Hero Section with Parallax Effect - Menu PDF */}
@@ -57,7 +71,8 @@ const MenuPdf = () => {
       </div>
 
       {/* Menu Preview Section */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+ {/* Menu Preview Section - Add id here */}
+<div id="menu-pdf-section" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
           {/* Menu Preview Image */}
           <div className="relative h-64 md:h-96 overflow-hidden bg-gray-100">

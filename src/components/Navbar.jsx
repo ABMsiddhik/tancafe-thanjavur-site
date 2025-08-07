@@ -104,7 +104,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink 
-                to="/about" 
+                to="/about"  state={{ scrollToMenu: true }}
                 className={({ isActive }) => 
                   `flex items-center rounded-md py-2 px-1 hover:text-[#712d24] transition-colors ${
                     isActive ? 'text-[#712d24] border-b-2 border-[#712d24]' : ''
@@ -162,7 +162,7 @@ const Navbar = () => {
             ].map((item) => (
               <li key={item.path}>
                 <NavLink 
-                  to={item.path}
+                  to={item.path}  state={{ scrollToMenu: true }}
                   className={({ isActive }) => 
                     `flex items-center py-2 px-1 hover:text-[#712d24] transition-colors ${
                       isActive ? 'text-[#712d24] rounded-md border-b-2 border-[#712d24]' : ''
@@ -177,7 +177,7 @@ const Navbar = () => {
 
             <li>
               <Link 
-                to="/menu-pdf" 
+                to="/menu-pdf"  state={{ scrollToMenu: true }}
                 className="flex items-center py-2 px-1 text-red-600 hover:text-red-700 transition-colors"
               >
                 <FaFilePdf className="mr-2" />
@@ -260,7 +260,7 @@ const Navbar = () => {
 
           <li className="group">
             <Link 
-              to="/about" 
+              to="/about"  state={{ scrollToMenu: true }}
               onClick={closeDrawer}
               className="flex items-center py-4 px-6 text-gray-800 hover:text-[#712d24] hover:bg-amber-50 transition-colors"
             >
@@ -332,7 +332,7 @@ const Navbar = () => {
             { path: "/contact", name: "CONTACT", icon: FaEnvelope },
           ].map((item) => (
             <li key={item.path} className="group">
-              <Link 
+              <Link  state={{ scrollToMenu: true }}
                 to={item.path} 
                 onClick={closeDrawer}
                 className="flex items-center py-4 px-6 text-gray-800 hover:text-[#712d24] hover:bg-amber-50 transition-colors"
@@ -345,7 +345,7 @@ const Navbar = () => {
 
           <li className="group">
             <Link 
-              to="/menu-pdf" 
+              to="/menu-pdf"  state={{ scrollToMenu: true }}
               onClick={closeDrawer}
               className="flex items-center py-4 px-6 text-red-600 hover:text-red-700 hover:bg-amber-50 transition-colors"
             >

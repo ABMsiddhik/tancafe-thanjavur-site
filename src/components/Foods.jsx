@@ -101,7 +101,7 @@ const menuItems = [
 
 const Foods = () => {
   const [activeCategory, setActiveCategory] = useState('ALL');
- const location = useLocation();
+  const location = useLocation();
   useScrollToMenu();
   useEffect(() => {
     // Check if we should scroll to menu
@@ -184,8 +184,8 @@ const Foods = () => {
               <button
                 onClick={() => setActiveCategory('ALL')}
                 className={`px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${activeCategory === 'ALL'
-                    ? 'bg-[#712d24] text-white'
-                    : 'bg-white text-[#712d24] hover:bg-[#712d24] hover:text-white'
+                  ? 'bg-[#712d24] text-white'
+                  : 'bg-white text-[#712d24] hover:bg-[#712d24] hover:text-white'
                   }`}
               >
                 ALL
@@ -195,8 +195,8 @@ const Foods = () => {
                   key={category}
                   onClick={() => setActiveCategory(category)}
                   className={`px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${activeCategory === category
-                      ? 'bg-[#712d24] text-white'
-                      : 'bg-white text-[#712d24] hover:bg-[#712d24] hover:text-white'
+                    ? 'bg-[#712d24] text-white'
+                    : 'bg-white text-[#712d24] hover:bg-[#712d24] hover:text-white'
                     }`}
                 >
                   {category}
@@ -232,6 +232,7 @@ const Foods = () => {
                       >
                         <Link
                           to={`/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
+                          state={{ scrollToMenu: true }}  // Add this
                           className="flex items-center text-gray-700 hover:text-[#712d24] group transition-colors"
                         >
                           <span className="flex-1 group-hover:font-medium">{item}</span>
@@ -254,6 +255,7 @@ const Foods = () => {
                   </ul>
                   <Link
                     to={`/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
+                    state={{ scrollToMenu: true }}  // Add this
                     className="mt-4 inline-block text-sm font-medium text-yellow-600 hover:text-yellow-700 transition-colors"
                   >
                     View all {category.toLowerCase()} →

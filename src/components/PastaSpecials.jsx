@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';  // Add useEffect
+import { useLocation } from 'react-router-dom';  // Add this import
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import { CartContext } from '../assets/context/CartContext';
@@ -24,8 +25,19 @@ const pastaItems = [
 
 const PastaSpecials = () => {
   const { cart, addToCart, removeFromCart, decreaseQty } = useContext(CartContext);
-
+  const location = useLocation(); 
   const quantity = (itemName) => cart[itemName]?.quantity || 0;
+  useEffect(() => {
+    if (location.state?.scrollToMenu) {
+      setTimeout(() => {
+        const menuSection = document.getElementById('menu-section');
+        if (menuSection) {
+          menuSection.scrollIntoView({ behavior: 'smooth' });
+          window.history.replaceState({}, document.title);
+        }
+      }, 100);
+    }
+  }, [location.state]);
 
   return (
     <>
@@ -49,7 +61,7 @@ const PastaSpecials = () => {
       </section>
 
       {/* Grid Section */}
-      <section className="bg-gradient-to-b from-[#fff7f1] to-[#ffe4d2] py-16 px-4 md:px-8 lg:px-16">
+      <section id="menu-section" className="bg-gradient-to-b from-[#fff7f1] to-[#ffe4d2] py-16 px-4 md:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#712d24] mb-4">Creamy & Flavorful</h2>
