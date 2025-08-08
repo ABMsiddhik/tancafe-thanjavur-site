@@ -372,6 +372,7 @@ const Cakes = () => {
                             >
                               <div className="flex flex-col">
                                 <Link
+                                 state={{ scrollToMenu: true }} 
                                   to={`/cakes/${category.toLowerCase().replace(/\s+/g, '-')}`}
                                   className="flex items-center text-gray-700 hover:text-[#712d24] group transition-colors"
                                 >

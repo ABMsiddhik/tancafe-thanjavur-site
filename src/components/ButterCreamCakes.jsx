@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect,useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import { CartContext } from '../assets/context/CartContext';
@@ -16,7 +17,18 @@ const ButterCreamCakes = () => {
   const { cart, addToCart, removeFromCart, decreaseQty } = useContext(CartContext);
   const [selectedSize, setSelectedSize] = useState({});
   const [selectedType, setSelectedType] = useState('Egg Base');
-
+    const location = useLocation();
+      useEffect(() => {
+    if (location.state?.scrollToMenu) {
+      setTimeout(() => {
+        const menuSection = document.getElementById('menu-section');
+        if (menuSection) {
+          menuSection.scrollIntoView({ behavior: 'smooth' });
+          window.history.replaceState({}, document.title);
+        }
+      }, 100);
+    }
+  }, [location.state]);
   const cakeItems = [
    {
   type: 'Egg Base',
@@ -89,7 +101,7 @@ const handleAddToCart = (item) => {
       </section>
 
       {/* Grid Section */}
-      <section className="bg-gradient-to-b from-[#fff7f1] to-[#ffe4d2] py-16 px-4 md:px-8 lg:px-16">
+      <section id='menu-section' className="bg-gradient-to-b from-[#fff7f1] to-[#ffe4d2] py-16 px-4 md:px-8 lg:px-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#712d24] mb-4">Rich & Creamy</h2>
