@@ -18,9 +18,38 @@ import bgImage2 from '../assets/images/bgImage2.jpg';
 import { FaHamburger, FaTruck } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
-
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function HeroSection() {
+  const location = useLocation();
+
+  useEffect(() => {
+
+    if (location.state?.scrollToHeader ||
+      location.pathname === '/' && !location.state?.preventScroll) {
+      const scrollToHeader = () => {
+        const header = document.getElementById('header-section');
+        if (header) {
+          // Calculate position accounting for any fixed headers
+          const yOffset = -100; // Adjust based on your header height
+          const y = header.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+          window.scrollTo({
+            top: y,
+            behavior: 'smooth'
+          });
+
+          // Clear the state to prevent scrolling on refresh
+          window.history.replaceState({}, document.title);
+        }
+      };
+
+      // Small timeout to ensure page is rendered
+      const timer = setTimeout(scrollToHeader, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [location]);
   const settings = {
     dots: true,
     infinite: true,
@@ -60,7 +89,7 @@ function HeroSection() {
   return (
     <>
       {/* Hero Image Section with Dark Overlay + Blur */}
-      <div className="relative min-h-screen bg-cover bg-center flex items-center justify-center text-white overflow-hidden">
+      <div id="header-section"  className="relative min-h-screen bg-cover bg-center flex items-center justify-center text-white overflow-hidden">
         {/* Background Image with Darkness + Blur */}
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -98,13 +127,13 @@ function HeroSection() {
                 <span className="font-medium tracking-wider">DRINKS</span></Link>
             </div>
             <div className="flex flex-col items-center text-sm">
-              <Link to='/cakes'   state={{ scrollToMenu: true }} className='flex flex-col justify-center items-center' >  <FaBirthdayCake className="text-3xl mb-2 text-white drop-shadow-md" />
+              <Link to='/cakes' state={{ scrollToMenu: true }} className='flex flex-col justify-center items-center' >  <FaBirthdayCake className="text-3xl mb-2 text-white drop-shadow-md" />
                 <span className="font-medium tracking-wider">CAKES</span></Link>
             </div>
           </div>
 
           {/* Order Button with Shadow */}
-          <Link to="/foods"   state={{ scrollToMenu: true }}>   <button className="bg-[#832e2e] hover:bg-[#a53e3e] px-8 py-3 rounded-md font-bold text-lg shadow-xl transform hover:scale-105 transition-all">
+          <Link to="/foods" state={{ scrollToMenu: true }}>   <button className="bg-[#832e2e] hover:bg-[#a53e3e] px-8 py-3 rounded-md font-bold text-lg shadow-xl transform hover:scale-105 transition-all">
             ORDER NOW
           </button> </Link>
         </div>
