@@ -10,19 +10,19 @@ import friesImg from '../assets/images/fries.png';
 import Footer from './Footer';
 
 const Aboutus = () => {
-     const location = useLocation();
+    const location = useLocation();
 
-  useEffect(() => {
-    if (location.state?.scrollToMenu) {
-      setTimeout(() => {
-        const menuSection = document.getElementById('our-story-section');
-        if (menuSection) {
-          menuSection.scrollIntoView({ behavior: 'smooth' });
-          window.history.replaceState({}, document.title);
+    useEffect(() => {
+        if (location.state?.scrollToMenu) {
+            setTimeout(() => {
+                const menuSection = document.getElementById('our-story-section');
+                if (menuSection) {
+                    menuSection.scrollIntoView({ behavior: 'smooth' });
+                    window.history.replaceState({}, document.title);
+                }
+            }, 100);
         }
-      }, 100);
-    }
-  }, [location.state]);
+    }, [location.state]);
     return (
         <>
             {/* Hero Section */}
@@ -34,7 +34,16 @@ const Aboutus = () => {
                 />
                 <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-0" />
                 <div className="relative z-10 text-white text-center">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3">ABOUT US</h2>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3">
+                        ABOUT TANCAFE
+                    </h2>
+                    <p className="text-lg md:text-xl mb-6 max-w-3xl mx-auto text-gray-100">
+                        Tancafe offers delicious foods, refreshing drinks and irresistible cakes
+                        in a warm, welcoming space — a perfect spot for coffee lovers, foodies
+                        and anyone craving sweet moments.
+                    </p>
+
+
                     <div className="flex items-center justify-center gap-2 text-sm">
                         <FaHome />
                         <Link to="/" className="hover:underline">HOME</Link>
@@ -42,6 +51,7 @@ const Aboutus = () => {
                         <span className="text-amber-400">ABOUT US</span>
                     </div>
                 </div>
+
                 <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
                     <svg className="w-8 h-8 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>

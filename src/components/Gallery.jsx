@@ -20,7 +20,7 @@ import img17 from '../assets/gallery/tancafe-thanjavur-4.jpg';
 import img18 from '../assets/gallery/tancafe-thanjavur-3.jpg';
 import img19 from '../assets/gallery/tancafe-thanjavur-2.jpg';
 import img20 from '../assets/gallery/tancafe-thanjavur-1.jpg';
-import heroBg from '../assets/images/foods-bg.jpg';
+import heroBg from '../assets/images/tancafe-gallery-foods-drinks-cakes-photos.png';
 import { FaHome, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
@@ -118,21 +118,26 @@ const Gallery = () => {
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-0"></div>
+<div className="relative text-center text-white z-10">
+  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 ">
+    GALLERY IMAGES – Tancafe Signature Foods, Drinks & Cakes
+  </h2>
+  <p className="text-lg md:text-xl mb-4 max-w-2xl mx-auto text-gray-100">
+    Explore our cafe photo collection featuring fresh brews, gourmet dishes and indulgent cakes.
+  </p>
+  <div className="flex items-center justify-center gap-2 text-sm md:text-base">
+    <FaHome />
+    <Link 
+      to="/" 
+      className="hover:text-amber-400 transition-colors"
+    >
+      HOME
+    </Link>
+    <span className="mx-1">›</span>
+    <span className="text-amber-400">GALLERY IMAGES</span>
+  </div>
+</div>
 
-        <div className="relative text-center text-white z-10">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3">GALLERY</h2>
-          <div className="flex items-center justify-center gap-2 text-sm md:text-base">
-            <FaHome />
-            <Link 
-              to="/" 
-              className="hover:text-amber-400 transition-colors"
-            >
-              HOME
-            </Link>
-            <span className="mx-1">›</span>
-            <span className="text-amber-400">GALLERY</span>
-          </div>
-        </div>
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
           <svg className="w-8 h-8 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>

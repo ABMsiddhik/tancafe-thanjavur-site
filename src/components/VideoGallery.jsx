@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaHome, FaPlay } from 'react-icons/fa';
 import Footer from './Footer';
-import heroBg from '../assets/images/foods-bg.jpg';
+import heroBg from '../assets/images/tancafe-gallery-foods-drinks-cakes-videos-thumbnail.jpg';
 
 const videos = [
   { id: 1, title: 'TanCafe Coffee Shop Thanjavur', url: 'https://www.youtube.com/embed/uE9K1obXBp8' },
@@ -106,21 +106,21 @@ const VideoGallery = () => {
         ></div>
         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-0"></div>
 
-        <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fadeIn">
-            <span className="text-yellow-300">TANCAFE</span> VIDEO GALLERY
-          </h1>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-gray-100">
-            Watch our delicious creations come to life
-          </p>
-          <div className="flex items-center justify-center gap-2 text-sm md:text-base">
-            <Link to="/" className="flex items-center hover:text-yellow-300 transition-colors">
-              <FaHome className="mr-1" /> HOME
-            </Link>
-            <span className="mx-1">›</span>
-            <span className="text-yellow-300">VIDEOS</span>
-          </div>
-        </div>
+ <div className="relative z-10 text-center text-white px-4">
+  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fadeIn">
+    GALLERY VIDEOS – Tancafe Moments in Motion
+  </h1>
+  <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-gray-100">
+    Watch our baristas, kitchen, and cafe vibes come alive with delicious food, drinks and Cakes.
+  </p>
+  <div className="flex items-center justify-center gap-2 text-sm md:text-base">
+    <Link to="/" className="flex items-center hover:text-yellow-300 transition-colors">
+      <FaHome className="mr-1" /> HOME
+    </Link>
+    <span className="mx-1">›</span>
+    <span className="text-yellow-300">GALLERY VIDEOS</span>
+  </div>
+</div>
 
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
           <svg className="w-8 h-8 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
