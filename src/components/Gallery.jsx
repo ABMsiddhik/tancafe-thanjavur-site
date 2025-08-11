@@ -120,7 +120,7 @@ const Gallery = () => {
         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-0"></div>
 <div className="relative text-center text-white z-10">
   <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 ">
-    GALLERY IMAGES – Tancafe Signature Foods, Drinks & Cakes
+    GALLERY IMAGES – Tancafe Collections
   </h2>
   <p className="text-lg md:text-xl mb-4 max-w-2xl mx-auto text-gray-100">
     Explore our cafe photo collection featuring fresh brews, gourmet dishes and indulgent cakes.
