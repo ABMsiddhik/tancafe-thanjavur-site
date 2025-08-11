@@ -155,7 +155,7 @@ const Navbar = () => {
             </li>
 
             {[
-              { path: "/special-offers", name: "OFFERS", icon: FaTag },
+              { path: "/offers", name: "OFFERS", icon: FaTag },
               { path: "/gallery", name: "GALLERY", icon: FaImages },
               { path: "/videos", name: "VIDEOS", icon: FaVideo },
               { path: "/contact-us", name: "CONTACT", icon: FaEnvelope },
@@ -327,7 +327,7 @@ const Navbar = () => {
           </li>
 
           {[
-            { path: "/special-offers", name: "SPECIAL OFFERS", icon: FaTag },
+            { path: "/offers", name: "SPECIAL OFFERS", icon: FaTag },
             { path: "/gallery", name: "GALLERY", icon: FaImages },
             { path: "/videos", name: "VIDEOS", icon: FaVideo },
             { path: "/contact-us", name: "CONTACT", icon: FaEnvelope },
