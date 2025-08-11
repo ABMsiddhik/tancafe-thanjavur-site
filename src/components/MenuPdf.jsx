@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { FiDownload, FiEye } from 'react-icons/fi';
 import menuPdfImage from '../assets/images/menu-preview.png'; 
 import menuPdf from '../assets/pdf/tancafe-new-menu.pdf';
-import heroBg from '../assets/images/foods-bg.jpg';
+import heroBg from '../assets/images/tancafe-coffee-themed-menu-background.jpg';
 
 const MenuPdf = () => {
   const location = useLocation();  
