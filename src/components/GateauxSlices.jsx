@@ -21,11 +21,11 @@ const gateauxItems = [
   { name: 'Choco Truffle', image: chocoTruffle, price: 80 },
   { name: 'Red Velvet', image: redVelvet, price: 85 },
   { name: 'Brownie', image: brownie, price: 70 },
+  { name: 'Choco Delight', image: chocoDelight, price: 135 },
   { name: 'Choco Lava Cake', image: chocoLava, price: 70 },
   { name: 'Brownie Sizzlers', image: brownieSizzlers, price: 190 },
   { name: 'Rich Almond Fusion', image: richAlmond, price: 90 },
   { name: 'Mocha Delight', image: mochaDelight, price: 85 },
-  { name: 'Choco Delight', image: chocoDelight, price: 135 },
 ];
 
 const GateauxSlices = () => {

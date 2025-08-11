@@ -217,7 +217,7 @@ function HeroSection() {
 *Time:* ${time}`;
 
               const encodedMessage = encodeURIComponent(message);
-              window.open(`https://wa.me/918248794519?text=${encodedMessage}`, '_blank');
+              window.open(`https://wa.me/919360066917?text=${encodedMessage}`, '_blank');
             }}
 
             className="space-y-5 w-full max-w-xl mx-auto px-4 sm:px-6 md:px-0"

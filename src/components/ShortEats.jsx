@@ -17,15 +17,16 @@ import cheeseCornNuggets from '../assets/short-eats-images/short-eats-8.jpg';
 import potatoCheeseShots from '../assets/short-eats-images/potato-cheese-shots.png';
 
 const shortEatsItems = [
-  { name: 'French Fries', image: frenchFries, price: 65 },
-  { name: 'Masala Fries', image: masalaFries, price: 80 },
-  { name: 'Corn Cutlet (2 Pcs)', image: cornCutlet, price: 65 },
-  { name: 'Veg Cutlet (2 Pcs)', image: vegCutlet, price: 55 },
   { name: 'Veg Finger', image: vegFinger, price: 75 },
-  { name: 'Potato Smiles', image: potatoSmiles, price: 70 },
-  { name: 'Cheese Corn Nuggets', image: cheeseCornNuggets, price: 90 },
   { name: 'Potato Cheese Shots', image: potatoCheeseShots, price: 125 },
+  { name: 'Potato Smiles', image: potatoSmiles, price: 70 },
+  { name: 'French Fries', image: frenchFries, price: 65 },
+  { name: 'Veg Cutlet (2 Pcs)', image: vegCutlet, price: 55 },
+  { name: 'Corn Cutlet (2 Pcs)', image: cornCutlet, price: 65 },
+  { name: 'Cheese Corn Nuggets', image: cheeseCornNuggets, price: 90 },
+  { name: 'Masala Fries', image: masalaFries, price: 80 },
 ];
+
 
 const ShortEats = () => {
   const { cart, addToCart, removeFromCart, decreaseQty } = useContext(CartContext);

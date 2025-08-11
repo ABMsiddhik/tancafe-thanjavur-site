@@ -11,18 +11,17 @@ import chocochip from '../assets/doughnuts-images/doughnuts-2.jpg';
 import chocoCoconut from '../assets/doughnuts-images/choco-coconut-doughnut.png';
 import coffeeLovers from '../assets/doughnuts-images/doughnuts-4.jpg';
 import nuts from '../assets/doughnuts-images/doughnuts-6.jpg';
-import brownieDelight from '../assets/doughnuts-images/doughnuts-7.jpg';
 import caramelClassic from '../assets/doughnuts-images/CARAMEL-CLASSIC-DELIGHT-DOUGHNUT.png';
 
 const doughnutItems = [
-  { name: 'Choco Doughnut', image: choco, price: 60 },
-  { name: 'Chocochip Doughnut', image: chocochip, price: 65 },
-  { name: 'Choco Coconut Doughnuts', image: chocoCoconut, price: 60 },
+  { name: 'Choco', image: choco, price: 60 },
+  { name: 'Chocochip', image: chocochip, price: 65 },
+  { name: 'Nuts', image: nuts, price: 70 },
   { name: 'Coffee Lovers', image: coffeeLovers, price: 65 },
-  { name: 'Nuts Doughnut', image: nuts, price: 70 },
-  { name: 'Brownie Delight', image: brownieDelight, price: 65 },
-  { name: 'Caramel Classic Delight', image: caramelClassic, price: 65 },
+  { name: 'Choco Coconut', image: chocoCoconut, price: 60 },
+  { name: 'Caramel Classic', image: caramelClassic, price: 65 },
 ];
+
 
 const Doughnuts = () => {
   const { cart, addToCart, removeFromCart, decreaseQty } = useContext(CartContext);
@@ -54,7 +53,7 @@ const Doughnuts = () => {
           </h1>
           <div className="text-sm text-gray-300 flex justify-center items-center">
             <Link to="/" className="hover:text-yellow-300 transition-colors">HOME</Link>
-            <span className="mx-2"></span>
+            <span className="mx-2">&gt;</span>
             <span className="text-yellow-300">DOUGHNUTS</span>
           </div>
         </div>
@@ -87,7 +86,7 @@ const Doughnuts = () => {
                       alt={name}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
-                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                     <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">{name}</h3>
                   </div>
                   <div className="p-4">

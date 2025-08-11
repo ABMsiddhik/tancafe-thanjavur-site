@@ -20,42 +20,44 @@ const drinkItems = [
   {
     category: 'CAPPUCCINO',
     image: cappuccinoImg,
-    items: ['Special', 'Hot Chocolate', 'Caramel', 'Vanilla', 'Hazelnut', 'Sunset Mocha'],
+    items: ['Special', 'Caramel', 'Vanilla', 'Hazelnut', 'Sunset Mocha', 'Hot Chocolate'],
   },
   {
     category: 'SPECIALITY SHAKES',
     image: shakesImg,
-    items: ['Oreo Cookies', 'Kitkat Shake', 'Choco Almond', 'Ferrero Roacher', 'TANCAFE Choco Crunch', 'Milo Delight', 'Kulfi Shake'],
+    items: [
+      'Ferrero Roacher', 'Oreo Cookies', 'Milo Delight', 'TanCafe Choco Crunch', 'Choco Almond', 'Kitkat Shake', 'Kulfi Shake'
+    ]
   },
   {
     category: 'TEA BREW',
     image: teaImg,
-    items: ['Lemon & Ginger', 'Assam', 'Pure Green', 'Darjeeling', 'English Breakfast', 'Earl Gray'],
+    items: ['Darjeeling', 'Assam', 'Pure Green', 'Earl Gray', 'English Breakfast', 'Lemon & Ginger'],
   },
   {
     category: 'FRUIT SMOOTHIES',
     image: smoothiesImg,
-    items: ['Vanilla', 'Butter Scotch', 'Cold Chocolate', 'Black Currant Burst', 'Strawberry', 'Raspberry'],
+    items: ['Raspberry', 'Strawberry', 'Vanilla', 'Black Currant Burst', 'Cold Chocolate', 'Butter Scotch'],
   },
   {
     category: 'LATTE',
     image: latteImg,
-    items: ['Cafe', 'Hazelnut', 'Caramel Latte', 'Vanilla', 'White Choco'],
+    items: ['Cafe Latte', 'Caramel Latte', 'Vanilla Latte', 'Hazelnut Latte', 'White Choco'],
   },
   {
     category: 'MOJITO',
     image: mojitoImg,
-    items: ['Mint', 'Green Apple', 'Raspberry', 'Strawberry'],
+    items: ['Mint', 'Strawberry', 'Raspberry', 'Green Apple'],
   },
   {
     category: 'FRAPPE',
     image: frappeImg,
-    items: ['Classic', 'Choco', 'Mocha', 'Tan Swing'],
+    items: ['Mocha', 'Classic', 'Choco', 'Tan Swing'],
   },
   {
     category: 'COOLERS',
     image: coolersImg,
-    items: ['Blue Mint Fizz', 'Ocean Blue', 'Green Apple', 'Lemony Lemon'],
+    items: ['Green Apple', 'Blue Mint Fizz', 'Ocean Blue', 'Lemony Lemon'],
   },
   {
     category: 'ICED TEA',
@@ -65,14 +67,14 @@ const drinkItems = [
   {
     category: 'ESPRESSO',
     image: espressoImg,
-    items: ['Bicerin', 'Doppio', 'Affogato', 'Americano', 'Conpanna', 'Romano'],
+    items: ['Conpanna', 'Affogato', 'Doppio', 'Americano', 'Romano', 'Bicerin'],
   },
 ];
 
 const Drinks = () => {
   const [activeCategory, setActiveCategory] = useState('ALL');
-    useScrollToMenu();
- const location = useLocation();
+  useScrollToMenu();
+  const location = useLocation();
 
   useEffect(() => {
     // Check if we should scroll to menu
@@ -155,8 +157,8 @@ const Drinks = () => {
               <button
                 onClick={() => setActiveCategory('ALL')}
                 className={`px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${activeCategory === 'ALL'
-                    ? 'bg-[#712d24] text-white'
-                    : 'bg-white text-[#712d24] hover:bg-[#712d24] hover:text-white'
+                  ? 'bg-[#712d24] text-white'
+                  : 'bg-white text-[#712d24] hover:bg-[#712d24] hover:text-white'
                   }`}
               >
                 ALL
@@ -166,8 +168,8 @@ const Drinks = () => {
                   key={category}
                   onClick={() => setActiveCategory(category)}
                   className={`px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${activeCategory === category
-                      ? 'bg-[#712d24] text-white'
-                      : 'bg-white text-[#712d24] hover:bg-[#712d24] hover:text-white'
+                    ? 'bg-[#712d24] text-white'
+                    : 'bg-white text-[#712d24] hover:bg-[#712d24] hover:text-white'
                     }`}
                 >
                   {category}
@@ -203,7 +205,7 @@ const Drinks = () => {
                       >
                         <Link
                           to={`/drinks/${category.toLowerCase().replace(/\s+/g, '-')}`}
-                          state={{ scrollToMenu: true }} 
+                          state={{ scrollToMenu: true }}
                           className="flex items-center text-gray-700 hover:text-[#712d24] group transition-colors"
                         >
                           <span className="flex-1 group-hover:font-medium">{item}</span>

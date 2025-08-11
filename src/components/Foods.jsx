@@ -10,7 +10,7 @@ import sandwichImg from '../assets/images/grilled-1.jpg';
 import spaghettiImg from '../assets/images/spaghetti-1.jpg';
 import momosImg from '../assets/images/momos-1.jpg';
 import pastaImg from '../assets/images/pasta-1.jpg';
-import burgerImg from '../assets/images/hot-dog-3.jpg';
+import burgerImg from '../assets/images/burger-3.jpg';
 import hotdogImg from '../assets/images/hot-dog-3.jpg';
 import heroBg from '../assets/images/foods-bg.jpg';
 import { useScrollToMenu } from '../components/useScrollToMenu';
@@ -61,19 +61,12 @@ const menuItems = [
   {
     category: 'SPAGHETTI',
     image: spaghettiImg,
-    items: [
-      'Mixed Veg',
-      'Creamy',
-      'Chilli Garlic',
-      'Spaghetti Delight',
-      'Paneer Fusion',
-      'Soy Veg',
-    ],
+    items: ['Mixed Veg', 'Spaghetti Delight', 'Creamy', 'Chilli Garlic', 'Paneer Fusion', 'Soy Veg'],
   },
   {
     category: 'MOMOS FRIED',
     image: momosImg,
-    items: ['Mixed Veg', 'Corn', 'Paneer Tikka'],
+    items: ['Mixed Veg', 'Corn', 'Paneer'],
   },
   {
     category: 'PASTA',
@@ -81,7 +74,7 @@ const menuItems = [
     items: [
       'Indian Pasta',
       'Italian Pasta',
-      'SIGNATURE SPECIAL',
+      'Signature Special',
       'Green Garden',
       'Spicy Veg Fusion',
       'Penne Alla',
@@ -90,12 +83,13 @@ const menuItems = [
   {
     category: 'BURGER',
     image: burgerImg,
-    items: ['Veg Burger', 'Cheese Corn', 'Paneer', 'Mock Meat'],
+    items: ['Veg', 'Paneer', 'Cheese Corn', 'Mock Meat'],
+
   },
   {
     category: 'HOT DOG',
     image: hotdogImg,
-    items: ['Veg HOT DOG', 'Loaded Cheese', 'Paneer', 'Soy Shredded'],
+    items: ['Veg', 'Paneer', 'Loaded Cheese', 'Soy Shredded'],
   },
 ];
 
@@ -218,7 +212,7 @@ const Foods = () => {
                     alt={category}
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                   <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-white">
                     {category}
                   </h3>

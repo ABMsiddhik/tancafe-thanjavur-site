@@ -15,12 +15,12 @@ import miloDelight from '../assets/specialityshakes-images/Milo-Delight-1.jpg';
 import kulfiShake from '../assets/specialityshakes-images/Kulfi-Shake-1.jpg';
 
 const shakes = [
+  { name: 'Ferrero Roacher', image: ferrero, price: 175 },
   { name: 'Oreo Cookies', image: oreo, price: 155 },
-  { name: 'Kitkat Shake', image: kitkat, price: 165 },
-  { name: 'Choco Almond', image: chocoAlmond, price: 155 },
-  { name: 'Ferrero', image: ferrero, price: 175 },
-  { name: 'Tancafe Choco Crunch', image: chocoCrunch, price: 165 },
   { name: 'Milo Delight', image: miloDelight, price: 110 },
+  { name: 'Tancafe Choco Crunch', image: chocoCrunch, price: 165 },
+  { name: 'Choco Almond', image: chocoAlmond, price: 155 },
+  { name: 'Kitkat Shake', image: kitkat, price: 165 },
   { name: 'Kulfi Shake', image: kulfiShake, price: 195 },
 ];
 

@@ -14,8 +14,8 @@ import soyShredded from '../assets/hotdog-images/Soy-Shredded-hot-dog.png';
 
 const hotdogItems = [
   { name: 'Veg', image: veg, price: 75 },
-  { name: 'Loaded Cheese', image: loadedCheese, price: 135 },
   { name: 'Paneer', image: paneer, price: 95 },
+  { name: 'Loaded Cheese', image: loadedCheese, price: 135 },
   { name: 'Soy Shredded', image: soyShredded, price: 125 },
 ];
 

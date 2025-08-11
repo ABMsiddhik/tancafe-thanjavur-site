@@ -14,12 +14,12 @@ import englishBreakfast from '../assets/teabrew-images/tea-5.jpg';
 import earlGrey from '../assets/teabrew-images/tea-6.jpg';
 
 const teaBrewItems = [
-  { name: 'Lemon & Ginger', image: lemonGinger, price: 55 },
+  { name: 'Darjeeling', image: darjeeling, price: 55 },
   { name: 'Assam', image: assam, price: 50 },
   { name: 'Pure Green', image: pureGreen, price: 50 },
-  { name: 'Darjeeling', image: darjeeling, price: 55 },
-  { name: 'English Breakfast', image: englishBreakfast, price: 60 },
   { name: 'Earl Grey', image: earlGrey, price: 55 },
+  { name: 'English Breakfast', image: englishBreakfast, price: 60 },
+  { name: 'Lemon & Ginger', image: lemonGinger, price: 55 },
 ];
 
 const TeaBrew = () => {

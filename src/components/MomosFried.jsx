@@ -14,7 +14,7 @@ import paneerTikka from '../assets/momos-images/momos-3.jpg';
 const momosItems = [
   { name: 'Mixed Veg', image: mixedVeg, price: 90 },
   { name: 'Corn', image: corn, price: 95 },
-  { name: 'Paneer Tikka', image: paneerTikka, price: 110 },
+  { name: 'Paneer ', image: paneerTikka, price: 110 },
 ];
 
 const MomosFried = () => {

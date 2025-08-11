@@ -15,11 +15,11 @@ import sunsetMocha from '../assets/cappuccino-images/cappuccino-6.jpg';
 
 const cappuccinoItems = [
   { name: 'Special', image: special, price: 75 },
-  { name: 'Hot Chocolate', image: hotChocolate, price: 95 },
   { name: 'Caramel', image: caramel, price: 95 },
   { name: 'Vanilla', image: vanilla, price: 90 },
   { name: 'Hazelnut', image: hazelnut, price: 95 },
   { name: 'Sunset Mocha', image: sunsetMocha, price: 95 },
+  { name: 'Hot Chocolate', image: hotChocolate, price: 95 },
 ];
 
 const Cappuccino = () => {

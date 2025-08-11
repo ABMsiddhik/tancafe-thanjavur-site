@@ -37,7 +37,7 @@ const handleSubmit = (e) => {
 
   const { name, email, phone, message } = form;
 
-  const whatsappNumber = "918248794519"; 
+  const whatsappNumber = "919360066917"; 
 const text = `*Hello TanCafe!* \n\nNew contact request:\n\n*Name:* ${name}\n\n*Email:* ${email}\n\n*Phone:* ${phone}\n\n*Message:* ${message}`;
 
   const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;

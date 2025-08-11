@@ -14,12 +14,12 @@ import americano from '../assets/espresso-images/espresso-4.jpg';
 import romano from '../assets/espresso-images/espresso-7.jpg';
 
 const espressoItems = [
-  { name: 'Bicerin', image: bicerin, price: 75 },
-  { name: 'Doppio', image: doppio, price: 45 },
   { name: 'Conpanna', image: conpanna, price: 60 },
   { name: 'Affogato', image: affogato, price: 65 },
+  { name: 'Doppio', image: doppio, price: 45 },
   { name: 'Americano', image: americano, price: 60 },
   { name: 'Romano', image: romano, price: 45 },
+  { name: 'Bicerin', image: bicerin, price: 75 },
 ];
 
 const Espresso = () => {

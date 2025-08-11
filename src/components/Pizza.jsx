@@ -18,15 +18,15 @@ import exoticVeg from '../assets/pizza-images/pizza-8.jpg';
 import peppyMushroom from '../assets/pizza-images/pizza-9.jpg';
 
 const pizzaItems = [
-  { name: 'Tandoori Paneer', image: tandooriPaneer, price: 155 },
   { name: 'Veg', image: vegPizza, price: 120 },
-  { name: 'Golden Corn Cheese', image: goldenCornCheese, price: 135 },
+  { name: 'Exotic Veg', image: exoticVeg, price: 130 },
   { name: 'Mexican', image: mexican, price: 135 },
+  { name: 'Peppy Mushroom', image: peppyMushroom, price: 155 },
   { name: 'Cheese', image: cheese, price: 120 },
+  { name: 'Tandoori Paneer', image: tandooriPaneer, price: 155 },
   { name: 'Paneer Mushroom', image: paneerMushroom, price: 175 },
   { name: 'Classic Mushroom', image: classicMushroom, price: 140 },
-  { name: 'Exotic Veg', image: exoticVeg, price: 130 },
-  { name: 'Peppy Mushroom', image: peppyMushroom, price: 155 },
+  { name: 'Golden Corn Cheese', image: goldenCornCheese, price: 135 },
 ];
 
 const Pizza = () => {

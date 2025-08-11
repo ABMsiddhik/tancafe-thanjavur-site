@@ -31,12 +31,12 @@ const cakeItems = [
     category: 'DOUGHNUTS',
     image: doughnutImg,
     items: [
-      { name: 'Choco Doughnut' },
-      { name: 'Chocochip Doughnut' },
-      { name: 'Nuts Doughnut' },
+      { name: 'Choco' },
+      { name: 'Chocochip' },
+      { name: 'Nuts' },
       { name: 'Coffee Lovers' },
       { name: 'Choco Coconut' },
-      { name: 'Caramel Classic Delight' }
+      { name: 'Caramel Classic' }
     ],
   },
   {
@@ -92,15 +92,15 @@ const cakeItems = [
           { name: 'Honey', price: { '500g': 200, '1kg': 400 } }
         ]
       },
-      
+
     ]
   }
 ];
 
 const Cakes = () => {
   const [activeCategory, setActiveCategory] = useState('ALL');
-    useScrollToMenu();
-   const location = useLocation();
+  useScrollToMenu();
+  const location = useLocation();
 
   useEffect(() => {
     // Check if we should scroll to menu
@@ -238,11 +238,10 @@ const Cakes = () => {
             <div className="flex space-x-2 mx-auto">
               <button
                 onClick={() => setActiveCategory('ALL')}
-                className={`px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${
-                  activeCategory === 'ALL'
+                className={`px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${activeCategory === 'ALL'
                     ? 'bg-[#712d24] text-white'
                     : 'bg-white text-[#712d24] hover:bg-[#712d24] hover:text-white'
-                }`}
+                  }`}
               >
                 ALL
               </button>
@@ -250,22 +249,20 @@ const Cakes = () => {
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${
-                    activeCategory === category
+                  className={`px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${activeCategory === category
                       ? 'bg-[#712d24] text-white'
                       : 'bg-white text-[#712d24] hover:bg-[#712d24] hover:text-white'
-                  }`}
+                    }`}
                 >
                   {category}
                 </button>
               ))}
               <button
                 onClick={() => setActiveCategory('CUSTOM')}
-                className={`px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${
-                  activeCategory === 'CUSTOM'
+                className={`px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${activeCategory === 'CUSTOM'
                     ? 'bg-red-600 text-white'
                     : 'bg-red-500 text-white hover:bg-red-600'
-                }`}
+                  }`}
               >
                 CUSTOM CAKES
               </button>
@@ -286,7 +283,7 @@ const Cakes = () => {
                       alt={category}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
                     <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-white">
                       {category}
                     </h3>
@@ -302,9 +299,8 @@ const Cakes = () => {
                             >
                               <span>{subcategory.name}</span>
                               <svg
-                                className={`w-4 h-4 transition-transform ${
-                                  expandedCategories[`${category}-${subcategory.name}`] ? 'rotate-180' : ''
-                                }`}
+                                className={`w-4 h-4 transition-transform ${expandedCategories[`${category}-${subcategory.name}`] ? 'rotate-180' : ''
+                                  }`}
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -327,7 +323,7 @@ const Cakes = () => {
                                     <div className="flex flex-col">
                                       <Link
                                         to={`/cakes/${category.toLowerCase().replace(/\s+/g, '-')}`}
-                                        state={{ scrollToMenu: true }} 
+                                        state={{ scrollToMenu: true }}
                                         className="flex items-center text-gray-700 hover:text-[#712d24] group transition-colors"
                                       >
                                         <span className="flex-1 group-hover:font-medium">{item.name}</span>
@@ -372,7 +368,7 @@ const Cakes = () => {
                             >
                               <div className="flex flex-col">
                                 <Link
-                                 state={{ scrollToMenu: true }} 
+                                  state={{ scrollToMenu: true }}
                                   to={`/cakes/${category.toLowerCase().replace(/\s+/g, '-')}`}
                                   className="flex items-center text-gray-700 hover:text-[#712d24] group transition-colors"
                                 >
@@ -406,7 +402,7 @@ const Cakes = () => {
                         </ul>
                         <Link
                           to={`/cakes/${category.toLowerCase().replace(/\s+/g, '-')}`}
-                          state={{ scrollToMenu: true }} 
+                          state={{ scrollToMenu: true }}
                           className="mt-4 inline-block text-sm font-medium text-yellow-600 hover:text-yellow-700 transition-colors"
                         >
                           View all {category.toLowerCase()} →

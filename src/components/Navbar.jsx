@@ -64,7 +64,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50 ">
-   <div className="container mx-auto px-4 py-4 md:py-6 flex items-center justify-between">
+   <div className="container mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
         {/* Mobile Menu Button */}
         <button 
           onClick={() => setIsDrawerOpen(true)}
@@ -75,16 +75,16 @@ const Navbar = () => {
         </button>
 
         {/* Logo */}
-       <div className="md:flex-1 flex justify-center md:justify-start">
-
-          <Link to="/" className="flex items-center">
-            <img 
-              src={logo} 
-              alt="TanCafe Logo" 
-              className="h-10 md:h-14 transition-transform hover:scale-105 duration-200" 
-            />
-          </Link>
-        </div>
+     <div className="md:flex-1 flex justify-center md:justify-start">
+  <Link to="/" className="flex items-center">
+    <img 
+      src={logo} 
+      alt="TanCafe Logo" 
+      className="h-12 md:h-30 transition-transform hover:scale-105 duration-200 -my-6" 
+      // -my-2 (negative margin) helps compensate for the increased height
+    />
+  </Link>
+</div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
@@ -241,7 +241,8 @@ const Navbar = () => {
           >
             <FaTimes className="text-xl text-[#712d24]" />
           </button>
-          <img src={logo} alt="TanCafe Logo" className="h-8" />
+          <img src={logo} alt="TanCafe Logo" className="h-10" />
+
           <div className="w-6"></div>
         </div>
 

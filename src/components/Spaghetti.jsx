@@ -16,9 +16,9 @@ import soyVeg from '../assets/spaghetti-images/Soy-Veg-Spaghetti.png';
 
 const spaghettiItems = [
   { name: 'Mixed Veg', image: mixedVeg, price: 140 },
+  { name: 'Spaghetti Delight', image: spaghettiDelight, price: 125 },
   { name: 'Creamy', image: creamy, price: 180 },
   { name: 'Chili Garlic', image: chiliGarlic, price: 130 },
-  { name: 'Spaghetti Delight', image: spaghettiDelight, price: 125 },
   { name: 'Paneer Fusion', image: paneerFusion, price: 125 },
   { name: 'Soy Veg', image: soyVeg, price: 180 },
 ];

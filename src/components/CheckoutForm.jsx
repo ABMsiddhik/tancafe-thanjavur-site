@@ -62,7 +62,7 @@ const CheckoutForm = ({ onClose, cartItems, totalPrice }) => {
     );
 
     if (shouldProceed) {
-      window.open(`https://wa.me/918248794519?text=${encodedMessage}`, '_blank');
+      window.open(`https://wa.me/919360066917?text=${encodedMessage}`, '_blank');
       clearCart();
       onClose();
     }

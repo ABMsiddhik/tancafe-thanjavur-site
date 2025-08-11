@@ -13,11 +13,12 @@ import cheeseCorn from '../assets/burger-images/burger-3.jpg';
 import mockMeat from '../assets/burger-images/mock-meat-burger.png';
 
 const burgerItems = [
-  { name: 'Paneer', image: paneer, price: 115 },
   { name: 'Veg', image: veg, price: 85 },
+  { name: 'Paneer', image: paneer, price: 115 },
   { name: 'Cheese Corn', image: cheeseCorn, price: 125 },
   { name: 'Mock Meat', image: mockMeat, price: 135 },
 ];
+
 
 const BurgerSpecials = () => {
   const { cart, addToCart, removeFromCart, decreaseQty } = useContext(CartContext);
