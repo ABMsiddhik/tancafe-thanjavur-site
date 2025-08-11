@@ -1,6 +1,6 @@
-
-import  { useState, useEffect } from 'react';  
-import { useLocation } from 'react-router-dom';     
+import { Helmet } from 'react-helmet-async';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Footer from './Footer';
 import heroImage from '../assets/images/bgImage2.jpg';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaPaperPlane } from 'react-icons/fa';
@@ -13,8 +13,8 @@ const Contact = () => {
     phone: '',
     message: ''
   });
-  
-  const location = useLocation(); 
+
+  const location = useLocation();
 
 
   useEffect(() => {
@@ -28,24 +28,40 @@ const Contact = () => {
       }, 100);
     }
   }, [location.state]);
-const handleChange = (e) => {
-  setForm({ ...form, [e.target.id]: e.target.value });
-};
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.id]: e.target.value });
+  };
 
-const handleSubmit = (e) => {
-  e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  const { name, email, phone, message } = form;
+    const { name, email, phone, message } = form;
 
-  const whatsappNumber = "919360066917"; 
-const text = `*Hello TanCafe!* \n\nNew contact request:\n\n*Name:* ${name}\n\n*Email:* ${email}\n\n*Phone:* ${phone}\n\n*Message:* ${message}`;
+    const whatsappNumber = "919360066917";
+    const text = `*Hello TanCafe!* \n\nNew contact request:\n\n*Name:* ${name}\n\n*Email:* ${email}\n\n*Phone:* ${phone}\n\n*Message:* ${message}`;
 
-  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
-  window.open(url, "_blank");
-};
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank");
+  };
 
   return (
     <>
+    <Helmet>
+    <title>Contact TanCafe Thanjavur | Cafe & Restaurant</title>
+    <meta 
+      name="description" 
+      content="Contact TanCafe in Thanjavur for orders, reservations and inquiries. Visit our Selvam Nagar or VP Garden locations or message us directly." 
+    />
+    <meta 
+      name="keywords" 
+      content="TanCafe contact, Thanjavur cafe contact, restaurant phone number, food delivery thanjavur, cake orders thanjavur" 
+    />
+    
+    {/* Open Graph Tags */}
+    <meta property="og:title" content="Contact TanCafe Thanjavur | Cafe & Restaurant" />
+    <meta property="og:description" content="Get in touch with TanCafe for orders, reservations and inquiries at our Thanjavur locations" />
+    <meta property="og:image" content={heroImage} />
+    </Helmet>
       {/* Hero Section */}
       <section
         className="relative min-h-screen bg-fixed bg-cover bg-center flex items-center justify-center overflow-hidden"
@@ -57,8 +73,9 @@ const text = `*Hello TanCafe!* \n\nNew contact request:\n\n*Name:* ${name}\n\n*E
             <span className="text-yellow-300">Get</span> In Touch
           </h1>
           <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-100">
-            We'd love to hear from you! Reach out for inquiries, feedback, or just to say hello.
+            We'd love to hear from you! Contact Tancafe for orders, feedback, special requests or any questions about our foods, drinks and cakes.
           </p>
+
           <div className="text-sm text-gray-300 flex justify-center items-center">
             <a href="/" className="hover:text-yellow-300 transition-colors">HOME</a>
             <span className="mx-2">&gt;</span>
@@ -73,147 +90,147 @@ const text = `*Hello TanCafe!* \n\nNew contact request:\n\n*Name:* ${name}\n\n*E
       </section>
 
       {/* Contact Section */}
-{/* Contact Section - Add id here */}
-<section id="contact-section" className="py-20 bg-gradient-to-b from-[#f8f4ee] to-[#e8d9c5] px-4 sm:px-6 lg:px-20">        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-[#712d24] mb-4">Contact Information</h2>
-            <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Our team is ready to assist you with any questions about our menu, catering services, or special orders.
-            </p>
+      {/* Contact Section - Add id here */}
+      <section id="contact-section" className="py-20 bg-gradient-to-b from-[#f8f4ee] to-[#e8d9c5] px-4 sm:px-6 lg:px-20">        <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-[#712d24] mb-4">Contact Information</h2>
+          <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Our team is ready to assist you with any questions about our menu, catering services, or special orders.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Contact Form */}
+          <div className="bg-white p-10 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+            <h2 className="text-2xl font-bold mb-6 text-[#712d24]">Send Us a Message</h2>
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-[#712d24] focus:border-[#712d24] transition-all"
+                  placeholder="Your name"
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email*</label>
+                <input
+                  type="email"
+                  id="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-[#712d24] focus:border-[#712d24] transition-all"
+                  placeholder="your.email@example.com"
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-[#712d24] focus:border-[#712d24] transition-all"
+                  placeholder="+91 1234567890"
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Your Message*</label>
+                <textarea
+                  id="message"
+                  rows="5"
+                  value={form.message}
+                  onChange={handleChange}
+                  className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-[#712d24] focus:border-[#712d24] transition-all"
+                  placeholder="Tell us about your inquiry..."
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-[#712d24] hover:bg-[#5a241d] text-white px-6 py-3 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl flex items-center justify-center"
+              >
+                <span>SEND MESSAGE</span>
+                <FaPaperPlane className="ml-2" />
+              </button>
+            </form>
+
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div className="bg-white p-10 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
-              <h2 className="text-2xl font-bold mb-6 text-[#712d24]">Send Us a Message</h2>
-           <form className="space-y-6" onSubmit={handleSubmit}>
-  <div>
-    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-    <input
-      type="text"
-      id="name"
-      value={form.name}
-      onChange={handleChange}
-      className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-[#712d24] focus:border-[#712d24] transition-all"
-      placeholder="Your name"
-      required
-    />
-  </div>
-  <div>
-    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email*</label>
-    <input
-      type="email"
-      id="email"
-      value={form.email}
-      onChange={handleChange}
-      className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-[#712d24] focus:border-[#712d24] transition-all"
-      placeholder="your.email@example.com"
-      required
-    />
-  </div>
-  <div>
-    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-    <input
-      type="tel"
-      id="phone"
-      value={form.phone}
-      onChange={handleChange}
-      className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-[#712d24] focus:border-[#712d24] transition-all"
-      placeholder="+91 1234567890"
-    />
-  </div>
-  <div>
-    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Your Message*</label>
-    <textarea
-      id="message"
-      rows="5"
-      value={form.message}
-      onChange={handleChange}
-      className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-[#712d24] focus:border-[#712d24] transition-all"
-      placeholder="Tell us about your inquiry..."
-      required
-    ></textarea>
-  </div>
-  <button
-    type="submit"
-    className="w-full bg-[#712d24] hover:bg-[#5a241d] text-white px-6 py-3 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl flex items-center justify-center"
-  >
-    <span>SEND MESSAGE</span>
-    <FaPaperPlane className="ml-2" />
-  </button>
-</form>
+          {/* Contact Info */}
+          <div className="space-y-8">
+            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <h3 className="text-2xl font-bold text-[#712d24] mb-6">Our Locations</h3>
 
-            </div>
-
-            {/* Contact Info */}
-            <div className="space-y-8">
-              <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <h3 className="text-2xl font-bold text-[#712d24] mb-6">Our Locations</h3>
-
-                {/* Selvam Nagar */}
-                <div className="flex mb-8">
-                  <div className="mr-4 text-[#712d24]">
-                    <FaMapMarkerAlt className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-800 mb-2">Selvam Nagar</h4>
-                    <p className="text-gray-600 mb-1">4A, Selvam Nagar, Medical College Road</p>
-                    <p className="text-gray-600 mb-1">Thanjavur - 613 007</p>
-                    <div className="flex items-center text-[#712d24] hover:underline mt-2">
-                      <HiOutlinePhone className="mr-2" />
-                      <a href="tel:04362272000">04362-272000</a>
-                    </div>
-                    <div className="flex items-center text-[#712d24] hover:underline mt-1">
-                      <HiOutlineMail className="mr-2" />
-                      <a href="mailto:tancafe2014@gmail.com">tancafe2014@gmail.com</a>
-                    </div>
-                  </div>
+              {/* Selvam Nagar */}
+              <div className="flex mb-8">
+                <div className="mr-4 text-[#712d24]">
+                  <FaMapMarkerAlt className="w-6 h-6" />
                 </div>
-
-                {/* VP Garden */}
-                <div className="flex">
-                  <div className="mr-4 text-[#712d24]">
-                    <FaMapMarkerAlt className="w-6 h-6" />
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-800 mb-2">Selvam Nagar</h4>
+                  <p className="text-gray-600 mb-1">4A, Selvam Nagar, Medical College Road</p>
+                  <p className="text-gray-600 mb-1">Thanjavur - 613 007</p>
+                  <div className="flex items-center text-[#712d24] hover:underline mt-2">
+                    <HiOutlinePhone className="mr-2" />
+                    <a href="tel:04362272000">04362-272000</a>
                   </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-800 mb-2">VP Garden</h4>
-                    <p className="text-gray-600 mb-1">283/1A-5, VP Garden, Ever Gold Tower</p>
-                    <p className="text-gray-600 mb-1">New Bus Stand, Thanjavur - 613007</p>
-                    <div className="flex items-center text-[#712d24] hover:underline mt-2">
-                      <HiOutlinePhone className="mr-2" />
-                      <a href="tel:04362225964">04362-225964</a>
-                    </div>
-                    <div className="flex items-center text-[#712d24] hover:underline mt-1">
-                      <HiOutlineMail className="mr-2" />
-                      <a href="mailto:tancafe2022@gmail.com">tancafe2022@gmail.com</a>
-                    </div>
+                  <div className="flex items-center text-[#712d24] hover:underline mt-1">
+                    <HiOutlineMail className="mr-2" />
+                    <a href="mailto:tancafe2014@gmail.com">tancafe2014@gmail.com</a>
                   </div>
                 </div>
               </div>
 
-              {/* Opening Hours */}
-              <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <h3 className="text-2xl font-bold text-[#712d24] mb-6">
-                  <FaClock className="inline mr-2" />
-                  Opening Hours
-                </h3>
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-700">Open 7 Days a Week</span>
-                    <span className="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">
-                      DAILY
-                    </span>
+              {/* VP Garden */}
+              <div className="flex">
+                <div className="mr-4 text-[#712d24]">
+                  <FaMapMarkerAlt className="w-6 h-6" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-800 mb-2">VP Garden</h4>
+                  <p className="text-gray-600 mb-1">283/1A-5, VP Garden, Ever Gold Tower</p>
+                  <p className="text-gray-600 mb-1">New Bus Stand, Thanjavur - 613007</p>
+                  <div className="flex items-center text-[#712d24] hover:underline mt-2">
+                    <HiOutlinePhone className="mr-2" />
+                    <a href="tel:04362225964">04362-225964</a>
                   </div>
-                  <div className="pt-2">
-                    <p className="text-lg font-semibold text-gray-800">10:00 AM - 9:00 PM</p>
-                    <p className="text-sm text-gray-500 mt-1">Same hours every day</p>
+                  <div className="flex items-center text-[#712d24] hover:underline mt-1">
+                    <HiOutlineMail className="mr-2" />
+                    <a href="mailto:tancafe2022@gmail.com">tancafe2022@gmail.com</a>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Opening Hours */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <h3 className="text-2xl font-bold text-[#712d24] mb-6">
+                <FaClock className="inline mr-2" />
+                Opening Hours
+              </h3>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="font-medium text-gray-700">Open 7 Days a Week</span>
+                  <span className="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">
+                    DAILY
+                  </span>
+                </div>
+                <div className="pt-2">
+                  <p className="text-lg font-semibold text-gray-800">10:00 AM - 9:00 PM</p>
+                  <p className="text-sm text-gray-500 mt-1">Same hours every day</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
       </section>
 
       {/* Google Maps Section */}

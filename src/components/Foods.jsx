@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
@@ -14,6 +15,9 @@ import burgerImg from '../assets/images/burger-3.jpg';
 import hotdogImg from '../assets/images/hot-dog-3.jpg';
 import heroBg from '../assets/images/foods-bg.jpg';
 import { useScrollToMenu } from '../components/useScrollToMenu';
+import cheeseMushroomWrap from '../assets/wraps-images/cheese-mushroom-wrap.jpg';
+
+
 const menuItems = [
   {
     category: 'SHORT EATS',
@@ -27,6 +31,20 @@ const menuItems = [
       'Corn Cutlet (2 Pcs)',
       'Cheese Corn Nuggets',
       'Masala Fries',
+    ],
+  },
+  {
+    category: 'WRAPS',
+    image: cheeseMushroomWrap,
+    items: [
+      'Cheese Mushroom Wrap',
+      'Paneer Wrap',
+      'Veg Crunchy Wrap',
+      'Paneer Herb Fold',
+      'Gobi Frankie',
+      'Cheesy Tortilla',
+      'Veg Frankie',
+      'Crispy Veg Tortilla',
     ],
   },
   {
@@ -118,6 +136,24 @@ const Foods = () => {
 
   return (
     <>
+    <Helmet>
+    <title>TanCafe Thanjavur | Vegetarian Food Menu</title>
+    <meta 
+      name="description" 
+      content="Explore TanCafe's vegetarian food menu in Thanjavur: Pizzas, Burgers, Sandwiches, Pasta & more. Try our famous Tandoori Paneer Pizza and Potato Cheese Shots." 
+    />
+    <meta 
+      name="keywords" 
+      content="TanCafe Thanjavur, vegetarian food, pizza menu, burger thanjavur, cafe menu, veg restaurants thanjavur" 
+    />
+    
+    {/* Open Graph Tags (for social sharing) */}
+    <meta property="og:title" content="TanCafe Thanjavur | Food Menu" />
+    <meta property="og:description" content="Best vegetarian pizzas burgers and sandwiches in Thanjavur" />
+    <meta property="og:image" content={heroBg} />
+
+  </Helmet>
+
       {/* Hero Section */}
       <section className="relative min-h-screen bg-fixed bg-cover bg-center flex items-center justify-center overflow-hidden">
         <div
@@ -130,17 +166,17 @@ const Foods = () => {
         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-0"></div>
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fadeIn">
-            <span className="text-yellow-300">Our</span> Food Menu
+            <span className="text-yellow-300">TanCafe</span> Foods Menu
           </h1>
           <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-100">
-            Discover the flavors of TanCafe – Download our full vegetarian menu in PDF format.
+            Explore the best vegetarian food in Thanjavur! From crispy Veg Finger and cheesy Potato Cheese Shots to mouthwatering Tandoori Paneer Pizza and Grilled Paneer Sandwiches, TanCafe offers delicious flavors for every craving.
           </p>
           <div className="text-sm text-gray-300 flex justify-center items-center">
             <Link to="/" className="hover:text-yellow-300 transition-colors">
               HOME
             </Link>
             <span className="mx-2">&gt;</span>
-            <span className="text-yellow-300">MENU</span>
+            <span className="text-yellow-300">TANCAFE MENU</span>
           </div>
         </div>
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">

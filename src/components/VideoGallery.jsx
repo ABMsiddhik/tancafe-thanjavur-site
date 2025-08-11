@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FaHome, FaPlay } from 'react-icons/fa';
 import Footer from './Footer';
 import heroBg from '../assets/images/tancafe-gallery-foods-drinks-cakes-videos-thumbnail.jpg';
-
+import { Helmet } from 'react-helmet-async';
 const videos = [
   { id: 1, title: 'TanCafe Coffee Shop Thanjavur', url: 'https://www.youtube.com/embed/uE9K1obXBp8' },
   { id: 2, title: 'Fresh Taste Mojito', url: 'https://www.youtube.com/embed/P7HUsX1PFDE' },
@@ -93,6 +93,22 @@ const VideoGallery = () => {
   }, [location.state]);
   return (
     <>
+    <Helmet>
+    <title>TanCafe Thanjavur | Video Gallery - Cafe Moments</title>
+    <meta 
+      name="description" 
+      content="Watch TanCafe's video collection showcasing our cafe atmosphere, food preparation, and signature dishes in Thanjavur." 
+    />
+    <meta 
+      name="keywords" 
+      content="TanCafe videos, Thanjavur cafe videos, food preparation videos, drink making videos, cafe atmosphere videos" 
+    />
+    
+    {/* Open Graph Tags */}
+    <meta property="og:title" content="TanCafe Thanjavur Video Gallery" />
+    <meta property="og:description" content="Watch our cafe moments, food preparation and signature dishes in action" />
+    <meta property="og:image" content={heroBg} />
+    </Helmet>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div

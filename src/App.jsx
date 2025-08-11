@@ -1,4 +1,5 @@
 import React from 'react';
+import { HelmetProvider } from 'react-helmet-async'; 
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import TopBar from './components/TopBar';
 import Navbar from './components/Navbar';
@@ -13,6 +14,7 @@ import SpecialOffers from './components/SpecialOffers';
 import Gallery from './components/Gallery';
 import VideoGallery from './components/VideoGallery';
 import ShortEats from './components/ShortEats';
+import Wraps from './components/Wraps';
 import Pizza from './components/Pizza';
 import GrilledSandwiches from './components/GrilledSandwiches';
 import Spaghetti from './components/Spaghetti';
@@ -40,7 +42,7 @@ import FreshCreamCakes from './components/FreshCreamCakes';
 import ButterCreamCakes from './components/ButterCreamCakes';
 function App() {
   return (
-    
+    <HelmetProvider>
     <Router>
       <TopBar />
       <Navbar />
@@ -54,6 +56,8 @@ function App() {
         <Route path="/foods" element={<Foods />} />
         <Route path="/short-eats" element={<ShortEats />} />
         <Route path="/category/short-eats" element={<ShortEats />} />
+         <Route path="/wraps" element={<Wraps />} />
+        <Route path="/category/wraps" element={<Wraps />} />
         <Route path="/Pizza" element={<Pizza />} />
         <Route path="/category/Pizza" element={<Pizza />} />
         <Route path="/grilled-sandwiches" element={<GrilledSandwiches />} />
@@ -105,6 +109,7 @@ function App() {
         <Route path="videos" element={<VideoGallery />} />
       </Routes>
     </Router>
+    </HelmetProvider>
   );
 }
 

@@ -4,6 +4,7 @@ import { FiGift, FiChevronRight, FiPhone, FiGlobe, FiMapPin, FiExternalLink } fr
 import heroBg from '../assets/images/cakes.png';
 import womensDayImage from '../assets/images/womens-day-offer-tancafe.png';
 import Footer from './Footer';
+import { Helmet } from 'react-helmet-async';
 
 const SpecialOffers = () => {
   const [activeOffer, setActiveOffer] = useState('womens-day');
@@ -30,6 +31,22 @@ const SpecialOffers = () => {
 
   return (
     <div className="bg-gradient-to-b from-[#f8f4ee] to-[#e8d9c5] min-h-screen">
+      <Helmet>
+        <title>TanCafe Thanjavur | Special Offers & Promotions</title>
+        <meta
+          name="description"
+          content="Discover TanCafe's latest special offers in Thanjavur - Women's Day specials, seasonal discounts on foods, drinks and cakes. Limited time promotions available."
+        />
+        <meta
+          name="keywords"
+          content="TanCafe offers, Thanjavur cafe discounts, Women's Day special, food promotions, cake deals, TanCafe coupons"
+        />
+
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="TanCafe Thanjavur | Special Offers" />
+        <meta property="og:description" content="Limited time offers on foods, drinks and cakes at TanCafe Thanjavur" />
+        <meta property="og:image" content={heroBg} />
+      </Helmet>
       {/* Hero Section */}
       <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image */}
@@ -84,8 +101,8 @@ const SpecialOffers = () => {
               key={offerKey}
               onClick={() => setActiveOffer(offerKey)}
               className={`px-4 py-2 rounded-full whitespace-nowrap flex items-center ${activeOffer === offerKey
-                  ? 'bg-[#712d24] text-white'
-                  : 'bg-white text-[#712d24] hover:bg-gray-100'
+                ? 'bg-[#712d24] text-white'
+                : 'bg-white text-[#712d24] hover:bg-gray-100'
                 }`}
             >
               <FiGift className="mr-2" />

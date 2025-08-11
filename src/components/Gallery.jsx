@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useState, useEffect } from 'react';
 import img1 from '../assets/gallery/tancafe-thanjavur-20.jpg';
 import img2 from '../assets/gallery/tancafe-thanjavur-19.jpg';
@@ -62,12 +63,12 @@ const Gallery = () => {
         const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
         const elementPosition = gallerySection.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
-        
+
         window.scrollTo({
           top: offsetPosition,
           behavior: 'smooth'
         });
-        
+
         // Clear any scroll flags
         window.history.replaceState({}, document.title);
         localStorage.removeItem('scrollToGallery');
@@ -75,13 +76,13 @@ const Gallery = () => {
     };
 
     // Check both state and localStorage
-    const shouldScroll = location.state?.scrollToMenu || 
-                       JSON.parse(localStorage.getItem('scrollToGallery'));
+    const shouldScroll = location.state?.scrollToMenu ||
+      JSON.parse(localStorage.getItem('scrollToGallery'));
 
     if (shouldScroll) {
       // Try scrolling immediately
       scrollToGallery();
-      
+
       // Fallback with timeout if needed
       const timer = setTimeout(scrollToGallery, 300);
       return () => clearTimeout(timer);
@@ -110,6 +111,22 @@ const Gallery = () => {
 
   return (
     <>
+      <Helmet>
+        <title>TanCafe Thanjavur | Tancafe photo collection</title>
+        <meta
+          name="description"
+          content="Explore TanCafe's photo gallery featuring our delicious foods, refreshing drinks and beautiful cakes from our Thanjavur locations."
+        />
+        <meta
+          name="keywords"
+          content="TanCafe gallery, Thanjavur cafe photos, food images, drink pictures, cake photos, restaurant gallery"
+        />
+
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="TanCafe Thanjavur Photo Gallery" />
+        <meta property="og:description" content="View images of our delicious menu items and cafe atmosphere" />
+        <meta property="og:image" content={heroBg} />
+      </Helmet>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center">
         <img
@@ -118,25 +135,25 @@ const Gallery = () => {
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-0"></div>
-<div className="relative text-center text-white z-10">
-  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 ">
-    GALLERY IMAGES – Tancafe Collections
-  </h2>
-  <p className="text-lg md:text-xl mb-4 max-w-2xl mx-auto text-gray-100">
-    Explore our cafe photo collection featuring fresh brews, gourmet dishes and indulgent cakes.
-  </p>
-  <div className="flex items-center justify-center gap-2 text-sm md:text-base">
-    <FaHome />
-    <Link 
-      to="/" 
-      className="hover:text-amber-400 transition-colors"
-    >
-      HOME
-    </Link>
-    <span className="mx-1">›</span>
-    <span className="text-amber-400">GALLERY IMAGES</span>
-  </div>
-</div>
+        <div className="relative text-center text-white z-10">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 ">
+            GALLERY IMAGES – Tancafe Collections
+          </h2>
+          <p className="text-lg md:text-xl mb-4 max-w-2xl mx-auto text-gray-100">
+            Explore our cafe photo collection featuring fresh brews, gourmet dishes and indulgent cakes.
+          </p>
+          <div className="flex items-center justify-center gap-2 text-sm md:text-base">
+            <FaHome />
+            <Link
+              to="/"
+              className="hover:text-amber-400 transition-colors"
+            >
+              HOME
+            </Link>
+            <span className="mx-1">›</span>
+            <span className="text-amber-400">GALLERY IMAGES</span>
+          </div>
+        </div>
 
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
           <svg className="w-8 h-8 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -145,8 +162,8 @@ const Gallery = () => {
         </div>
       </section>
       {/* Gallery Grid with Uniform Image Sizes */}
-       <section 
-        id="gallery-section" 
+      <section
+        id="gallery-section"
         className="px-4 sm:px-8 py-12 bg-white scroll-mt-[100px]"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

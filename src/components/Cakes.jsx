@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
+import { Helmet } from 'react-helmet-async';
 
 // Import images
 import gateauxImg from '../assets/images/gateaux.png';
@@ -179,6 +180,22 @@ const Cakes = () => {
 
   return (
     <>
+      <Helmet>
+        <title>TanCafe Thanjavur | Premium Cakes & Desserts Menu</title>
+        <meta
+          name="description"
+          content="Explore TanCafe's cake menu in Thanjavur: Black Forest gateaux, fresh cream cakes, doughnuts & custom celebration cakes. Order birthday and anniversary cakes."
+        />
+        <meta
+          name="keywords"
+          content="TanCafe Thanjavur, cakes menu, birthday cakes, fresh cream cakes, black forest cake, thanjavur bakery, custom cakes"
+        />
+
+        {/* Open Graph Tags (for social sharing) */}
+        <meta property="og:title" content="TanCafe Thanjavur | Cakes Menu" />
+        <meta property="og:description" content="Best cakes in Thanjavur - Black Forest, Fresh Cream, Doughnuts & Custom Celebration Cakes" />
+        <meta property="og:image" content={cakeHeroImg} /> 
+      </Helmet>
       {/* Hero Section */}
       <section className="relative min-h-screen bg-fixed bg-cover bg-center flex items-center justify-center overflow-hidden">
         <div
@@ -191,17 +208,17 @@ const Cakes = () => {
         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-0"></div>
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fadeIn">
-            <span className="text-yellow-300">Delicious</span> Cakes Menu
+            <span className="text-yellow-300">TanCafe Thanjavur</span> Cakes Menu
           </h1>
           <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-100">
-            Explore layers of flavor and sweetness – from gateaux to gooey doughnuts
+            Indulge in Thanjavur's finest cakes - from classic Black Forest gateaux to fresh cream cakes, doughnuts and buttercream creations. Perfect for birthdays, anniversaries or sweet cravings.
           </p>
           <div className="text-sm text-gray-300 flex justify-center items-center">
             <Link to="/" className="hover:text-yellow-300 transition-colors">
               HOME
             </Link>
             <span className="mx-2">&gt;</span>
-            <span className="text-yellow-300">CAKES</span>
+            <span className="text-yellow-300">CAKES MENU</span>
           </div>
         </div>
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
@@ -239,8 +256,8 @@ const Cakes = () => {
               <button
                 onClick={() => setActiveCategory('ALL')}
                 className={`px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${activeCategory === 'ALL'
-                    ? 'bg-[#712d24] text-white'
-                    : 'bg-white text-[#712d24] hover:bg-[#712d24] hover:text-white'
+                  ? 'bg-[#712d24] text-white'
+                  : 'bg-white text-[#712d24] hover:bg-[#712d24] hover:text-white'
                   }`}
               >
                 ALL
@@ -250,8 +267,8 @@ const Cakes = () => {
                   key={category}
                   onClick={() => setActiveCategory(category)}
                   className={`px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${activeCategory === category
-                      ? 'bg-[#712d24] text-white'
-                      : 'bg-white text-[#712d24] hover:bg-[#712d24] hover:text-white'
+                    ? 'bg-[#712d24] text-white'
+                    : 'bg-white text-[#712d24] hover:bg-[#712d24] hover:text-white'
                     }`}
                 >
                   {category}
@@ -260,8 +277,8 @@ const Cakes = () => {
               <button
                 onClick={() => setActiveCategory('CUSTOM')}
                 className={`px-4 py-2 rounded-full font-medium shadow-sm transition-colors whitespace-nowrap ${activeCategory === 'CUSTOM'
-                    ? 'bg-red-600 text-white'
-                    : 'bg-red-500 text-white hover:bg-red-600'
+                  ? 'bg-red-600 text-white'
+                  : 'bg-red-500 text-white hover:bg-red-600'
                   }`}
               >
                 CUSTOM CAKES

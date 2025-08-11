@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
-
+import { Helmet } from 'react-helmet-async';
 // Import images
 import cappuccinoImg from '../assets/images/cappuccino.jpg';
 import shakesImg from '../assets/images/shakes.jpg';
@@ -97,6 +97,23 @@ const Drinks = () => {
 
   return (
     <>
+    <Helmet>
+    <title>TanCafe Thanjavur | Premium Drinks & Beverages Menu</title>
+    <meta 
+      name="description" 
+      content="Explore TanCafe's drink menu in Thanjavur: Cappuccinos, Specialty Shakes, Mojitos, Smoothies & more. Try our famous Ferrero Rocher Shake and Mint Mojito." 
+    />
+    <meta 
+      name="keywords" 
+      content="TanCafe Thanjavur, drinks menu, milkshakes thanjavur, mojito, cappuccino, cold beverages, best cafe thanjavur" 
+    />
+    
+    {/* Open Graph Tags (for social sharing) */}
+    <meta property="og:title" content="TanCafe Thanjavur | Drinks Menu" />
+    <meta property="og:description" content="Best beverages in Thanjavur - Cappuccinos, Shakes, Mojitos and more" />
+    <meta property="og:image" content={heroBg} /> {/* Use your most attractive drink image */}
+    
+  </Helmet>
       {/* Hero Section */}
       <section className="relative min-h-screen bg-fixed bg-cover bg-center flex items-center justify-center overflow-hidden">
         <div
@@ -109,17 +126,17 @@ const Drinks = () => {
         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-0"></div>
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fadeIn">
-            <span className="text-yellow-300">Refreshing</span> Drink Menu
+            <span className="text-yellow-300">TanCafe</span> Drinks Menu
           </h1>
           <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-100">
-            Sip into our collection of hand-crafted beverages – from classic cappuccinos to chilled coolers
+            Quench your thirst with TanCafe’s premium beverages in Thanjavur. Enjoy handcrafted Cappuccinos, Ferrero Rocher Shakes, Mint Mojitos and Fruit Smoothies – perfect companions for our pizzas and burgers.
           </p>
           <div className="text-sm text-gray-300 flex justify-center items-center">
             <Link to="/" className="hover:text-yellow-300 transition-colors">
               HOME
             </Link>
             <span className="mx-2">&gt;</span>
-            <span className="text-yellow-300">DRINKS</span>
+            <span className="text-yellow-300">DRINKS MENU</span>
           </div>
         </div>
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">

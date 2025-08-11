@@ -1,4 +1,4 @@
-
+import { Helmet } from 'react-helmet-async';
 import '../App.css';
 import { FaUtensils, FaGlassCheers, FaBirthdayCake, FaUser, FaStar } from 'react-icons/fa';
 import bgImage from '../assets/images/tancafe-bg1.jpg';
@@ -88,6 +88,17 @@ function HeroSection() {
 
   return (
     <>
+     <Helmet>
+        <title>TanCafe Thanjavur | Premium Vegetarian Restaurant & Café</title>
+        <meta 
+          name="description" 
+          content="TanCafe Thanjavur offers delicious vegetarian pizzas, burgers, shakes and coffees. Dine-in or order online. Visit us at Selvam Nagar & VP Garden branches." 
+        />
+        {/* Open Graph Tags (for social media) */}
+        <meta property="og:title" content="TanCafe Thanjavur | Restaurant & Café" />
+        <meta property="og:description" content="Best vegetarian pizzas, burgers and coffees in Thanjavur. Order online or book a table today!" />
+        <meta property="og:image" content={bgImage} />
+      </Helmet>
       {/* Hero Image Section with Dark Overlay + Blur */}
       <div id="header-section"  className="relative min-h-screen bg-cover bg-center flex items-center justify-center text-white overflow-hidden">
         {/* Background Image with Darkness + Blur */}

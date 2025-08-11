@@ -6,7 +6,7 @@ import Slider from 'react-slick';
 import heroBg from '../assets/images/foods-bg.jpg';
 import shakesImg from '../assets/images/shakes1.png';
 import friesImg from '../assets/images/fries.png';
-
+import { Helmet } from 'react-helmet-async';
 import Footer from './Footer';
 
 const Aboutus = () => {
@@ -25,6 +25,22 @@ const Aboutus = () => {
     }, [location.state]);
     return (
         <>
+            <Helmet>
+                <title>About TanCafe Thanjavur | Our Story & Locations</title>
+                <meta
+                    name="description"
+                    content="Discover TanCafe's story - a beloved vegetarian cafe in Thanjavur serving delicious foods, drinks and cakes since 2014 with two convenient locations."
+                />
+                <meta
+                    name="keywords"
+                    content="TanCafe about us, Thanjavur cafe story, vegetarian restaurant, coffee shop history, cafe locations thanjavur"
+                />
+
+                {/* Open Graph Tags */}
+                <meta property="og:title" content="About TanCafe Thanjavur | Our Story & Locations" />
+                <meta property="og:description" content="Discover our vegetarian cafe's journey in Thanjavur since 2014 with two convenient locations" />
+                <meta property="og:image" content={heroBg} />
+            </Helmet>
             {/* Hero Section */}
             <section className="relative min-h-screen flex items-center justify-center">
                 <img
@@ -498,6 +514,7 @@ const Aboutus = () => {
             </div>
 
             <Footer />
+            
         </>
     );
 };
