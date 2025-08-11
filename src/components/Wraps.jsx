@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import { CartContext } from '../assets/context/CartContext';
 import { FaMinus, FaPlus, FaTrash } from 'react-icons/fa';
-
 // Images
 import bannerImg from '../assets/wraps-images/cheese-mushroom-wrap.jpg'; 
 import cheeseMushroomWrap from '../assets/wraps-images/cheese-mushroom-wrap.jpg';
