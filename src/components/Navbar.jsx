@@ -104,7 +104,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink 
-                to="/about"  state={{ scrollToMenu: true }}
+                to="/about-us"  state={{ scrollToMenu: true }}
                 className={({ isActive }) => 
                   `flex items-center rounded-md py-2 px-1 hover:text-[#712d24] transition-colors ${
                     isActive ? 'text-[#712d24] border-b-2 border-[#712d24]' : ''
@@ -158,7 +158,7 @@ const Navbar = () => {
               { path: "/special-offers", name: "OFFERS", icon: FaTag },
               { path: "/gallery", name: "GALLERY", icon: FaImages },
               { path: "/videos", name: "VIDEOS", icon: FaVideo },
-              { path: "/contact", name: "CONTACT", icon: FaEnvelope },
+              { path: "/contact-us", name: "CONTACT", icon: FaEnvelope },
             ].map((item) => (
               <li key={item.path}>
                 <NavLink 
@@ -261,7 +261,7 @@ const Navbar = () => {
 
           <li className="group">
             <Link 
-              to="/about"  state={{ scrollToMenu: true }}
+              to="/about-us"  state={{ scrollToMenu: true }}
               onClick={closeDrawer}
               className="flex items-center py-4 px-6 text-gray-800 hover:text-[#712d24] hover:bg-amber-50 transition-colors"
             >
@@ -330,7 +330,7 @@ const Navbar = () => {
             { path: "/special-offers", name: "SPECIAL OFFERS", icon: FaTag },
             { path: "/gallery", name: "GALLERY", icon: FaImages },
             { path: "/videos", name: "VIDEOS", icon: FaVideo },
-            { path: "/contact", name: "CONTACT", icon: FaEnvelope },
+            { path: "/contact-us", name: "CONTACT", icon: FaEnvelope },
           ].map((item) => (
             <li key={item.path} className="group">
               <Link  state={{ scrollToMenu: true }}

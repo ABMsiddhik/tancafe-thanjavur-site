@@ -50,7 +50,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HeroSection />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/about" element={<AboutUs />} />
+        <Route path="/about-us" element={<AboutUs />} />
         <Route path="/foods" element={<Foods />} />
         <Route path="/short-eats" element={<ShortEats />} />
         <Route path="/category/short-eats" element={<ShortEats />} />
@@ -98,7 +98,7 @@ function App() {
         <Route path="/cakes/doughnuts" element={<Doughnuts />} />
         <Route path="/cakes/fresh-cream-cakes" element={<FreshCreamCakes />} />
         <Route path="/cakes/butter-cream-cakes" element={<ButterCreamCakes />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/contact-us" element={<Contact />} />
         <Route path="/menu-pdf" element={<MenuPdf />} />
         <Route path="/special-offers" element={<SpecialOffers />} />
         <Route path="/gallery" element={<Gallery />} />
