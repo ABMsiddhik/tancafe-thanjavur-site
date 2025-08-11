@@ -39,7 +39,7 @@ const MenuPdf = () => {
 
   <div className="relative z-10 text-center text-white px-4">
     <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fadeIn">
-      <span className="text-yellow-300">Our</span> Food Menu
+      <span className="text-yellow-300">Complete</span> TanCafe Menu
     </h1>
     <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-100">
       Discover the flavors of TanCafe – Download our full vegetarian menu in PDF format.
