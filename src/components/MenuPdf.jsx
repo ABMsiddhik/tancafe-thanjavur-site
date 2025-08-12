@@ -6,7 +6,7 @@ import { FiDownload, FiEye } from 'react-icons/fi';
 import menuPdfImage from '../assets/images/menu-preview.png';
 import menuPdf from '../assets/pdf/tancafe-new-menu.pdf';
 import heroBg from '../assets/images/tancafe-coffee-themed-menu-background.jpg';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet';
 const MenuPdf = () => {
   const location = useLocation();
 

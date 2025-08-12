@@ -4,7 +4,7 @@ import { FiGift, FiChevronRight, FiPhone, FiGlobe, FiMapPin, FiExternalLink } fr
 import heroBg from '../assets/images/cakes.png';
 import womensDayImage from '../assets/images/womens-day-offer-tancafe.png';
 import Footer from './Footer';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet';
 
 const SpecialOffers = () => {
   const [activeOffer, setActiveOffer] = useState('womens-day');

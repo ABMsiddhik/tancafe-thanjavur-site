@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet';
 import { useState, useEffect } from 'react';
 import img1 from '../assets/gallery/tancafe-thanjavur-20.jpg';
 import img2 from '../assets/gallery/tancafe-thanjavur-19.jpg';

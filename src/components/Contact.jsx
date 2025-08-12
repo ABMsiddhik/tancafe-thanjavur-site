@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Footer from './Footer';

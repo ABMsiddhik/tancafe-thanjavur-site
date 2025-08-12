@@ -1,5 +1,5 @@
 import React from 'react';
-import { HelmetProvider } from 'react-helmet-async'; 
+
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import TopBar from './components/TopBar';
 import Navbar from './components/Navbar';
@@ -42,7 +42,7 @@ import FreshCreamCakes from './components/FreshCreamCakes';
 import ButterCreamCakes from './components/ButterCreamCakes';
 function App() {
   return (
-    <HelmetProvider>
+     
     <Router>
       <TopBar />
       <Navbar />
@@ -109,7 +109,6 @@ function App() {
         <Route path="videos" element={<VideoGallery />} />
       </Routes>
     </Router>
-    </HelmetProvider>
   );
 }
 

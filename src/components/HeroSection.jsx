@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet';
 import '../App.css';
 import { FaUtensils, FaGlassCheers, FaBirthdayCake, FaUser, FaStar } from 'react-icons/fa';
 import bgImage from '../assets/images/tancafe-bg1.jpg';

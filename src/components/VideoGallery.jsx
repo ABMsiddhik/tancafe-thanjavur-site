@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FaHome, FaPlay } from 'react-icons/fa';
 import Footer from './Footer';
 import heroBg from '../assets/images/tancafe-gallery-foods-drinks-cakes-videos-thumbnail.jpg';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet';
 const videos = [
   { id: 1, title: 'TanCafe Coffee Shop Thanjavur', url: 'https://www.youtube.com/embed/uE9K1obXBp8' },
   { id: 2, title: 'Fresh Taste Mojito', url: 'https://www.youtube.com/embed/P7HUsX1PFDE' },

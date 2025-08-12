@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet';
 
 // Import images
 import gateauxImg from '../assets/images/gateaux.png';

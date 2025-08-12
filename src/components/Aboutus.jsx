@@ -6,7 +6,7 @@ import Slider from 'react-slick';
 import heroBg from '../assets/images/foods-bg.jpg';
 import shakesImg from '../assets/images/shakes1.png';
 import friesImg from '../assets/images/fries.png';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet';
 import Footer from './Footer';
 
 const Aboutus = () => {
