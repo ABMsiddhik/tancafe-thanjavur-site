@@ -104,7 +104,7 @@ function App() {
         <Route path="/cakes/butter-cream-cakes" element={<ButterCreamCakes />} />
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/menu-pdf" element={<MenuPdf />} />
-        <Route path="/offers" element={<SpecialOffers />} />
+        <Route path="/offer" element={<SpecialOffers />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="videos" element={<VideoGallery />} />
       </Routes>

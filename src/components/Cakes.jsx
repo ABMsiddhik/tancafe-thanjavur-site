@@ -162,7 +162,7 @@ const Cakes = () => {
     const message = `*Custom Cake Order*\n\n*Customer Details*\nName: ${customOrder.name}\nPhone: ${customOrder.phone}\n\n*Cake Details*\nType: ${customOrder.cakeType === 'egg-base' ? 'Egg Base' : 'Egg Free'}\nSize: ${finalSize}\nFlavor: ${finalFlavor}\nDesign: ${customOrder.design}\nMessage: ${customOrder.message}\n\n*Delivery Date*\n${customOrder.deliveryDate}`;
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/918248794519?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/919360066917?text=${encodedMessage}`, '_blank');
 
     setCustomOrder({
       name: '',
@@ -442,6 +442,9 @@ const Cakes = () => {
                 </div>
                 <div className="p-8 md:w-1/2">
                   <h3 className="text-2xl font-bold text-[#712d24] mb-6">Design Your Dream Cake</h3>
+                  <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+        <p className="text-yellow-700"><strong>Note: </strong>Order custom cakes at least 6 hours earlier</p>
+      </div>
                   <form onSubmit={submitCustomOrder}>
                     <div className="space-y-4">
                       <div>
