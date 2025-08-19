@@ -24,13 +24,42 @@ const menuItems = [
     image: shortEatsImg,
     items: [
       'Veg Finger',
-      'Potato Cheese Shots',
+      'Potato Cheese Shotz',
       'Potato Smiles',
       'French Fries',
       'Veg Cutlet (2 Pcs)',
       'Corn Cutlet (2 Pcs)',
       'Cheese Corn Nuggets',
       'Masala Fries',
+    ],
+  },
+  {
+    category: 'FRIED MOMOS',
+    image: momosImg,
+    items: ['Mixed Veg', 'Corn', 'Paneer'],
+  },
+  {
+    category: 'PASTA',
+    image: pastaImg,
+    items: [
+      'Indian Pasta',
+      'Italian Pasta',
+      'Signature Special',
+      'Green Garden',
+      'Spicy Veg Fusion',
+      'Penne Alla',
+    ],
+  },
+  {
+    category: 'SPAGHETTI',
+    image: spaghettiImg,
+    items: [
+      'Mixed Veg',
+      'Spaghetti Delight',
+      'Creamy',
+      'Chilli Garlic',
+      'Paneer Fusion',
+      'Soy Veg',
     ],
   },
   {
@@ -48,21 +77,6 @@ const menuItems = [
     ],
   },
   {
-    category: 'PIZZA',
-    image: pizzaImg,
-    items: [
-      'Veg',
-      'Exotic Veg',
-      'Mexican',
-      'Peppy Mushroom',
-      'Cheese',
-      'Tandoori Paneer',
-      'Paneer & Mushroom',
-      'Classic Mushroom',
-      'Golden Corn Cheese',
-    ],
-  },
-  {
     category: 'GRILLED SANDWICHES',
     image: sandwichImg,
     items: [
@@ -72,37 +86,29 @@ const menuItems = [
       'Chilli Cheese',
       'Chilli Gobi',
       'Corn & Spinach',
-      'Choco Chesse',
+      'Choco Cheese',
       'Veg Hogget',
     ],
   },
   {
-    category: 'SPAGHETTI',
-    image: spaghettiImg,
-    items: ['Mixed Veg', 'Spaghetti Delight', 'Creamy', 'Chilli Garlic', 'Paneer Fusion', 'Soy Veg'],
-  },
-  {
-    category: 'MOMOS FRIED',
-    image: momosImg,
-    items: ['Mixed Veg', 'Corn', 'Paneer'],
-  },
-  {
-    category: 'PASTA',
-    image: pastaImg,
+    category: 'PIZZA',
+    image: pizzaImg,
     items: [
-      'Indian Pasta',
-      'Italian Pasta',
-      'Signature Special',
-      'Green Garden',
-      'Spicy Veg Fusion',
-      'Penne Alla',
+      'Veg',
+      'Exotic Veg',
+      'Mexican',
+      'Peppy Mushroom',
+      'Cheeze',
+      'Thandoori Paneer',
+      'Panner & Mushroom',
+      'Classic Mushroom',
+      'Golden Corn Cheese',
     ],
   },
   {
     category: 'BURGER',
     image: burgerImg,
-    items: ['Veg', 'Paneer', 'Cheese Corn', 'Mock Meat'],
-
+    items: ['Veg', 'Paneer', 'Cheeze Corn', 'Mock Meat'],
   },
   {
     category: 'HOT DOG',
@@ -110,6 +116,7 @@ const menuItems = [
     items: ['Veg', 'Paneer', 'Loaded Cheese', 'Soy Shredded'],
   },
 ];
+
 
 const Foods = () => {
   const [activeCategory, setActiveCategory] = useState('ALL');

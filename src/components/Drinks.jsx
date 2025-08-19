@@ -16,23 +16,27 @@ import icedTeaImg from '../assets/images/ice-tea.jpg';
 import espressoImg from '../assets/images/espresso.jpg';
 import heroBg from '../assets/images/drinks.jpg';
 import { useScrollToMenu } from '../components/useScrollToMenu';
+import waterbg from '../assets/water-bottle-images/water-bottle-bg.png';
 const drinkItems = [
+  {
+    category: 'ESPRESSO',
+    image: espressoImg,
+    items: ['Conpanna', 'Affogato', 'Doppio', 'Americano', 'Romano', 'Bicerin'],
+  },
   {
     category: 'CAPPUCCINO',
     image: cappuccinoImg,
     items: ['Special', 'Caramel', 'Vanilla', 'Hazelnut', 'Sunset Mocha', 'Hot Chocolate'],
   },
   {
-    category: 'SPECIALITY SHAKES',
-    image: shakesImg,
-    items: [
-      'Ferrero Roacher', 'Oreo Cookies', 'Milo Delight', 'TanCafe Choco Crunch', 'Choco Almond', 'Kitkat Shake', 'Kulfi Shake'
-    ]
+    category: 'LATTE',
+    image: latteImg,
+    items: ['Cafe', 'Caramel', 'Vanilla', 'Hazelnut', 'White Choco'],
   },
   {
     category: 'TEA BREW',
     image: teaImg,
-    items: ['Darjeeling', 'Assam', 'Pure Green', 'Earl Gray', 'English Breakfast', 'Lemon & Ginger'],
+    items: ['Darjeeling', 'Assam', 'Pure Green', 'Earl Grey', 'English Breakfast', 'Lemon & Ginger'],
   },
   {
     category: 'FRUIT SMOOTHIES',
@@ -40,9 +44,27 @@ const drinkItems = [
     items: ['Raspberry', 'Strawberry', 'Vanilla', 'Black Currant Burst', 'Cold Chocolate', 'Butter Scotch'],
   },
   {
-    category: 'LATTE',
-    image: latteImg,
-    items: ['Cafe Latte', 'Caramel Latte', 'Vanilla Latte', 'Hazelnut Latte', 'White Choco'],
+    category: 'FRAPPE',
+    image: frappeImg,
+    items: ['Mocha', 'Classic', 'Choco', 'Tan Swing'],
+  },
+  {
+    category: 'SPECIALITY SHAKES',
+    image: shakesImg,
+    items: [
+      'Ferrero Roacher',
+      'Oreo Cookies',
+      'Milo Delight',
+      'TanCafe Choco Crunch',
+      'Choco Almond',
+      'Kitkat Shake',
+      'Kulfi Shake'
+    ]
+  },
+  {
+    category: 'COOLERS',
+    image: coolersImg,
+    items: ['Green Apple', 'Blue Mint Fizz', 'Ocean Blu', 'Lemony Lemon'],
   },
   {
     category: 'MOJITO',
@@ -50,26 +72,17 @@ const drinkItems = [
     items: ['Mint', 'Strawberry', 'Raspberry', 'Green Apple'],
   },
   {
-    category: 'FRAPPE',
-    image: frappeImg,
-    items: ['Mocha', 'Classic', 'Choco', 'Tan Swing'],
-  },
-  {
-    category: 'COOLERS',
-    image: coolersImg,
-    items: ['Green Apple', 'Blue Mint Fizz', 'Ocean Blue', 'Lemony Lemon'],
-  },
-  {
     category: 'ICED TEA',
     image: icedTeaImg,
     items: ['Lemon'],
   },
   {
-    category: 'ESPRESSO',
-    image: espressoImg,
-    items: ['Conpanna', 'Affogato', 'Doppio', 'Americano', 'Romano', 'Bicerin'],
+    category: 'WATER BOTTLES',
+    image: waterbg,
+    items: ['1000 ml', '500 ml'],
   },
 ];
+
 
 const Drinks = () => {
   const [activeCategory, setActiveCategory] = useState('ALL');
@@ -111,7 +124,7 @@ const Drinks = () => {
     {/* Open Graph Tags (for social sharing) */}
     <meta property="og:title" content="TanCafe Thanjavur | Drinks Menu" />
     <meta property="og:description" content="Best beverages in Thanjavur - Cappuccinos, Shakes, Mojitos and more" />
-    <meta property="og:image" content={heroBg} /> {/* Use your most attractive drink image */}
+    <meta property="og:image" content={heroBg} /> 
     
   </Helmet>
       {/* Hero Section */}

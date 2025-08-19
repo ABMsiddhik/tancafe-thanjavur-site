@@ -15,7 +15,7 @@ import mockMeat from '../assets/burger-images/mock-meat-burger.png';
 const burgerItems = [
   { name: 'Veg', image: veg, price: 85 },
   { name: 'Paneer', image: paneer, price: 115 },
-  { name: 'Cheese Corn', image: cheeseCorn, price: 125 },
+  { name: 'Cheeze Corn', image: cheeseCorn, price: 125 },
   { name: 'Mock Meat', image: mockMeat, price: 135 },
 ];
 

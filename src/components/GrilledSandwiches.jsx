@@ -19,7 +19,7 @@ import vegHooget from '../assets/sandwich-images/Veg-Huggets-girlled-Sandwich.pn
 const sandwiches = [
   { name: 'Grilled Veg', image: grilledVeg, price: 80 },
   { name: 'Grilled Paneer', image: grilledPaneer, price: 80 },
-  { name: 'Mushroom Sandwich', image: mushroomSandwich, price: 90 },
+  { name: 'Mushroom', image: mushroomSandwich, price: 90 },
   { name: 'Chili Cheese', image: chiliCheese, price: 80 },
   { name: 'Chili Gobi', image: chiliGobi, price: 85 },
   { name: 'Corn & Spinach', image: cornSpinach, price: 75 },

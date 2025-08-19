@@ -12,9 +12,10 @@ import customCakeImg from '../assets/images/custom-cake.jpg';
 import freshCreamImg from '../assets/images/fresh-cream-cakes.jpg';
 import butterCreamImg from '../assets/images/butter-cream-cakes.jpg';
 import { useScrollToMenu } from '../components/useScrollToMenu';
+
 const cakeItems = [
   {
-    category: 'GATEAUX SLICES',
+    category: 'GATEAU SLICES',
     image: gateauxImg,
     items: [
       { name: 'Black Forest' },
@@ -36,7 +37,7 @@ const cakeItems = [
       { name: 'Chocochip' },
       { name: 'Nuts' },
       { name: 'Coffee Lovers' },
-      { name: 'Choco Coconut' },
+      { name: 'Coconuk' },
       { name: 'Caramel Classic' }
     ],
   },
@@ -66,7 +67,6 @@ const cakeItems = [
           { name: 'Black Currant', price: { '500g': 400, '1kg': 800 } },
           { name: 'Black Forest', price: { '500g': 450, '1kg': 850 } },
           { name: 'Blueberry', price: { '500g': 400, '1kg': 800 } },
-          { name: 'Brownie', price: { '500g': 500, '1kg': 1000 } },
           { name: 'Butterscotch', price: { '500g': 400, '1kg': 800 } },
           { name: 'Choco Truffle', price: { '500g': 475, '1kg': 950 } },
           { name: 'Kiwi', price: { '500g': 400, '1kg': 800 } },
@@ -93,7 +93,6 @@ const cakeItems = [
           { name: 'Honey', price: { '500g': 200, '1kg': 400 } }
         ]
       },
-
     ]
   }
 ];
@@ -104,19 +103,17 @@ const Cakes = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Check if we should scroll to menu
     if (location.state?.scrollToMenu) {
-      // Small timeout to ensure page is rendered
       setTimeout(() => {
         const menuSection = document.getElementById('menu-section');
         if (menuSection) {
           menuSection.scrollIntoView({ behavior: 'smooth' });
         }
-        // Clear the state to prevent scrolling on refresh
         window.history.replaceState({}, document.title);
       }, 100);
     }
   }, [location.state]);
+
   const [customOrder, setCustomOrder] = useState({
     name: '',
     phone: '',
@@ -127,8 +124,11 @@ const Cakes = () => {
     customFlavor: '',
     design: '',
     message: '',
-    deliveryDate: ''
+    deliveryDate: '',
+    deliveryTime: ''
   });
+
+  const [errorMessage, setErrorMessage] = useState('');
 
   const [expandedCategories, setExpandedCategories] = useState({});
 
@@ -149,17 +149,72 @@ const Cakes = () => {
       ...prev,
       [name]: value,
       ...(name === 'size' && value !== 'other' ? { customSize: '' } : {}),
-      ...(name === 'flavor' && value !== 'other' ? { customFlavor: '' } : {})
+      ...(name === 'flavor' && value !== 'other' ? { customFlavor: '' } : {}),
+      ...(name === 'deliveryDate' ? { deliveryTime: '' } : {}),
+      ...(name === 'deliveryDate' || name === 'deliveryTime' ? {} : {})
     }));
+    setErrorMessage('');
+  };
+
+  const isSameDay = () => {
+    const currentDate = new Date().toISOString().split('T')[0];
+    return customOrder.deliveryDate === currentDate;
+  };
+
+  const validateDelivery = () => {
+    const { deliveryDate, deliveryTime } = customOrder;
+    if (!deliveryDate) return false;
+
+    const now = new Date();
+    const currentDate = now.toISOString().split('T')[0];
+    const deliveryDateTime = new Date(deliveryDate);
+    const currentDateTime = new Date();
+
+    // Check if delivery date is in the past
+    if (deliveryDateTime < currentDateTime.setHours(0, 0, 0, 0)) {
+      setErrorMessage('Delivery date cannot be in the past.');
+      return false;
+    }
+
+    // If same-day delivery, validate time
+    if (isSameDay()) {
+      if (!deliveryTime) {
+        setErrorMessage('Delivery time is required for same-day orders.');
+        return false;
+      }
+
+      const [hours, minutes] = deliveryTime.split(':').map(Number);
+      const currentTime = now.getHours() * 60 + now.getMinutes();
+      const deliveryMinutes = hours * 60 + minutes;
+
+      // Check if delivery time is within operating hours (10 AM to 9 PM)
+      if (hours < 10 || hours > 21) {
+        setErrorMessage('Delivery time must be between 10:00 AM and 9:00 PM.');
+        return false;
+      }
+
+      // Check if delivery time is at least 6 hours from now
+      const timeDifference = (deliveryMinutes - currentTime) / 60;
+      if (timeDifference < 6) {
+        setErrorMessage('Custom cake orders require at least 6 hours for delivery.');
+        return false;
+      }
+    }
+
+    return true;
   };
 
   const submitCustomOrder = (e) => {
     e.preventDefault();
 
+    if (!validateDelivery()) {
+      return;
+    }
+
     const finalSize = customOrder.size === 'other' ? customOrder.customSize : customOrder.size;
     const finalFlavor = customOrder.flavor === 'other' ? customOrder.customFlavor : customOrder.flavor;
 
-    const message = `*Custom Cake Order*\n\n*Customer Details*\nName: ${customOrder.name}\nPhone: ${customOrder.phone}\n\n*Cake Details*\nType: ${customOrder.cakeType === 'egg-base' ? 'Egg Base' : 'Egg Free'}\nSize: ${finalSize}\nFlavor: ${finalFlavor}\nDesign: ${customOrder.design}\nMessage: ${customOrder.message}\n\n*Delivery Date*\n${customOrder.deliveryDate}`;
+    const message = `*Custom Cake Order*\n\n*Customer Details*\nName: ${customOrder.name}\nPhone: ${customOrder.phone}\n\n*Cake Details*\nType: ${customOrder.cakeType === 'egg-base' ? 'Egg Base' : 'Egg Free'}\nSize: ${finalSize}\nFlavor: ${finalFlavor}\nDesign: ${customOrder.design}\nMessage: ${customOrder.message}\n\n*Delivery*\nDate: ${customOrder.deliveryDate}${isSameDay() && customOrder.deliveryTime ? `\nTime: ${customOrder.deliveryTime}` : ''}`;
 
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/919360066917?text=${encodedMessage}`, '_blank');
@@ -174,8 +229,10 @@ const Cakes = () => {
       customFlavor: '',
       design: '',
       message: '',
-      deliveryDate: ''
+      deliveryDate: '',
+      deliveryTime: ''
     });
+    setErrorMessage('');
   };
 
   return (
@@ -190,12 +247,11 @@ const Cakes = () => {
           name="keywords"
           content="TanCafe Thanjavur, cakes menu, birthday cakes, fresh cream cakes, black forest cake, thanjavur bakery, custom cakes"
         />
-
-        {/* Open Graph Tags (for social sharing) */}
         <meta property="og:title" content="TanCafe Thanjavur | Cakes Menu" />
         <meta property="og:description" content="Best cakes in Thanjavur - Black Forest, Fresh Cream, Doughnuts & Custom Celebration Cakes" />
         <meta property="og:image" content={cakeHeroImg} /> 
       </Helmet>
+
       {/* Hero Section */}
       <section className="relative min-h-screen bg-fixed bg-cover bg-center flex items-center justify-center overflow-hidden">
         <div
@@ -306,6 +362,16 @@ const Cakes = () => {
                     </h3>
                   </div>
                   <div className="p-6">
+                    {category === 'FRESH CREAM CAKES' && (
+                      <div className="bg-yellow-50 border-l-4 border-yellow-400 p-2 mb-4 rounded">
+                        <p className="text-yellow-700 text-sm"><strong>Note:</strong> Delivery time for fresh cream cakes is ONE HOUR</p>
+                      </div>
+                    )}
+                    {category === 'BUTTER CREAM CAKES' && (
+                      <div className="bg-yellow-50 border-l-4 border-yellow-400 p-2 mb-4 rounded">
+                        <p className="text-yellow-700 text-sm"><strong>Note:</strong> Delivery time for butter cream cakes is ONE HOUR</p>
+                      </div>
+                    )}
                     {subcategories ? (
                       <div className="space-y-4">
                         {subcategories.map((subcategory) => (
@@ -443,8 +509,8 @@ const Cakes = () => {
                 <div className="p-8 md:w-1/2">
                   <h3 className="text-2xl font-bold text-[#712d24] mb-6">Design Your Dream Cake</h3>
                   <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
-        <p className="text-yellow-700"><strong>Note: </strong>Order custom cakes at least 6 hours earlier</p>
-      </div>
+                    <p className="text-yellow-700"><strong>Note: </strong>Delivery time for customized cakes is SIX HOURS</p>
+                  </div>
                   <form onSubmit={submitCustomOrder}>
                     <div className="space-y-4">
                       <div>
@@ -572,6 +638,27 @@ const Cakes = () => {
                           className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-[#712d24]"
                         />
                       </div>
+                      {isSameDay() && (
+                        <div>
+                          <label className="block text-gray-700 mb-1">Delivery Time *</label>
+                          <input
+                            type="time"
+                            name="deliveryTime"
+                            value={customOrder.deliveryTime}
+                            onChange={handleCustomOrderChange}
+                            required
+                            min="10:00"
+                            max="21:00"
+                            className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-[#712d24]"
+                          />
+                          <p className="text-yellow-700 text-sm mt-2">
+                            <strong>Note: </strong>Delivery time for customized cakes is SIX HOURS. Operating hours: 10:00 AM to 9:00 PM.
+                          </p>
+                          {errorMessage && (
+                            <p className="text-red-600 text-sm mt-2">{errorMessage}</p>
+                          )}
+                        </div>
+                      )}
                     </div>
                     <button
                       type="submit"

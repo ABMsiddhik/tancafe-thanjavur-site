@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import TopBar from './components/TopBar';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
@@ -31,8 +31,9 @@ import Mojito from './components/Mojito';
 import Frappe from './components/Frappe';
 import Coolers from './components/Coolers';
 import IcedTea from './components/Icedtea';
+import WaterBottles from './components/WaterBottles';
 import Espresso from './components/Espresso';
-import GateauxSlices from './components/GateauxSlices';
+import GateauSlices from './components/GateauSlices';
 import Doughnuts from './components/Doughnuts';
 import BackToTop from './components/BackToTop';
 import Cart from './components/Cart';
@@ -42,12 +43,12 @@ import FreshCreamCakes from './components/FreshCreamCakes';
 import ButterCreamCakes from './components/ButterCreamCakes';
 function App() {
   return (
-     
+
     <Router>
       <TopBar />
       <Navbar />
-      
-        <ToastContainer />
+
+      <ToastContainer />
       <BackToTop />
       <Routes>
         <Route path="/" element={<HeroSection />} />
@@ -56,7 +57,7 @@ function App() {
         <Route path="/foods" element={<Foods />} />
         <Route path="/short-eats" element={<ShortEats />} />
         <Route path="/category/short-eats" element={<ShortEats />} />
-         <Route path="/wraps" element={<Wraps />} />
+        <Route path="/wraps" element={<Wraps />} />
         <Route path="/category/wraps" element={<Wraps />} />
         <Route path="/Pizza" element={<Pizza />} />
         <Route path="/category/Pizza" element={<Pizza />} />
@@ -64,8 +65,8 @@ function App() {
         <Route path="/category/grilled-sandwiches" element={<GrilledSandwiches />} />
         <Route path="/spaghetti" element={<Spaghetti />} />
         <Route path="/category/spaghetti" element={<Spaghetti />} />
-        <Route path="/momos-fried" element={<MomosFried />} />
-        <Route path="/category/momos-fried" element={<MomosFried />} />
+        <Route path="/fried-momos" element={<MomosFried />} />
+        <Route path="/category/fried-momos" element={<MomosFried />} />
         <Route path="/pasta" element={<PastaSpecials />} />
         <Route path="/category/pasta" element={<PastaSpecials />} />
         <Route path="/burger" element={<BurgerSpecials />} />
@@ -93,11 +94,13 @@ function App() {
         <Route path="/drinks/coolers" element={<Coolers />} />
         <Route path="/iced-tea" element={<IcedTea />} />
         <Route path="/drinks/iced-tea" element={<IcedTea />} />
+        <Route path="/water-bottles" element={<WaterBottles />} />
+        <Route path="/drinks/water-bottles" element={<WaterBottles />} />
         <Route path="/espresso" element={<Espresso />} />
         <Route path="/drinks/espresso" element={<Espresso />} />
         <Route path="/cakes" element={<Cakes />} />
-        <Route path="/gateaux-slices" element={<GateauxSlices />} />
-        <Route path="/cakes/gateaux-slices" element={<GateauxSlices />} />
+        <Route path="/gateau-slices" element={<GateauSlices />} />
+        <Route path="/cakes/gateau-slices" element={<GateauSlices />} />
         <Route path="/doughnuts" element={<Doughnuts />} />
         <Route path="/cakes/doughnuts" element={<Doughnuts />} />
         <Route path="/cakes/fresh-cream-cakes" element={<FreshCreamCakes />} />

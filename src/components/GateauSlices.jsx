@@ -1,38 +1,37 @@
-import React, { useContext, useEffect } from 'react';  
-import { useLocation } from 'react-router-dom';  
+import React, { useContext, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import { CartContext } from '../assets/context/CartContext';
 import { FaMinus, FaPlus, FaTrash } from 'react-icons/fa';
 
-// Images
-import bannerImg from '../assets/short-eats-images/short-eats-1.jpg';
-import frenchFries from '../assets/short-eats-images/short-eats-1.jpg';
-import masalaFries from '../assets/short-eats-images/short-eats-2.jpg';
-import cornCutlet from '../assets/short-eats-images/short-eats-3.jpg';
-import vegCutlet from '../assets/short-eats-images/short-eats-4.jpg';
-import vegFinger from '../assets/short-eats-images/short-eats-5.jpg';
-import potatoSmiles from '../assets/short-eats-images/short-eats-6.jpg';
-import cheeseCornNuggets from '../assets/short-eats-images/short-eats-8.jpg';
-import potatoCheeseShots from '../assets/short-eats-images/potato-cheese-shots.png';
+import bannerImg from '../assets/gateauslices-images/cakes-5.png';
+import blackForest from '../assets/gateauslices-images/cakes-3.jpg';
+import chocoTruffle from '../assets/gateauslices-images/cakes-4.png';
+import redVelvet from '../assets/gateauslices-images/cakes-5.png';
+import brownie from '../assets/gateauslices-images/cakes-2.png';
+import chocoLava from '../assets/gateauslices-images/cakes-1.png';
+import brownieSizzlers from '../assets/gateauslices-images/cakes-6.png';
+import richAlmond from '../assets/gateauslices-images/Rich-Almond-Fusion-cake-slice.png';
+import mochaDelight from '../assets/gateauslices-images/Mocha-Delight-Cake-slice.png';
+import chocoDelight from '../assets/gateauslices-images/choco-delight-cake-slice.png';
 
-const shortEatsItems = [
-  { name: 'Veg Finger', image: vegFinger, price: 75 },
-  { name: 'Potato Cheese Shotz', image: potatoCheeseShots, price: 125 },
-  { name: 'Potato Smiles', image: potatoSmiles, price: 70 },
-  { name: 'French Fries', image: frenchFries, price: 65 },
-  { name: 'Veg Cutlet (2 Pcs)', image: vegCutlet, price: 55 },
-  { name: 'Corn Cutlet (2 Pcs)', image: cornCutlet, price: 65 },
-  { name: 'Cheese Corn Nuggets', image: cheeseCornNuggets, price: 90 },
-  { name: 'Masala Fries', image: masalaFries, price: 80 },
+const gateauItems = [
+  { name: 'Black Forest', image: blackForest, price: 70 },
+  { name: 'Choco Truffle', image: chocoTruffle, price: 80 },
+  { name: 'Red Velvet', image: redVelvet, price: 85 },
+  { name: 'Brownie', image: brownie, price: 70 },
+  { name: 'Choco Delight', image: chocoDelight, price: 135 },
+  { name: 'Choco Lava Cake', image: chocoLava, price: 70 },
+  { name: 'Brownie Sizzlers', image: brownieSizzlers, price: 190 },
+  { name: 'Rich Almond Fusion', image: richAlmond, price: 90 },
+  { name: 'Mocha Delight', image: mochaDelight, price: 85 },
 ];
 
-
-const ShortEats = () => {
+const GateauSlices = () => {
   const { cart, addToCart, removeFromCart, decreaseQty } = useContext(CartContext);
-  const location = useLocation();  // Add this
-
-  // Add this useEffect hook
+  const location = useLocation();
+  const quantity = (itemName) => cart[itemName]?.quantity || 0;
   useEffect(() => {
     if (location.state?.scrollToMenu) {
       setTimeout(() => {
@@ -44,61 +43,40 @@ const ShortEats = () => {
       }, 100);
     }
   }, [location.state]);
-
-  // Enhanced add to cart function
-  const handleAddToCart = (name, image, price) => {
-    addToCart(name, image, price);
-    localStorage.setItem('scrollToMenu', 'true');
-  };
-  
-  const quantity = (itemName) => cart[itemName]?.quantity || 0;
-
   return (
     <>
-      {/* Hero Section - unchanged */}
+      {/* Hero Banner */}
       <section className="relative min-h-screen bg-fixed bg-cover bg-center flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center scale-110"
-          style={{
-            backgroundImage: `url(${bannerImg})`,
-            transform: 'scale(1.1)',
-          }}
+          style={{ backgroundImage: `url(${bannerImg})` }}
         ></div>
-        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-0"></div>
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-0"></div>
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fadeIn">
-            <span className="text-yellow-300">Short</span> Eats
+            <span className="text-yellow-400">Gateau Slices</span>
           </h1>
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-100">
-            Grab a quick bite with our delicious short eats – crisp, warm, and perfect with chai.
-          </p>
           <div className="text-sm text-gray-300 flex justify-center items-center">
             <Link to="/" className="hover:text-yellow-300 transition-colors">HOME</Link>
             <span className="mx-2">&gt;</span>
-            <span className="text-yellow-300">SHORT EATS</span>
+            <span className="text-yellow-300">GATEAU SLICES</span>
           </div>
-        </div>
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
-          <svg className="w-8 h-8 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
         </div>
       </section>
 
-      {/* Grid Section with Price */}
-    {/* Grid Section with Price - Add id here */}
-<section id="menu-section" className="bg-gradient-to-b from-[#f8f4ee] to-[#e8d9c5] py-16 px-4 md:px-8 lg:px-16">
-        <div className="max-w-7xl mx-auto">
+      {/* Grid Section */}
+      <section id="menu-section" className="bg-gradient-to-b from-[#fff9f5] to-[#ffe3e3] py-16 px-4 md:px-8 lg:px-16">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-[#712d24] mb-4">Delicious Bites</h2>
+            <h2 className="text-4xl font-bold text-[#712d24] mb-4">Heavenly Indulgence</h2>
             <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Our short eats are perfect for a quick and tasty snack. Crispy, fresh, and absolutely satisfying.
+              Treat yourself to our rich and decadent Gateau Slices — perfect for every sweet craving.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {shortEatsItems.map((item) => {
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {gateauItems.map((item) => {
               const itemQuantity = quantity(item.name);
               const showControls = itemQuantity > 0;
 
@@ -113,24 +91,20 @@ const ShortEats = () => {
                       alt={item.name}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <div className="absolute bottom-3 left-4">
-                      <h3 className="text-xl font-semibold text-white">{item.name}</h3>
-                      
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
+                    <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">{item.name}</h3>
                   </div>
 
                   <div className="p-4">
-                   <div className="flex justify-between items-center mb-3">
+                    <div className="flex justify-between items-center mb-3">
                       <span className="text-[#712d24] font-semibold">Rs. {item.price.toFixed(2)}</span>
                       {showControls && (
                         <span className="text-sm text-gray-500">
                           Total: Rs. {(item.price * itemQuantity).toFixed(2)}
                         </span>
-                      )} 
+                      )}
                     </div>
-                    
-                    <div className="flex items-center gap-3 justify-center">
+                    <div className="flex justify-center items-center gap-3 mt-2">
                       {showControls ? (
                         <>
                           <button
@@ -145,15 +119,15 @@ const ShortEats = () => {
                       ) : (
                         <span className="text-lg font-semibold w-8">0</span>
                       )}
-                      
-                       <button
-    onClick={() => handleAddToCart(item.name, item.image, item.price)}
-    className="bg-[#712d24] text-white p-2 rounded"
-    aria-label="Increase quantity"
-  >
-    <FaPlus className="text-sm" />
-  </button>
-                      
+
+                      <button
+                        onClick={() => addToCart(item.name, item.image, item.price)}
+                        className="bg-[#712d24] text-white p-2 rounded"
+                        aria-label="Increase quantity"
+                      >
+                        <FaPlus className="text-sm" />
+                      </button>
+
                       {showControls && (
                         <button
                           onClick={() => removeFromCart(item.name)}
@@ -170,17 +144,17 @@ const ShortEats = () => {
             })}
           </div>
 
-          {/* Call to Action - unchanged */}
+          {/* CTA */}
           <div className="mt-16 bg-[#712d24] rounded-xl p-8 md:p-12 text-center text-white">
-            <h3 className="text-3xl font-bold mb-4">Craving More?</h3>
+            <h3 className="text-3xl font-bold mb-4">Explore Our Dessert Range</h3>
             <p className="text-gray-200 max-w-2xl mx-auto mb-6">
-              Explore our full menu and discover more vegetarian delights made fresh daily.
+              Discover our full range of handcrafted desserts, cakes, and baked delights.
             </p>
             <Link
-              to="/foods"
+              to="/cakes"
               className="bg-yellow-500 hover:bg-yellow-600 text-[#712d24] font-bold py-3 px-8 rounded-full transition-colors shadow-lg inline-block"
             >
-              Browse Full Menu
+              View Full Menu
             </Link>
           </div>
         </div>
@@ -191,4 +165,4 @@ const ShortEats = () => {
   );
 };
 
-export default ShortEats;
+export default GateauSlices;

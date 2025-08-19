@@ -13,7 +13,7 @@ import hazelnut from '../assets/latte-images/latte-5.jpg';
 import whiteChoco from '../assets/latte-images/latte-6.jpg';
 
 const latteItems = [
-  { name: 'Cafe Latte', image: cafeLatte, price: 90 },
+  { name: 'Cafe', image: cafeLatte, price: 90 },
   { name: 'Caramel', image: caramel, price: 95 },
   { name: 'Vanilla', image: vanilla, price: 90 },
   { name: 'Hazelnut', image: hazelnut, price: 95 },

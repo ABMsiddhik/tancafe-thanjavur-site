@@ -1,38 +1,25 @@
-import React, { useContext, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';  
+import { useLocation } from 'react-router-dom';  
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import { CartContext } from '../assets/context/CartContext';
 import { FaMinus, FaPlus, FaTrash } from 'react-icons/fa';
 
-import bannerImg from '../assets/gateauxslices-images/cakes-5.png';
-import blackForest from '../assets/gateauxslices-images/cakes-3.jpg';
-import chocoTruffle from '../assets/gateauxslices-images/cakes-4.png';
-import redVelvet from '../assets/gateauxslices-images/cakes-5.png';
-import brownie from '../assets/gateauxslices-images/cakes-2.png';
-import chocoLava from '../assets/gateauxslices-images/cakes-1.png';
-import brownieSizzlers from '../assets/gateauxslices-images/cakes-6.png';
-import richAlmond from '../assets/gateauxslices-images/Rich-Almond-Fusion-cake-slice.png';
-import mochaDelight from '../assets/gateauxslices-images/Mocha-Delight-Cake-slice.png';
-import chocoDelight from '../assets/gateauxslices-images/choco-delight-cake-slice.png';
+import bannerImg from '../assets/water-bottle-images/water-bottle-bg.png';
+import waterBottle1000ml from '../assets/water-bottle-images/tancafe-water-bottle-1000ml.jpg';
+import waterBottle500ml from '../assets/water-bottle-images/tancafe-water-bottle-500ml.png';
 
-const gateauxItems = [
-  { name: 'Black Forest', image: blackForest, price: 70 },
-  { name: 'Choco Truffle', image: chocoTruffle, price: 80 },
-  { name: 'Red Velvet', image: redVelvet, price: 85 },
-  { name: 'Brownie', image: brownie, price: 70 },
-  { name: 'Choco Delight', image: chocoDelight, price: 135 },
-  { name: 'Choco Lava Cake', image: chocoLava, price: 70 },
-  { name: 'Brownie Sizzlers', image: brownieSizzlers, price: 190 },
-  { name: 'Rich Almond Fusion', image: richAlmond, price: 90 },
-  { name: 'Mocha Delight', image: mochaDelight, price: 85 },
+const waterBottleItems = [
+  { name: '1000ml Water Bottle', image: waterBottle1000ml, price: 20 },
+  { name: '500ml Water Bottle', image: waterBottle500ml, price: 10 },
 ];
 
-const GateauxSlices = () => {
+const WaterBottles = () => {
   const { cart, addToCart, removeFromCart, decreaseQty } = useContext(CartContext);
-  const location = useLocation();
   const quantity = (itemName) => cart[itemName]?.quantity || 0;
-  useEffect(() => {
+   const location = useLocation();
+   
+   useEffect(() => {
     if (location.state?.scrollToMenu) {
       setTimeout(() => {
         const menuSection = document.getElementById('menu-section');
@@ -43,64 +30,68 @@ const GateauxSlices = () => {
       }, 100);
     }
   }, [location.state]);
+
   return (
     <>
-      {/* Hero Banner */}
+      {/* Hero Section */}
       <section className="relative min-h-screen bg-fixed bg-cover bg-center flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center scale-110"
           style={{ backgroundImage: `url(${bannerImg})` }}
         ></div>
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-0"></div>
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-0"></div>
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fadeIn">
-            <span className="text-yellow-400">Gateaux Slices</span>
+            <span className="text-blue-300">TanCafe Water Bottles</span>
           </h1>
+          <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-100">
+            Stay hydrated with our premium quality reusable water bottles
+          </p>
           <div className="text-sm text-gray-300 flex justify-center items-center">
-            <Link to="/" className="hover:text-yellow-300 transition-colors">HOME</Link>
+            <Link to="/" className="hover:text-blue-300 transition-colors">HOME</Link>
             <span className="mx-2">&gt;</span>
-            <span className="text-yellow-300">GATEAUX SLICES</span>
+            <span className="text-blue-300">WATER BOTTLES</span>
           </div>
         </div>
       </section>
 
       {/* Grid Section */}
-      <section id="menu-section" className="bg-gradient-to-b from-[#fff9f5] to-[#ffe3e3] py-16 px-4 md:px-8 lg:px-16">
-        <div className="max-w-6xl mx-auto">
+      <section id="menu-section" className="bg-gradient-to-b from-[#f0f9ff] to-[#e0f2fe] py-16 px-4 md:px-8 lg:px-16">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-[#712d24] mb-4">Heavenly Indulgence</h2>
-            <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Treat yourself to our rich and decadent Gateaux Slices — perfect for every sweet craving.
+            <h2 className="text-4xl font-bold text-[#1e3a8a] mb-4">Premium Water Bottles</h2>
+            <div className="w-24 h-1 bg-blue-500 mx-auto mb-6"></div>
+            <p className="text-gray-600 max-w-xl mx-auto">
+              High-quality reusable bottles to keep you hydrated throughout the day
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {gateauxItems.map((item) => {
-              const itemQuantity = quantity(item.name);
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-center">
+            {waterBottleItems.map(({ name, image, price }) => {
+              const itemQuantity = quantity(name);
               const showControls = itemQuantity > 0;
 
               return (
                 <div
-                  key={item.name}
+                  key={name}
                   className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
                 >
                   <div className="relative h-48 overflow-hidden">
                     <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      src={image}
+                      alt={name}
+                      className="w-full h-full object-contain transition-transform duration-500 hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">{item.name}</h3>
+                    <h3 className="absolute bottom-3 left-4 text-xl font-semibold text-white">{name}</h3>
                   </div>
 
                   <div className="p-4">
                     <div className="flex justify-between items-center mb-3">
-                      <span className="text-[#712d24] font-semibold">Rs. {item.price.toFixed(2)}</span>
+                      <span className="text-[#1e3a8a] font-semibold">Rs. {price.toFixed(2)}</span>
                       {showControls && (
                         <span className="text-sm text-gray-500">
-                          Total: Rs. {(item.price * itemQuantity).toFixed(2)}
+                          Total: Rs. {(price * itemQuantity).toFixed(2)}
                         </span>
                       )}
                     </div>
@@ -108,7 +99,7 @@ const GateauxSlices = () => {
                       {showControls ? (
                         <>
                           <button
-                            onClick={() => decreaseQty(item.name)}
+                            onClick={() => decreaseQty(name)}
                             className="bg-gray-200 hover:bg-gray-300 p-2 rounded"
                             aria-label="Decrease quantity"
                           >
@@ -121,8 +112,8 @@ const GateauxSlices = () => {
                       )}
 
                       <button
-                        onClick={() => addToCart(item.name, item.image, item.price)}
-                        className="bg-[#712d24] text-white p-2 rounded"
+                        onClick={() => addToCart(name, image, price)}
+                        className="bg-[#1e3a8a] text-white p-2 rounded"
                         aria-label="Increase quantity"
                       >
                         <FaPlus className="text-sm" />
@@ -130,7 +121,7 @@ const GateauxSlices = () => {
 
                       {showControls && (
                         <button
-                          onClick={() => removeFromCart(item.name)}
+                          onClick={() => removeFromCart(name)}
                           className="text-red-500 hover:text-red-700 p-2"
                           aria-label="Remove item"
                         >
@@ -145,16 +136,16 @@ const GateauxSlices = () => {
           </div>
 
           {/* CTA */}
-          <div className="mt-16 bg-[#712d24] rounded-xl p-8 md:p-12 text-center text-white">
-            <h3 className="text-3xl font-bold mb-4">Explore Our Dessert Range</h3>
+          <div className="mt-16 bg-[#1e3a8a] rounded-xl p-8 md:p-12 text-center text-white">
+            <h3 className="text-3xl font-bold mb-4">Explore Our Full Menu</h3>
             <p className="text-gray-200 max-w-2xl mx-auto mb-6">
-              Discover our full range of handcrafted desserts, cakes, and baked delights.
+              From refreshing drinks to delicious treats, there's always something waiting to be discovered.
             </p>
             <Link
-              to="/cakes"
-              className="bg-yellow-500 hover:bg-yellow-600 text-[#712d24] font-bold py-3 px-8 rounded-full transition-colors shadow-lg inline-block"
+              to="/drinks"
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full transition-colors shadow-lg inline-block"
             >
-              View Full Menu
+              Explore Full Menu
             </Link>
           </div>
         </div>
@@ -165,4 +156,4 @@ const GateauxSlices = () => {
   );
 };
 
-export default GateauxSlices;
+export default WaterBottles;

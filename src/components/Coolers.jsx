@@ -14,7 +14,7 @@ import lemonyLemon from '../assets/coolers-images/cooler-7.jpg';
 const coolerItems = [
   { name: 'Green Apple', image: greenApple, price: 105 },
   { name: 'Blue Mint Fizz', image: blueMintFizz, price: 110 },
-  { name: 'Ocean Blue', image: oceanBlue, price: 120 },
+  { name: 'Ocean Blu', image: oceanBlue, price: 120 },
   { name: 'Lemony Lemon', image: lemonyLemon, price: 100 },
 ];
 

@@ -18,8 +18,8 @@ const doughnutItems = [
   { name: 'Chocochip', image: chocochip, price: 65 },
   { name: 'Nuts', image: nuts, price: 70 },
   { name: 'Coffee Lovers', image: coffeeLovers, price: 65 },
-  { name: 'Choco Coconut', image: chocoCoconut, price: 60 },
-  { name: 'Caramel Classic', image: caramelClassic, price: 65 },
+  { name: 'Coconuk', image: chocoCoconut, price: 60 },
+  { name: 'Caramel Classic', image: caramelClassic, price: 70 },
 ];
 
 
