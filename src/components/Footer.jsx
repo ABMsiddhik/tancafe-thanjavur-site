@@ -110,7 +110,7 @@ function Footer() {
     
           {/* Copyright */}
           <div className="mt-12 pt-8 border-t border-gray-600 text-center text-sm">
-            <p>© Copyright 2024. All Rights Reserved by <strong className="text-[#e67e22]">TanCafe</strong> – Developed By <strong>ABM IT SUPPORT</strong></p>
+            <p>© Copyright 2025. All Rights Reserved by <strong className="text-[#e67e22]"><Link to="/">TanCafe</Link></strong> – Developed By <strong><a href="https://www.abmitsupport.com/" target='_blank' rel="noopener noreferrer">ABM IT SUPPORT</a></strong></p>
             <p className="mt-2 opacity-80 text-amber-300">Note: Images are for illustration purpose only</p>
           </div>
         </div>
