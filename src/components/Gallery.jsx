@@ -111,22 +111,27 @@ const Gallery = () => {
 
   return (
     <>
-      <Helmet>
-        <title>TanCafe Thanjavur | Tancafe photo collection</title>
-        <meta
-          name="description"
-          content="Explore TanCafe's photo gallery featuring our delicious foods, refreshing drinks and beautiful cakes from our Thanjavur locations."
-        />
-        <meta
-          name="keywords"
-          content="TanCafe gallery, Thanjavur cafe photos, food images, drink pictures, cake photos, restaurant gallery"
-        />
+<Helmet>
+  <title>TanCafe Photo Gallery in Thanjavur | Best Cafe in Thanjavur, Coffee Shop in Thanjavur, Vegetarian Restaurant in Thanjavur</title>
+  <meta
+    name="description"
+    content="Explore TanCafe photo gallery in Thanjavur. Discover our vegetarian hotel in Thanjavur, coffee shop in Thanjavur, and restaurant in Thanjavur with delicious foods, refreshing drinks, and premium cakes. Order online at tancafe.co.in."
+  />
+  <meta
+    name="keywords"
+    content="TanCafe photo gallery in Thanjavur, cafe in Thanjavur, coffee shop in Thanjavur, vegetarian hotel in Thanjavur, vegetarian restaurant in Thanjavur, famous cafe in Thanjavur, famous coffee shop in Thanjavur, famous vegetarian hotel in Thanjavur, best cafe in Thanjavur, best coffee shop in Thanjavur, best vegetarian restaurant in Thanjavur, vegetarian coffee shop in Thanjavur, food photos in Thanjavur, drink pictures in Thanjavur, cake gallery in Thanjavur, restaurant gallery in Thanjavur, online order delivery tancafe.co.in"
+  />
 
-        {/* Open Graph Tags */}
-        <meta property="og:title" content="TanCafe Thanjavur Photo Gallery" />
-        <meta property="og:description" content="View images of our delicious menu items and cafe atmosphere" />
-        <meta property="og:image" content={heroBg} />
-      </Helmet>
+  {/* Open Graph Tags */}
+  <meta property="og:title" content="TanCafe Photo Gallery in Thanjavur | Best Cafe in Thanjavur, Coffee Shop in Thanjavur, Vegetarian Restaurant in Thanjavur" />
+  <meta 
+    property="og:description" 
+    content="View photos of TanCafe in Thanjavur showcasing cafe in Thanjavur, coffee shop in Thanjavur, vegetarian restaurant in Thanjavur, delicious foods, drinks, and cakes. Visit tancafe.co.in for online ordering." 
+  />
+  <meta property="og:image" content={heroBg} />
+  <meta property="og:url" content="https://tancafe.co.in/" />
+</Helmet>
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center">
         <img

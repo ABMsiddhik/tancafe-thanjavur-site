@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import { Helmet } from 'react-helmet';
-
+import { FaInfoCircle } from 'react-icons/fa';
 // Import images
 import gateauxImg from '../assets/images/gateaux.png';
 import doughnutImg from '../assets/images/doughnuts.jpg';
@@ -249,7 +249,7 @@ const Cakes = () => {
         />
         <meta property="og:title" content="TanCafe Thanjavur | Cakes Menu" />
         <meta property="og:description" content="Best cakes in Thanjavur - Black Forest, Fresh Cream, Doughnuts & Custom Celebration Cakes" />
-        <meta property="og:image" content={cakeHeroImg} /> 
+        <meta property="og:image" content={cakeHeroImg} />
       </Helmet>
 
       {/* Hero Section */}
@@ -508,6 +508,11 @@ const Cakes = () => {
                 </div>
                 <div className="p-8 md:w-1/2">
                   <h3 className="text-2xl font-bold text-[#712d24] mb-6">Design Your Dream Cake</h3>
+                  <div className="mb-3 sm:mb-4 text-center">
+                    <p className="text-red-600 text-sm sm:text-base font-medium flex justify-center items-center">
+                      <FaInfoCircle className="inline mr-1" /> All products subject to raw material availability
+                    </p>
+                  </div>
                   <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
                     <p className="text-yellow-700"><strong>Note: </strong>Delivery time for customized cakes is SIX HOURS</p>
                   </div>

@@ -41,13 +41,16 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FreshCreamCakes from './components/FreshCreamCakes';
 import ButterCreamCakes from './components/ButterCreamCakes';
+import FloatingOrderButton from './components/FloatingOrderButton';
+import DeliveryRadiusBadge from './components/DeliveryRadiusBadge';
 function App() {
   return (
 
     <Router>
       <TopBar />
       <Navbar />
-
+      <FloatingOrderButton />
+      <DeliveryRadiusBadge />
       <ToastContainer />
       <BackToTop />
       <Routes>

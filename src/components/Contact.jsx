@@ -46,22 +46,26 @@ const Contact = () => {
 
   return (
     <>
-    <Helmet>
-    <title>Contact TanCafe Thanjavur | Cafe & Restaurant</title>
-    <meta 
-      name="description" 
-      content="Contact TanCafe in Thanjavur for orders, reservations and inquiries. Visit our Selvam Nagar or VP Garden locations or message us directly." 
-    />
-    <meta 
-      name="keywords" 
-      content="TanCafe contact, Thanjavur cafe contact, restaurant phone number, food delivery thanjavur, cake orders thanjavur" 
-    />
-    
-    {/* Open Graph Tags */}
-    <meta property="og:title" content="Contact TanCafe Thanjavur | Cafe & Restaurant" />
-    <meta property="og:description" content="Get in touch with TanCafe for orders, reservations and inquiries at our Thanjavur locations" />
-    <meta property="og:image" content={heroImage} />
-    </Helmet>
+   <Helmet>
+  <title>Contact TanCafe in Thanjavur | Contact Coffee Shop, Restaurant, Vegetarian Restaurant, Hotel in Thanjavur | Best Cafe in Thanjavur, Coffee Shop in Thanjavur, Vegetarian Restaurant in Thanjavur</title>
+  <meta 
+    name="description" 
+    content="Contact TanCafe in Thanjavur for orders, reservations, and inquiries. Visit our best cafe in Thanjavur, coffee shop in Thanjavur, or vegetarian restaurant in Thanjavur at Selvam Nagar or VP Garden locations. Order online at tancafe.co.in." 
+  />
+  <meta 
+    name="keywords" 
+    content="TanCafe contact in Thanjavur, cafe in Thanjavur, coffee shop in Thanjavur, vegetarian hotel in Thanjavur, vegetarian restaurant in Thanjavur, famous cafe in Thanjavur, famous coffee shop in Thanjavur, famous vegetarian hotel in Thanjavur, best cafe in Thanjavur, best coffee shop in Thanjavur, best vegetarian restaurant in Thanjavur, vegetarian coffee shop in Thanjavur, food delivery in Thanjavur, cake orders in Thanjavur, online order delivery tancafe.co.in" 
+  />
+  
+  {/* Open Graph Tags */}
+  <meta property="og:title" content="Contact TanCafe in Thanjavur | Best Cafe in Thanjavur, Coffee Shop in Thanjavur, Vegetarian Restaurant in Thanjavur" />
+  <meta 
+    property="og:description" 
+    content="Get in touch with TanCafe in Thanjavur for orders, reservations, and inquiries at our best cafe in Thanjavur, coffee shop in Thanjavur, or vegetarian restaurant in Thanjavur. Visit tancafe.co.in for online ordering." 
+  />
+  <meta property="og:image" content={heroImage} />
+  <meta property="og:url" content="https://tancafe.co.in/" />
+</Helmet>
       {/* Hero Section */}
       <section
         className="relative min-h-screen bg-fixed bg-cover bg-center flex items-center justify-center overflow-hidden"

@@ -93,22 +93,27 @@ const VideoGallery = () => {
   }, [location.state]);
   return (
     <>
-    <Helmet>
-    <title>TanCafe Thanjavur | Video Gallery - Cafe Moments</title>
-    <meta 
-      name="description" 
-      content="Watch TanCafe's video collection showcasing our cafe atmosphere, food preparation, and signature dishes in Thanjavur." 
-    />
-    <meta 
-      name="keywords" 
-      content="TanCafe videos, Thanjavur cafe videos, food preparation videos, drink making videos, cafe atmosphere videos" 
-    />
-    
-    {/* Open Graph Tags */}
-    <meta property="og:title" content="TanCafe Thanjavur Video Gallery" />
-    <meta property="og:description" content="Watch our cafe moments, food preparation and signature dishes in action" />
-    <meta property="og:image" content={heroBg} />
-    </Helmet>
+<Helmet>
+  <title>TanCafe Video Gallery in Thanjavur | Best Cafe in Thanjavur, Coffee Shop in Thanjavur, Vegetarian Restaurant in Thanjavur</title>
+  <meta 
+    name="description" 
+    content="Explore TanCafe video gallery in Thanjavur. Watch videos of cafe in Thanjavur, coffee shop in Thanjavur, vegetarian hotel in Thanjavur, food preparation, signature dishes, and cafe atmosphere. Order online at tancafe.co.in." 
+  />
+  <meta 
+    name="keywords" 
+    content="TanCafe video gallery in Thanjavur, cafe in Thanjavur, coffee shop in Thanjavur, vegetarian hotel in Thanjavur, vegetarian restaurant in Thanjavur, famous cafe in Thanjavur, famous coffee shop in Thanjavur, famous vegetarian hotel in Thanjavur, best cafe in Thanjavur, best coffee shop in Thanjavur, best vegetarian restaurant in Thanjavur, vegetarian coffee shop in Thanjavur, online order delivery tancafe.co.in" 
+  />
+  
+  {/* Open Graph Tags */}
+  <meta property="og:title" content="TanCafe Video Gallery in Thanjavur | Best Cafe in Thanjavur, Coffee Shop in Thanjavur, Vegetarian Restaurant in Thanjavur" />
+  <meta 
+    property="og:description" 
+    content="Watch videos of TanCafe in Thanjavur showcasing cafe in Thanjavur, coffee shop in Thanjavur, vegetarian restaurant in Thanjavur, signature dishes, and more. Visit tancafe.co.in for online ordering." 
+  />
+  <meta property="og:image" content={heroBg} />
+  <meta property="og:url" content="https://tancafe.co.in/" />
+</Helmet>
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div

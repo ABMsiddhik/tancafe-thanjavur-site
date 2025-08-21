@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import { CartContext } from '../assets/context/CartContext';
 import { FaMinus, FaPlus, FaTrash } from 'react-icons/fa';
-
+import { Helmet } from 'react-helmet';
 // Images
 import bannerImg from '../assets/short-eats-images/short-eats-1.jpg';
 import frenchFries from '../assets/short-eats-images/short-eats-1.jpg';

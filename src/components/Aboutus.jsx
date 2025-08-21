@@ -26,20 +26,24 @@ const Aboutus = () => {
     return (
         <>
             <Helmet>
-                <title>About TanCafe Thanjavur | Our Story & Locations</title>
+                <title>About TanCafe in Thanjavur | Best Cafe in Thanjavur, Coffee Shop in Thanjavur, Premium Restaurant in Thanjavur, Vegetarian Restaurant in Thanjavur</title>
                 <meta
                     name="description"
-                    content="Discover TanCafe's story - a beloved vegetarian cafe in Thanjavur serving delicious foods, drinks and cakes since 2014 with two convenient locations."
+                    content="Discover TanCafe's story, a beloved vegetarian cafe in Thanjavur since 2014. Visit our best cafe in Thanjavur, coffee shop in Thanjavur, premium restaurant in Thanjavur, and vegetarian restaurant in Thanjavur at two convenient locations. Order online at tancafe.co.in."
                 />
                 <meta
                     name="keywords"
-                    content="TanCafe about us, Thanjavur cafe story, vegetarian restaurant, coffee shop history, cafe locations thanjavur"
+                    content="TanCafe about us in Thanjavur, cafe in Thanjavur, coffee shop in Thanjavur, vegetarian hotel in Thnjavur, vegetarian restaurant in Thanjavur, premium restaurant in Thanjavur, restaurant and cafe in Thanjavur, famous cafe in Thanjavur, famous coffee shop in Thanjavur, famous vegetarian hotel in Thanjavur, famous premium restaurant in Thanjavur, best cafe in Thanjavur, best coffee shop in Thanjavur, best vegetarian restaurant in Thanjavur, best premium restaurant in Thanjavur, vegetarian coffee shop in Thanjavur, cafe story in Thanjavur, coffee shop history in Thanjavur, cafe locations in Thanjavur, online order delivery tancafe.co.in"
                 />
 
                 {/* Open Graph Tags */}
-                <meta property="og:title" content="About TanCafe Thanjavur | Our Story & Locations" />
-                <meta property="og:description" content="Discover our vegetarian cafe's journey in Thanjavur since 2014 with two convenient locations" />
+                <meta property="og:title" content="About TanCafe in Thanjavur | Best Cafe in Thanjavur, Coffee Shop in Thanjavur, Premium Restaurant in Thanjavur, Vegetarian Restaurant in Thanjavur" />
+                <meta
+                    property="og:description"
+                    content="Discover the journey of TanCafe in Thanjavur since 2014, offering the best cafe in Thanjavur, coffee shop in Thanjavur, premium restaurant in Thanjavur, and vegetarian restaurant in Thanjavur at two convenient locations. Visit tancafe.co.in for online ordering."
+                />
                 <meta property="og:image" content={heroBg} />
+                <meta property="og:url" content="https://tancafe.co.in/" />
             </Helmet>
             {/* Hero Section */}
             <section className="relative min-h-screen flex items-center justify-center">
@@ -514,7 +518,7 @@ const Aboutus = () => {
             </div>
 
             <Footer />
-            
+
         </>
     );
 };

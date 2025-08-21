@@ -23,22 +23,26 @@ const MenuPdf = () => {
   }, [location.state]);
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#f8f4ee] to-[#e8d9c5]">
-      <Helmet>
-        <title>TanCafe Thanjavur | Download Full Menu (PDF)</title>
-        <meta
-          name="description"
-          content="Download TanCafe's complete vegetarian menu in PDF format. Browse all our foods, drinks and cakes available at our Thanjavur locations."
-        />
-        <meta
-          name="keywords"
-          content="TanCafe menu PDF, Thanjavur cafe menu, vegetarian menu download, food menu, drink list, cake selection"
-        />
+<Helmet>
+  <title>TanCafe Menu PDF in Thanjavur | Best Cafe in Thanjavur, Coffee Shop in Thanjavur, Vegetarian Restaurant in Thanjavur</title>
+  <meta
+    name="description"
+    content="Download TanCafe's complete vegetarian menu in PDF format. Browse all foods, drinks, and cakes at our best cafe in Thanjavur, coffee shop in Thanjavur, and vegetarian restaurant in Thanjavur. Order online at tancafe.co.in."
+  />
+  <meta
+    name="keywords"
+    content="TanCafe menu PDF in Thanjavur, cafe in Thanjavur, coffee shop in Thanjavur, vegetarian hotel in Thanjavur, vegetarian restaurant in Thanjavur, famous cafe in Thanjavur, famous coffee shop in Thanjavur, famous vegetarian hotel in Thanjavur, best cafe in Thanjavur, best coffee shop in Thanjavur, best vegetarian restaurant in Thanjavur, vegetarian coffee shop in Thanjavur, vegetarian menu download in Thanjavur, food menu in Thanjavur, drink list in Thanjavur, cake selection in Thanjavur, online order delivery tancafe.co.in"
+  />
 
-        {/* Open Graph Tags */}
-        <meta property="og:title" content="TanCafe Thanjavur | Download Full Menu" />
-        <meta property="og:description" content="Get our complete vegetarian menu in PDF format with all food, drink and cake options" />
-        <meta property="og:image" content={menuPdfImage} />
-      </Helmet>
+  {/* Open Graph Tags */}
+  <meta property="og:title" content="TanCafe Menu PDF in Thanjavur | Best Cafe in Thanjavur, Coffee Shop in Thanjavur, Vegetarian Restaurant in Thanjavur" />
+  <meta 
+    property="og:description" 
+    content="Download the complete vegetarian menu in PDF format from TanCafe in Thanjavur, featuring foods, drinks, and cakes from our best cafe in Thanjavur, coffee shop in Thanjavur, and vegetarian restaurant in Thanjavur. Visit tancafe.co.in for online ordering." 
+  />
+  <meta property="og:image" content={menuPdfImage} />
+  <meta property="og:url" content="https://tancafe.co.in/" />
+</Helmet>
       {/* Hero Section with Parallax Effect - Menu PDF */}
       <section className="relative min-h-screen bg-fixed bg-cover bg-center flex items-center justify-center overflow-hidden">
         <div

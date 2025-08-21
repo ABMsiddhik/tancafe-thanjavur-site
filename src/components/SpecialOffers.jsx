@@ -32,20 +32,24 @@ const SpecialOffers = () => {
   return (
     <div className="bg-gradient-to-b from-[#f8f4ee] to-[#e8d9c5] min-h-screen">
       <Helmet>
-        <title>TanCafe Thanjavur | Special Offers & Promotions</title>
+        <title>TanCafe Special Offers in Thanjavur | Best Cafe in Thanjavur, Coffee Shop in Thanjavur, Premium Restaurant in Thanjavur, Vegetarian Restaurant in Thanjavur</title>
         <meta
           name="description"
-          content="Discover TanCafe's latest special offers in Thanjavur - Women's Day specials, seasonal discounts on foods, drinks and cakes. Limited time promotions available."
+          content="Discover TanCafe's latest special offers in Thanjavur, including Women's Day specials and seasonal discounts on foods, drinks, and cakes at our best cafe in Thanjavur, coffee shop in Thanjavur, premium restaurant in Thanjavur, and vegetarian restaurant in Thanjavur. Order online at tancafe.co.in."
         />
         <meta
           name="keywords"
-          content="TanCafe offers, Thanjavur cafe discounts, Women's Day special, food promotions, cake deals, TanCafe coupons"
+          content="TanCafe offers in Thanjavur, cafe in Thanjavur, coffee shop in Thanjavur, vegetarian hotel in Thanjavur, vegetarian restaurant in Thanjavur, premium restaurant in Thanjavur, restaurant and cafe in Thanjavur, famous cafe in Thanjavur, famous coffee shop in Thanjavur, famous vegetarian hotel in Thanjavur, famous premium restaurant in Thanjavur, best cafe in Thanjavur, best coffee shop in Thanjavur, best vegetarian restaurant in Thanjavur, best premium restaurant in Thanjavur, vegetarian coffee shop in Thanjavur, Thanjavur cafe discounts, Women's Day special in Thanjavur, food promotions in Thanjavur, cake deals in Thanjavur, TanCafe coupons in Thanjavur, online order delivery tancafe.co.in"
         />
 
         {/* Open Graph Tags */}
-        <meta property="og:title" content="TanCafe Thanjavur | Special Offers" />
-        <meta property="og:description" content="Limited time offers on foods, drinks and cakes at TanCafe Thanjavur" />
+        <meta property="og:title" content="TanCafe Special Offers in Thanjavur | Best Cafe in Thanjavur, Coffee Shop in Thanjavur, Premium Restaurant in Thanjavur, Vegetarian Restaurant in Thanjavur" />
+        <meta
+          property="og:description"
+          content="Explore limited-time offers on foods, drinks, and cakes at TanCafe in Thanjavur, featuring the best cafe in Thanjavur, coffee shop in Thanjavur, premium restaurant in Thanjavur, and vegetarian restaurant in Thanjavur. Visit tancafe.co.in for online ordering."
+        />
         <meta property="og:image" content={heroBg} />
+        <meta property="og:url" content="https://tancafe.co.in/" />
       </Helmet>
       {/* Hero Section */}
       <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
