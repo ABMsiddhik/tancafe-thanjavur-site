@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaFacebookF, FaInstagram} from 'react-icons/fa';
-import { FaXTwitter, FaYoutube,FaPinterest } from "react-icons/fa6";
+import { FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { FaXTwitter, FaYoutube, FaPinterest } from "react-icons/fa6";
 import { MdLocationOn, MdPhone, MdAccessTime } from 'react-icons/md';
 import { FaEnvelope } from 'react-icons/fa';
 import footerBg from '../assets/images/tancafe-footer.png';
@@ -9,9 +9,9 @@ import footerBg from '../assets/images/tancafe-footer.png';
 function Footer() {
   return (
     <>
-      <footer 
+      <footer
         className="relative text-white py-16 px-6 md:px-12"
-        style={{ 
+        style={{
           backgroundImage: `url(${footerBg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -19,11 +19,11 @@ function Footer() {
       >
         {/* Overlay */}
         <div className="absolute inset-0 backdrop-blur-xm bg-amber-950/50"></div>
-    
+
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-    
+
             {/* Location 1 */}
             <div>
               <h3 className="text-xl font-bold mb-6 flex items-center">
@@ -31,13 +31,15 @@ function Footer() {
               </h3>
               <p className="mb-3 leading-relaxed">4A, Selvam Nagar, Medical College Road, Thanjavur - 613007.</p>
               <p className="flex items-center mb-2">
-                <MdPhone className="mr-2 text-[#e67e22]" /> 04362-272000
+                <MdPhone className="mr-2 text-[#e67e22]" />
+                <a href="tel:04362272000" className="hover:text-[#e67e22] transition-colors">04362-272000</a>
               </p>
               <p className="flex items-center">
-                <FaEnvelope className="mr-2 text-[#e67e22]" /> tancafe2014@gmail.com
+                <FaEnvelope className="mr-2 text-[#e67e22]" />
+                <a href="mailto:tancafe2014@gmail.com" className="hover:text-[#e67e22] transition-colors">tancafe2014@gmail.com</a>
               </p>
             </div>
-    
+
             {/* Location 2 */}
             <div>
               <h3 className="text-xl font-bold mb-6 flex items-center">
@@ -45,13 +47,16 @@ function Footer() {
               </h3>
               <p className="mb-3 leading-relaxed">283/1A-5, VP Garden, Ever Gold Tower, New Bus Stand, Thanjavur - 613007.</p>
               <p className="flex items-center mb-2">
-                <MdPhone className="mr-2 text-[#e67e22]" /> 04362-225964
+                <MdPhone className="mr-2 text-[#e67e22]" />
+                <a href="tel:04362225964" className="hover:text-[#e67e22] transition-colors">04362-225964</a>
               </p>
               <p className="flex items-center">
-                <FaEnvelope className="mr-2 text-[#e67e22]" /> tancafe2022@gmail.com
+                <FaEnvelope className="mr-2 text-[#e67e22]" />
+                <a href="mailto:tancafe2022@gmail.com" className="hover:text-[#e67e22] transition-colors">tancafe2022@gmail.com</a>
               </p>
             </div>
-    
+
+
             {/* Profile Links */}
             <div>
               <h3 className="text-xl font-bold mb-6">PROFILE LINKS</h3>
@@ -73,20 +78,20 @@ function Footer() {
                 </li>
               </ul>
             </div>
-    
+
             {/* Opening Hours & Social */}
             <div>
               <h3 className="text-xl font-bold mb-6 flex items-center">
                 <MdAccessTime className="mr-2 text-[#e67e22]" /> OPENING HOURS
               </h3>
               <p className="mb-6">MON to SUN : 10:00 AM – 09:00 PM</p>
-    
+
               <h3 className="text-xl font-bold mb-6">FOLLOW US</h3>
               <div className="flex space-x-4 mb-6">
                 <a href="https://www.facebook.com/mytancafe/" target='_blank' rel="noopener noreferrer" className="text-white text-lg p-2 rounded-full bg-gray-800 hover:bg-[#e67e22] transition-all duration-300">
                   <FaFacebookF />
                 </a>
-                 <a href="https://www.instagram.com/accounts/login/?next=%2Fmytancafe%2F&source=omni_redirect" target='_blank' rel="noopener noreferrer" className="text-white text-lg p-2 rounded-full bg-gray-800 hover:bg-[#e67e22] transition-all duration-300">
+                <a href="https://www.instagram.com/accounts/login/?next=%2Fmytancafe%2F&source=omni_redirect" target='_blank' rel="noopener noreferrer" className="text-white text-lg p-2 rounded-full bg-gray-800 hover:bg-[#e67e22] transition-all duration-300">
                   <FaInstagram />
                 </a>
                 <a href="https://x.com/mytancafe/" target='_blank' rel="noopener noreferrer" className="text-white text-lg p-2 rounded-full bg-gray-800 hover:bg-[#e67e22] transition-all duration-300">
@@ -98,7 +103,7 @@ function Footer() {
                 <a href="https://www.youtube.com/@mytancafe" target='_blank' rel="noopener noreferrer" className="text-white text-lg p-2 rounded-full bg-gray-800 hover:bg-[#e67e22] transition-all duration-300">
                   <FaYoutube /> </a>
               </div>
-    
+
               <div>
                 <p className="font-semibold mb-2">Feedback:</p>
                 <a href="mailto:feedbacktancafe@gmail.com" className="flex items-center hover:text-[#e67e22] transition-colors">
@@ -107,7 +112,7 @@ function Footer() {
               </div>
             </div>
           </div>
-    
+
           {/* Copyright */}
           <div className="mt-12 pt-8 border-t border-gray-600 text-center text-sm">
             <p>© Copyright 2025. All Rights Reserved by <strong className="text-[#e67e22]"><Link to="/">TanCafe</Link></strong> – Developed By <strong><a href="https://www.abmitsupport.com/" target='_blank' rel="noopener noreferrer">ABM IT SUPPORT</a></strong></p>
