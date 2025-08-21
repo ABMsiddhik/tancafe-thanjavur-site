@@ -13,7 +13,6 @@ import {
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import CheckoutForm from './CheckoutForm';
-import Footer from './Footer';
 
 const Cart = () => {
   const {
@@ -206,7 +205,7 @@ const Cart = () => {
         )}
 
       </div>
-      <Footer />
+
     </>
   );
 };
